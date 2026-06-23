@@ -8,23 +8,7 @@
     "youtube": "",
     "facebook": ""
   },
-  "products": [
-    {
-      "id": "1782238771840",
-      "name": "gh",
-      "price": 5,
-      "category": "marketplace",
-      "desc": "df",
-      "pair": "df",
-      "version": "MQL5",
-      "type": "dr",
-      "ytLink": "sdfg",
-      "copy": "yes",
-      "img": "",
-      "resultImgs": [],
-      "reviewImgs": []
-    }
-  ],
+  "products": [],
   "portfolio": [
     {
       "id": "17822389695350.16463975846373924",
