@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +28,6 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 .ticker{background:linear-gradient(90deg,var(--accent),#5B4BE0);color:#fff;padding:7px 0;overflow:hidden;font-size:11px;font-weight:700;letter-spacing:0.7px;}
 .ticker-track{display:flex;gap:56px;animation:tick 35s linear infinite;white-space:nowrap;width:max-content;}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.tick-up{color:rgba(255,255,255,0.65);}.tick-down{color:rgba(255,200,200,0.7);}
 .tick-val-up{color:#9EFFCC;}.tick-val-down{color:#FFB3C0;}
 
 /* NAV */
@@ -94,7 +92,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 44px
 .trust-divider{width:1px;height:22px;background:var(--border);}
 
 /* STATS */
-.stats-bar{background:linear-gradient(180deg,rgba(10,15,28,0) 0%,rgba(10,15,28,1) 30%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:32px 44px;background:var(--bg2);}
+.stats-bar{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:32px 44px;background:var(--bg2);}
 .stats-inner{display:flex;justify-content:center;max-width:900px;margin:0 auto;}
 .stat-item{flex:1;text-align:center;padding:0 32px;border-right:1px solid var(--border);}
 .stat-item:last-child{border-right:none;}
@@ -240,11 +238,11 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 44px
 
 /* ADMIN */
 .admin-login-page{min-height:calc(100vh - 66px);display:flex;align-items:center;justify-content:center;padding:40px;}
-.admin-login-card{max-width:400px;width:100%;background:var(--bg2);border:1px solid var(--border-accent);border-radius:20px;padding:48px;text-align:center;}
+.admin-login-card{max-width:420px;width:100%;background:var(--bg2);border:1px solid var(--border-accent);border-radius:20px;padding:48px;text-align:center;}
 .admin-login-card .lock-icon{width:64px;height:64px;background:rgba(124,92,252,0.1);border:1px solid var(--border-accent);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 24px;}
 .admin-login-card h2{font-size:22px;font-weight:900;margin-bottom:9px;}
 .admin-login-card p{font-size:13px;color:var(--text2);margin-bottom:30px;line-height:1.65;}
-.admin-login-card input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px 16px;color:#fff;font-size:15px;margin-bottom:14px;text-align:center;letter-spacing:4px;transition:border-color .2s;}
+.admin-login-card input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px 16px;color:#fff;font-size:15px;margin-bottom:14px;transition:border-color .2s;}
 .admin-login-card input:focus{outline:none;border-color:var(--border-accent);}
 .admin-wrap{max-width:1080px;margin:0 auto;padding:40px 44px 80px;}
 .admin-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:36px;padding-bottom:24px;border-bottom:1px solid var(--border);}
@@ -293,6 +291,8 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 44px
 .notice strong{color:var(--accent);}
 .notice-gold{background:rgba(245,200,66,0.06);border-color:var(--border-gold);}
 .notice-gold strong{color:var(--gold);}
+.notice-green{background:rgba(0,217,126,0.06);border-color:rgba(0,217,126,0.3);}
+.notice-green strong{color:var(--green);}
 
 /* WHY */
 .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:20px;max-width:1040px;margin:0 auto;}
@@ -314,9 +314,32 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 44px
 .faq-a{font-size:13.5px;color:var(--text2);line-height:1.78;max-height:0;overflow:hidden;transition:max-height .35s,padding .25s;padding:0 22px;}
 .faq-item.open .faq-a{max-height:220px;padding:0 22px 18px;}
 
+/* SYNC STATUS */
+.sync-bar{display:flex;align-items:center;gap:10px;padding:10px 18px;border-radius:10px;font-size:12px;font-weight:600;margin-bottom:20px;}
+.sync-bar.synced{background:rgba(0,217,126,0.08);border:1px solid rgba(0,217,126,0.25);color:var(--green);}
+.sync-bar.syncing{background:rgba(124,92,252,0.08);border:1px solid var(--border-accent);color:var(--accent);}
+.sync-bar.error{background:rgba(255,77,106,0.08);border:1px solid rgba(255,77,106,0.3);color:var(--red);}
+.sync-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.sync-dot.green{background:var(--green);}
+.sync-dot.purple{background:var(--accent);animation:pulse 1.2s infinite;}
+.sync-dot.red{background:var(--red);}
+.gh-setup-box{background:var(--bg3);border:1px solid var(--border-gold);border-radius:var(--radius-lg);padding:28px;margin-bottom:28px;}
+.gh-setup-box h3{font-size:15px;font-weight:800;color:var(--gold);margin-bottom:8px;}
+.gh-setup-box p{font-size:13px;color:var(--text2);line-height:1.68;margin-bottom:18px;}
+.gh-setup-box ol{padding-left:18px;font-size:13px;color:var(--text2);line-height:2;}
+.gh-setup-box a{color:var(--accent);text-decoration:none;}
+.gh-setup-box a:hover{text-decoration:underline;}
+
 /* TOAST */
 .toast{position:fixed;bottom:28px;right:28px;background:var(--bg2);border:1px solid var(--border-accent);border-radius:12px;padding:14px 22px;font-size:13.5px;color:var(--accent);z-index:9999;transform:translateY(16px);opacity:0;transition:all .35s;box-shadow:var(--shadow);max-width:320px;}
 .toast.show{transform:translateY(0);opacity:1;}
+
+/* LOADING OVERLAY */
+.loading-overlay{position:fixed;inset:0;background:rgba(5,8,15,0.85);z-index:8000;display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px;}
+.loading-overlay.show{display:flex;}
+.loading-spinner{width:42px;height:42px;border:3px solid rgba(124,92,252,0.2);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-overlay p{color:var(--text2);font-size:14px;}
 
 /* FOOTER */
 footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44px 30px;}
@@ -352,6 +375,12 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
 </style>
 </head>
 <body>
+
+<!-- LOADING OVERLAY -->
+<div class="loading-overlay" id="loading-overlay">
+  <div class="loading-spinner"></div>
+  <p id="loading-msg">Loading data...</p>
+</div>
 
 <!-- TICKER -->
 <div class="ticker">
@@ -394,21 +423,17 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
   </div>
   <div class="nav-right">
     <div class="social-icons-nav">
-      <!-- Telegram -->
       <a class="soc-btn soc-tg" onclick="openLink('telegram')" title="Telegram">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.94 4.43a1.5 1.5 0 0 0-1.55-.22L2.8 11.14a1.5 1.5 0 0 0 .1 2.79l3.98 1.35 1.96 5.89a.75.75 0 0 0 1.27.27l2.37-2.54 4.18 3.08a1.5 1.5 0 0 0 2.33-.93l2.96-15.5a1.5 1.5 0 0 0-.01-.12 1.5 1.5 0 0 0-.9-1.1zm-11.7 10.63-1.02 3.08-.94-2.82 7.7-6.06-5.74 5.8z" fill="#24A1DE"/></svg>
+        <svg viewBox="0 0 24 24" fill="none"><path d="M21.94 4.43a1.5 1.5 0 0 0-1.55-.22L2.8 11.14a1.5 1.5 0 0 0 .1 2.79l3.98 1.35 1.96 5.89a.75.75 0 0 0 1.27.27l2.37-2.54 4.18 3.08a1.5 1.5 0 0 0 2.33-.93l2.96-15.5a1.5 1.5 0 0 0-.01-.12 1.5 1.5 0 0 0-.9-1.1zm-11.7 10.63-1.02 3.08-.94-2.82 7.7-6.06-5.74 5.8z" fill="#24A1DE"/></svg>
       </a>
-      <!-- WhatsApp -->
       <a class="soc-btn soc-wa" onclick="openLink('whatsapp')" title="WhatsApp">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.306A9.953 9.953 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm5.043 14.4c-.216.607-1.267 1.16-1.741 1.196-.474.036-.49.354-3.087-.716-2.597-1.07-4.2-3.72-4.327-3.893-.127-.173-1.032-1.434-1.032-2.738 0-1.305.658-1.949.908-2.213.25-.265.545-.332.727-.332.18 0 .36.003.519.01.166.008.388-.063.607.48.22.546.748 1.84.814 1.974.066.133.11.29.022.464-.088.175-.133.284-.265.437-.132.153-.278.34-.397.457-.133.13-.271.27-.117.53.155.26.687 1.11 1.472 1.8.99.87 1.82 1.15 2.085 1.28.264.13.418.11.572-.065.154-.175.66-.77.836-1.034.177-.265.353-.22.595-.132.242.088 1.534.726 1.797.858.263.132.438.198.503.308.065.11.065.635-.152 1.249z" fill="#25D366"/></svg>
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.306A9.953 9.953 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm5.043 14.4c-.216.607-1.267 1.16-1.741 1.196-.474.036-.49.354-3.087-.716-2.597-1.07-4.2-3.72-4.327-3.893-.127-.173-1.032-1.434-1.032-2.738 0-1.305.658-1.949.908-2.213.25-.265.545-.332.727-.332.18 0 .36.003.519.01.166.008.388-.063.607.48.22.546.748 1.84.814 1.974.066.133.11.29.022.464-.088.175-.133.284-.265.437-.132.153-.278.34-.397.457-.133.13-.271.27-.117.53.155.26.687 1.11 1.472 1.8.99.87 1.82 1.15 2.085 1.28.264.13.418.11.572-.065.154-.175.66-.77.836-1.034.177-.265.353-.22.595-.132.242.088 1.534.726 1.797.858.263.132.438.198.503.308.065.11.065.635-.152 1.249z" fill="#25D366"/></svg>
       </a>
-      <!-- YouTube -->
       <a class="soc-btn soc-yt" onclick="openLink('youtube')" title="YouTube">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.8 7.2s-.2-1.4-.82-2.02c-.79-.82-1.67-.82-2.07-.87C16.24 4.1 12 4.1 12 4.1s-4.24 0-6.91.21c-.4.05-1.28.05-2.07.87C2.4 5.8 2.2 7.2 2.2 7.2S2 8.84 2 10.48v1.53c0 1.64.2 3.28.2 3.28s.2 1.4.82 2.02c.79.82 1.83.79 2.29.88C6.8 18.38 12 18.4 12 18.4s4.24 0 6.91-.22c.4-.05 1.28-.06 2.07-.88.62-.62.82-2.02.82-2.02S22 13.65 22 12v-1.53c0-1.64-.2-3.27-.2-3.27zM9.74 14.85V8.66l5.59 3.1-5.59 3.09z" fill="#FF0000"/></svg>
+        <svg viewBox="0 0 24 24" fill="none"><path d="M21.8 7.2s-.2-1.4-.82-2.02c-.79-.82-1.67-.82-2.07-.87C16.24 4.1 12 4.1 12 4.1s-4.24 0-6.91.21c-.4.05-1.28.05-2.07.87C2.4 5.8 2.2 7.2 2.2 7.2S2 8.84 2 10.48v1.53c0 1.64.2 3.28.2 3.28s.2 1.4.82 2.02c.79.82 1.83.79 2.29.88C6.8 18.38 12 18.4 12 18.4s4.24 0 6.91-.22c.4-.05 1.28-.06 2.07-.88.62-.62.82-2.02.82-2.02S22 13.65 22 12v-1.53c0-1.64-.2-3.27-.2-3.27zM9.74 14.85V8.66l5.59 3.1-5.59 3.09z" fill="#FF0000"/></svg>
       </a>
-      <!-- Facebook -->
       <a class="soc-btn soc-fb" onclick="openLink('facebook')" title="Facebook">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill="#1877F2"/></svg>
+        <svg viewBox="0 0 24 24" fill="none"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill="#1877F2"/></svg>
       </a>
     </div>
     <button class="btn btn-ghost btn-sm" onclick="showAdmin()">⚙</button>
@@ -421,7 +446,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
 
 <!-- ══════ HOME ══════ -->
 <div id="home" class="page active">
-
   <div class="hero">
     <div class="hero-bg"></div>
     <div class="hero-grid"></div>
@@ -452,7 +476,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
     </div>
   </div>
 
-  <!-- SERVICES -->
   <div class="section">
     <div class="section-head">
       <span class="eyebrow">WHAT WE OFFER</span>
@@ -485,7 +508,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
     </div>
   </div>
 
-  <!-- WHY US -->
   <div class="section section-alt">
     <div class="section-head">
       <span class="eyebrow">WHY CHOOSE US</span>
@@ -500,7 +522,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
     </div>
   </div>
 
-  <!-- CLIENT PORTFOLIO -->
   <div class="section" id="portfolio-section">
     <div class="section-head">
       <span class="eyebrow">PROOF OF WORK</span>
@@ -515,7 +536,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
     </div>
   </div>
 
-  <!-- FAQ -->
   <div class="section section-alt">
     <div class="section-head"><span class="eyebrow">FAQ</span><h2>Common Questions</h2></div>
     <div class="faq-list">
@@ -541,7 +561,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
       </div>
     </div>
   </div>
-
 </div>
 
 <!-- ══════ CODING ══════ -->
@@ -615,16 +634,13 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
         </div>
       </div>
       <div class="ea-grid" id="myea-grid">
-        <div class="empty-state"><div class="empty-icon">⚡</div><p>No personal EAs added yet.<br>Check back soon or contact us on <strong style="color:var(--accent)">Telegram</strong>.</p></div>
+        <div class="empty-state"><div class="empty-icon">⚡</div><p>No personal EAs added yet.<br>Contact us on <strong style="color:var(--accent)">Telegram</strong>.</p></div>
       </div>
       <div id="copy-trading-banner" style="display:none;background:linear-gradient(135deg,rgba(124,92,252,0.07),rgba(0,229,255,0.04));border:1px solid var(--border-accent);border-radius:var(--radius-lg);padding:40px;text-align:center;margin-top:36px;">
         <div style="font-size:36px;margin-bottom:14px;">📊</div>
         <h3 style="font-size:20px;font-weight:900;margin-bottom:10px;letter-spacing:-0.3px;">Want to copy our live trades?</h3>
         <p style="font-size:14px;color:var(--text2);margin-bottom:24px;line-height:1.78;max-width:460px;margin-left:auto;margin-right:auto;">Connect your MetaTrader account to mirror our EA trades in real time. We set it up for you in minutes on Telegram.</p>
-        <button class="btn btn-accent btn-lg" onclick="openLink('telegram')">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21.94 4.43a1.5 1.5 0 0 0-1.55-.22L2.8 11.14a1.5 1.5 0 0 0 .1 2.79l3.98 1.35 1.96 5.89a.75.75 0 0 0 1.27.27l2.37-2.54 4.18 3.08a1.5 1.5 0 0 0 2.33-.93l2.96-15.5a1.5 1.5 0 0 0-.01-.12 1.5 1.5 0 0 0-.9-1.1z" fill="#fff"/></svg>
-          Set Up Copy Trading
-        </button>
+        <button class="btn btn-accent btn-lg" onclick="openLink('telegram')">Set Up Copy Trading</button>
       </div>
     </div>
   </div>
@@ -657,7 +673,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
         <div class="step"><div class="step-n">1</div><div class="step-txt">Send the exact USDT amount to the wallet address below. We accept <strong>TRC20 (TRON)</strong> network only.</div></div>
         <div class="addr-box"><span id="usdt-display">Loading...</span><button class="copy-addr-btn" onclick="copyAddr()">📋 Copy</button></div>
         <div class="step"><div class="step-n">2</div><div class="step-txt">Take a clear screenshot of your payment confirmation from your exchange or wallet app.</div></div>
-        <div class="step"><div class="step-n">3</div><div class="step-txt">Tap the button below, open Telegram, and send us the screenshot. We verify and deliver your EA file directly — usually within minutes.</div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-txt">Tap the button below, open Telegram, and send us the screenshot. We verify and deliver your EA file — usually within minutes.</div></div>
       </div>
       <button class="btn btn-accent" style="width:100%;margin-top:22px;padding:15px;font-size:14px;" onclick="openLink('telegram')">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M21.94 4.43a1.5 1.5 0 0 0-1.55-.22L2.8 11.14a1.5 1.5 0 0 0 .1 2.79l3.98 1.35 1.96 5.89a.75.75 0 0 0 1.27.27l2.37-2.54 4.18 3.08a1.5 1.5 0 0 0 2.33-.93l2.96-15.5a1.5 1.5 0 0 0-.01-.12 1.5 1.5 0 0 0-.9-1.1z" fill="#fff"/></svg>
@@ -676,16 +692,46 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
         <div class="lock-icon">🔐</div>
         <h2>Admin Panel</h2>
         <p>Enter your password to manage site content.</p>
-        <input type="password" id="admin-pw-input" placeholder="••••••••••" onkeydown="if(event.key==='Enter')checkPw()">
+        <input type="text" id="admin-gh-repo" placeholder="username/repo-name (e.g. sheikh/sts-site)" style="letter-spacing:0;text-align:left;">
+        <input type="text" id="admin-gh-token" placeholder="GitHub Personal Access Token" style="letter-spacing:0;text-align:left;">
+        <input type="password" id="admin-pw-input" placeholder="Site Password ••••••••••">
         <button class="btn btn-accent" style="width:100%;padding:14px;font-size:14px;" onclick="checkPw()">Login →</button>
+        <p style="font-size:11px;color:var(--text3);margin-top:16px;line-height:1.7;">Your GitHub token is stored only in your browser and never shared. <a href="#" onclick="showGhHelp();return false;" style="color:var(--accent);">How to create a token →</a></p>
       </div>
     </div>
   </div>
+
+  <!-- GitHub Help Modal -->
+  <div id="gh-help-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9500;align-items:center;justify-content:center;padding:20px;">
+    <div style="max-width:540px;width:100%;background:var(--bg2);border:1px solid var(--border-accent);border-radius:20px;padding:36px;position:relative;">
+      <button onclick="document.getElementById('gh-help-modal').style.display='none';" style="position:absolute;top:14px;right:18px;background:none;border:none;color:var(--text2);font-size:22px;cursor:pointer;">✕</button>
+      <h3 style="font-size:18px;font-weight:900;margin-bottom:18px;color:var(--gold);">🔑 Setting Up GitHub Storage</h3>
+      <div style="font-size:13px;color:var(--text2);line-height:1.85;">
+        <p style="margin-bottom:12px;">Follow these steps <strong style="color:var(--text);">once</strong> to enable cloud sync:</p>
+        <ol style="padding-left:20px;display:flex;flex-direction:column;gap:10px;">
+          <li>Go to <a href="https://github.com" target="_blank" style="color:var(--accent);">github.com</a> and create a free account if you don't have one.</li>
+          <li>Create a <strong style="color:var(--text);">new repository</strong> (e.g. <code style="background:rgba(255,255,255,0.07);padding:1px 6px;border-radius:4px;">sts-site</code>). Make it <strong style="color:var(--text);">public</strong> so visitors can load data.</li>
+          <li>Enable <strong style="color:var(--text);">GitHub Pages</strong>: Repo → Settings → Pages → Source: main branch. Upload your <code style="background:rgba(255,255,255,0.07);padding:1px 6px;border-radius:4px;">index.html</code> to the repo.</li>
+          <li>Go to <strong style="color:var(--text);">Settings → Developer Settings → Personal Access Tokens → Fine-grained tokens</strong>.</li>
+          <li>Click <strong style="color:var(--text);">"Generate new token"</strong>. Set expiry to 1 year. Under <strong style="color:var(--text);">Repository permissions</strong>, enable <strong style="color:var(--text);">Contents: Read and Write</strong>.</li>
+          <li>Copy the token and paste it in the login form above. It's only saved in your browser.</li>
+        </ol>
+        <p style="margin-top:16px;padding:12px;background:rgba(0,217,126,0.08);border:1px solid rgba(0,217,126,0.2);border-radius:8px;color:var(--green);">✅ Once set up, all your products, portfolio, and settings sync instantly to every device through GitHub.</p>
+      </div>
+    </div>
+  </div>
+
   <div id="admin-main-wrap" style="display:none;">
     <div class="admin-wrap">
       <div class="admin-header">
-        <div><h2>⚙ Admin Panel</h2><p>Manage all website content. Changes save to your browser automatically.</p></div>
-        <button class="btn btn-ghost btn-sm" onclick="logoutAdmin()">Logout</button>
+        <div>
+          <h2>⚙ Admin Panel</h2>
+          <p>Changes save to GitHub and sync to all devices automatically.</p>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <div id="sync-status-badge" class="sync-bar synced"><div class="sync-dot green"></div><span id="sync-status-text">Synced with GitHub</span></div>
+          <button class="btn btn-ghost btn-sm" onclick="logoutAdmin()">Logout</button>
+        </div>
       </div>
       <div class="admin-tabs">
         <button class="admin-tab active" onclick="switchTab('products',this)">🏪 Products</button>
@@ -721,7 +767,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
             <div class="form-group">
               <label>🎬 EA WORKING VIDEO URL</label>
               <input type="url" id="p-youtube" placeholder="https://youtube.com/watch?v=...">
-              <p class="form-helper">A video showing the EA working — strategy overview, live demo, or setup guide. Shown on the EA detail page.</p>
+              <p class="form-helper">A video showing the EA working. Shown on the EA detail page.</p>
             </div>
             <div class="form-group"><label>COPY TRADING AVAILABLE? (Our Best EAs only)</label>
               <select id="p-copy"><option value="no">No</option><option value="yes">Yes — show Copy Trading button</option></select>
@@ -731,13 +777,13 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
               <img id="p-img-preview" class="img-preview" style="display:none">
             </div>
             <div class="form-group">
-              <label>📸 PROFIT / RESULTS SCREENSHOTS (multiple allowed)</label>
-              <div class="img-upload-area"><input type="file" id="p-results-input" accept="image/*" multiple onchange="previewMultiple(this,'p-results-preview','resultImgs')"><div class="up-icon">📊</div><p>Click to upload profit / results screenshots</p><small>Shown on EA detail page — add as many as you like</small></div>
+              <label>📸 PROFIT / RESULTS SCREENSHOTS</label>
+              <div class="img-upload-area"><input type="file" id="p-results-input" accept="image/*" multiple onchange="previewMultiple(this,'p-results-preview','resultImgs')"><div class="up-icon">📊</div><p>Click to upload profit / results screenshots</p><small>Multiple files allowed</small></div>
               <div id="p-results-preview" class="screenshots-preview"></div>
             </div>
             <div class="form-group">
-              <label>⭐ CLIENT REVIEW SCREENSHOTS (multiple allowed)</label>
-              <div class="img-upload-area"><input type="file" id="p-reviews-input" accept="image/*" multiple onchange="previewMultiple(this,'p-reviews-preview','reviewImgs')"><div class="up-icon">⭐</div><p>Click to upload client review / feedback screenshots</p><small>Shown at the bottom of the EA detail page</small></div>
+              <label>⭐ CLIENT REVIEW SCREENSHOTS</label>
+              <div class="img-upload-area"><input type="file" id="p-reviews-input" accept="image/*" multiple onchange="previewMultiple(this,'p-reviews-preview','reviewImgs')"><div class="up-icon">⭐</div><p>Click to upload client review screenshots</p><small>Multiple files allowed</small></div>
               <div id="p-reviews-preview" class="screenshots-preview"></div>
             </div>
             <button class="btn btn-accent" style="width:100%;padding:14px;font-size:14px;" onclick="addProduct()">+ Add Product</button>
@@ -755,7 +801,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
         <p style="font-size:13px;color:var(--text2);margin-bottom:26px;line-height:1.68;">These screenshots appear on the homepage "Client Results & Reviews" section.</p>
         <div class="form-group">
           <label>UPLOAD PORTFOLIO SCREENSHOTS</label>
-          <div class="img-upload-area"><input type="file" id="port-img-input" accept="image/*" multiple onchange="addPortfolioImgs(this)"><div class="up-icon">🏆</div><p>Click to upload client results / review screenshots</p><small>JPG, PNG, WebP — multiple files allowed</small></div>
+          <div class="img-upload-area"><input type="file" id="port-img-input" accept="image/*" multiple onchange="addPortfolioImgs(this)"><div class="up-icon">🏆</div><p>Click to upload client results / review screenshots</p><small>Multiple files allowed</small></div>
         </div>
         <div class="form-group"><label>LABEL FOR THESE IMAGES</label><input type="text" id="port-label" placeholder="e.g. Client Profit — XAUUSD EA, May 2025"></div>
         <button class="btn btn-accent" style="padding:12px 30px;" onclick="savePortfolio()">Add to Portfolio</button>
@@ -805,6 +851,10 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
         <div class="settings-block"><h3>🌐 Homepage Hero Text</h3>
           <div class="form-group"><label>SUBTITLE TEXT</label><textarea id="set-tagline" style="min-height:80px;" placeholder="Custom text shown on the homepage hero..."></textarea></div>
           <button class="btn btn-accent" style="padding:12px 26px;" onclick="saveSettings()">Save Settings</button>
+        </div>
+        <div class="settings-block"><h3>🔗 GitHub Connection</h3>
+          <p style="font-size:13px;color:var(--text2);margin-bottom:14px;">Connected repo: <strong style="color:var(--accent)" id="show-gh-repo">—</strong></p>
+          <button class="btn btn-ghost btn-sm" onclick="logoutAdmin()">Disconnect & Re-login</button>
         </div>
       </div>
 
@@ -868,359 +918,594 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
 <div class="toast" id="toast"></div>
 
 <script>
-// ── STATE ──
-let siteData = {
-  password:'admin123',usdt:'',tagline:'',
-  social:{telegram:'',whatsapp:'',youtube:'',facebook:''},
-  products:[],portfolio:[]
-};
-let pendingResultImgs=[], pendingReviewImgs=[], pendingPortfolioImgs=[];
-let adminLoggedIn=false;
+// ════════════════════════════════════════════════
+// GITHUB STORAGE ENGINE
+// Data is stored as data.json in the GitHub repo
+// ════════════════════════════════════════════════
 
-function save(){try{localStorage.setItem('sts_v4',JSON.stringify(siteData));}catch(e){}}
-function load(){
-  try{
-    const d=localStorage.getItem('sts_v4');
-    if(d){const p=JSON.parse(d);siteData={...siteData,...p};if(p.social)siteData.social={...siteData.social,...p.social};}
-  }catch(e){}
+const GH_DATA_FILE = 'data.json';
+let ghRepo = '';    // e.g. "username/repo"
+let ghToken = '';   // Personal Access Token
+let ghFileSha = ''; // SHA of current data.json (needed to update)
+
+// Load credentials from localStorage (they stay browser-side only)
+function loadGhCredentials() {
+  ghRepo  = localStorage.getItem('sts_gh_repo')  || '';
+  ghToken = localStorage.getItem('sts_gh_token') || '';
 }
-load(); renderAll();
-
-function renderAll(){renderMarketplace();renderMyEA();renderPortfolio();updateUSDT();updateHeroTagline();}
-
-// ── NAV ──
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  const pg=document.getElementById(id);if(pg)pg.classList.add('active');
-  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
-  const nl=document.getElementById('nav-'+id);if(nl)nl.classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
+function saveGhCredentials(repo, token) {
+  localStorage.setItem('sts_gh_repo',  repo);
+  localStorage.setItem('sts_gh_token', token);
+  ghRepo  = repo;
+  ghToken = token;
 }
-function showAdmin(){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById('admin-page').classList.add('active');
-  if(!adminLoggedIn){
-    document.getElementById('admin-login-wrap').style.display='flex';
-    document.getElementById('admin-main-wrap').style.display='none';
+function clearGhCredentials() {
+  localStorage.removeItem('sts_gh_repo');
+  localStorage.removeItem('sts_gh_token');
+  ghRepo = ''; ghToken = '';
+}
+
+// Fetch data.json from GitHub (public raw content — no token needed for public repos)
+async function ghFetchData() {
+  if (!ghRepo) return null;
+  try {
+    // Use the API so we also get the SHA for future writes
+    const headers = { 'Accept': 'application/vnd.github+json' };
+    if (ghToken) headers['Authorization'] = 'Bearer ' + ghToken;
+    const res = await fetch(`https://api.github.com/repos/${ghRepo}/contents/${GH_DATA_FILE}`, { headers });
+    if (res.status === 404) return null; // File doesn't exist yet
+    if (!res.ok) throw new Error('GitHub fetch failed: ' + res.status);
+    const json = await res.json();
+    ghFileSha = json.sha;
+    const decoded = decodeURIComponent(escape(atob(json.content.replace(/\n/g, ''))));
+    return JSON.parse(decoded);
+  } catch(e) {
+    console.error('ghFetchData error:', e);
+    return null;
   }
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-function openLink(type){
-  const url=siteData.social[type];
-  if(url&&url.trim())window.open(url,'_blank');
-  else toast('⚠ Link not set. Add it in Admin → Social.','warn');
-}
-function toggleFaq(el){
-  const item=el.parentElement,isOpen=item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
-  if(!isOpen)item.classList.add('open');
 }
 
-// ── LIGHTBOX ──
-function openLightbox(src){
-  document.getElementById('lightbox-img').src=src;
+// Write data.json to GitHub (requires token with Contents: write)
+async function ghSaveData(data) {
+  if (!ghRepo || !ghToken) {
+    toast('⚠ No GitHub token — data saved locally only', 'warn');
+    return false;
+  }
+  setSyncStatus('syncing', 'Saving to GitHub...');
+  try {
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+    const body = {
+      message: 'Update site data',
+      content,
+      ...(ghFileSha ? { sha: ghFileSha } : {})
+    };
+    const res = await fetch(`https://api.github.com/repos/${ghRepo}/contents/${GH_DATA_FILE}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'Bearer ' + ghToken,
+        'Content-Type': 'application/json',
+        'Accept': 'application/vnd.github+json'
+      },
+      body: JSON.stringify(body)
+    });
+    if (!res.ok) {
+      const errJson = await res.json();
+      throw new Error(errJson.message || 'Save failed');
+    }
+    const result = await res.json();
+    ghFileSha = result.content.sha;
+    setSyncStatus('synced', 'Synced with GitHub ✓');
+    return true;
+  } catch(e) {
+    setSyncStatus('error', 'Sync failed — ' + e.message);
+    toast('❌ GitHub save failed: ' + e.message, 'error');
+    return false;
+  }
+}
+
+function setSyncStatus(state, text) {
+  const badge = document.getElementById('sync-status-badge');
+  const dot   = badge ? badge.querySelector('.sync-dot') : null;
+  const label = document.getElementById('sync-status-text');
+  if (!badge) return;
+  badge.className = 'sync-bar ' + state;
+  if (dot) dot.className = 'sync-dot ' + (state==='synced'?'green':state==='syncing'?'purple':'red');
+  if (label) label.textContent = text;
+}
+
+// ════════════════════════════════════════════════
+// SITE DATA STATE
+// ════════════════════════════════════════════════
+let siteData = {
+  password: 'admin123',
+  usdt: '',
+  tagline: '',
+  social: { telegram:'', whatsapp:'', youtube:'', facebook:'' },
+  products: [],
+  portfolio: []
+};
+let pendingResultImgs = [], pendingReviewImgs = [], pendingPortfolioImgs = [];
+let adminLoggedIn = false;
+
+// Merge remote data into siteData
+function applyRemoteData(remote) {
+  if (!remote) return;
+  siteData = { ...siteData, ...remote };
+  if (remote.social) siteData.social = { ...siteData.social, ...remote.social };
+}
+
+// Save to both GitHub and localStorage fallback
+async function save() {
+  try { localStorage.setItem('sts_v4_cache', JSON.stringify(siteData)); } catch(e) {}
+  await ghSaveData(siteData);
+}
+
+// Load from cache first, then GitHub
+async function loadData() {
+  // 1. Load cached credentials
+  loadGhCredentials();
+
+  // 2. If we have a repo, try to fetch live data
+  if (ghRepo) {
+    showLoading('Loading data from GitHub...');
+    const remote = await ghFetchData();
+    hideLoading();
+    if (remote) {
+      applyRemoteData(remote);
+      try { localStorage.setItem('sts_v4_cache', JSON.stringify(siteData)); } catch(e) {}
+      renderAll();
+      return;
+    }
+  }
+
+  // 3. Fall back to localStorage cache
+  try {
+    const cached = localStorage.getItem('sts_v4_cache') || localStorage.getItem('sts_v4');
+    if (cached) {
+      const p = JSON.parse(cached);
+      applyRemoteData(p);
+    }
+  } catch(e) {}
+  renderAll();
+}
+
+function showLoading(msg) {
+  const ol = document.getElementById('loading-overlay');
+  const lm = document.getElementById('loading-msg');
+  if (ol) ol.classList.add('show');
+  if (lm) lm.textContent = msg || 'Loading...';
+}
+function hideLoading() {
+  const ol = document.getElementById('loading-overlay');
+  if (ol) ol.classList.remove('show');
+}
+
+// ════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════
+loadData();
+
+function renderAll() {
+  renderMarketplace();
+  renderMyEA();
+  renderPortfolio();
+  updateUSDT();
+  updateHeroTagline();
+}
+
+// ════════════════════════════════════════════════
+// NAV
+// ════════════════════════════════════════════════
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const pg = document.getElementById(id);
+  if (pg) pg.classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const nl = document.getElementById('nav-' + id);
+  if (nl) nl.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function showAdmin() {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('admin-page').classList.add('active');
+  if (!adminLoggedIn) {
+    document.getElementById('admin-login-wrap').style.display = '';
+    document.getElementById('admin-main-wrap').style.display = 'none';
+    // Pre-fill saved repo if exists
+    loadGhCredentials();
+    if (ghRepo) document.getElementById('admin-gh-repo').value = ghRepo;
+    if (ghToken) document.getElementById('admin-gh-token').value = ghToken;
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function showGhHelp() {
+  const m = document.getElementById('gh-help-modal');
+  m.style.display = 'flex';
+}
+function openLink(type) {
+  const url = siteData.social[type];
+  if (url && url.trim()) window.open(url, '_blank');
+  else toast('⚠ Link not set. Add it in Admin → Social.', 'warn');
+}
+function toggleFaq(el) {
+  const item = el.parentElement, isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ════════════════════════════════════════════════
+// LIGHTBOX
+// ════════════════════════════════════════════════
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
   document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow='hidden';
+  document.body.style.overflow = 'hidden';
 }
-function closeLightbox(){
+function closeLightbox() {
   document.getElementById('lightbox').classList.remove('open');
-  document.body.style.overflow='';
+  document.body.style.overflow = '';
 }
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
-// ── ADMIN AUTH ──
-function checkPw(){
-  const v=document.getElementById('admin-pw-input').value;
-  if(v===siteData.password){
-    adminLoggedIn=true;
-    document.getElementById('admin-login-wrap').style.display='none';
-    document.getElementById('admin-main-wrap').style.display='block';
-    document.getElementById('admin-pw-input').value='';
-    loadAdminForms();renderAdminProducts();renderAdminPortfolio();
-  }else{toast('❌ Incorrect password','error');document.getElementById('admin-pw-input').value='';document.getElementById('admin-pw-input').focus();}
+// ════════════════════════════════════════════════
+// ADMIN AUTH
+// ════════════════════════════════════════════════
+async function checkPw() {
+  const repo  = document.getElementById('admin-gh-repo').value.trim();
+  const token = document.getElementById('admin-gh-token').value.trim();
+  const pw    = document.getElementById('admin-pw-input').value;
+
+  if (!repo)  { toast('Please enter your GitHub repo (e.g. username/repo)', 'error'); return; }
+  if (!token) { toast('Please enter your GitHub Personal Access Token', 'error'); return; }
+
+  // Save credentials
+  saveGhCredentials(repo, token);
+
+  // Fetch latest data from GitHub
+  showLoading('Connecting to GitHub...');
+  const remote = await ghFetchData();
+  hideLoading();
+
+  if (remote === null && ghFileSha === '') {
+    // data.json doesn't exist yet — that's fine, first time setup
+  } else if (remote) {
+    applyRemoteData(remote);
+    renderAll();
+  }
+
+  // Check password
+  if (pw !== siteData.password) {
+    toast('❌ Incorrect password', 'error');
+    document.getElementById('admin-pw-input').value = '';
+    document.getElementById('admin-pw-input').focus();
+    return;
+  }
+
+  adminLoggedIn = true;
+  document.getElementById('admin-login-wrap').style.display = 'none';
+  document.getElementById('admin-main-wrap').style.display = 'block';
+  document.getElementById('admin-pw-input').value = '';
+  const showRepo = document.getElementById('show-gh-repo');
+  if (showRepo) showRepo.textContent = ghRepo;
+  loadAdminForms();
+  renderAdminProducts();
+  renderAdminPortfolio();
+  setSyncStatus('synced', 'Connected to ' + ghRepo);
 }
-function logoutAdmin(){adminLoggedIn=false;showPage('home');}
-function switchTab(t,el){
-  document.querySelectorAll('.admin-tab').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.admin-section').forEach(s=>s.classList.remove('active'));
-  if(el)el.classList.add('active');
-  const sec=document.getElementById('atab-'+t);if(sec)sec.classList.add('active');
+
+function logoutAdmin() {
+  adminLoggedIn = false;
+  showPage('home');
 }
-function loadAdminForms(){
-  const s=siteData.social;
-  ['telegram','whatsapp','youtube','facebook'].forEach(k=>{
-    const el=document.getElementById('s-'+k);if(el)el.value=s[k]||'';
+function switchTab(t, el) {
+  document.querySelectorAll('.admin-tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
+  if (el) el.classList.add('active');
+  const sec = document.getElementById('atab-' + t);
+  if (sec) sec.classList.add('active');
+}
+function loadAdminForms() {
+  const s = siteData.social;
+  ['telegram','whatsapp','youtube','facebook'].forEach(k => {
+    const el = document.getElementById('s-' + k);
+    if (el) el.value = s[k] || '';
   });
-  document.getElementById('p-usdt-addr').value=siteData.usdt||'';
-  document.getElementById('set-tagline').value=siteData.tagline||'';
+  document.getElementById('p-usdt-addr').value = siteData.usdt || '';
+  document.getElementById('set-tagline').value = siteData.tagline || '';
 }
 
-// ── IMAGE HELPERS ──
-function previewImg(input,previewId){
-  const f=input.files[0];if(!f)return;
-  const r=new FileReader();
-  r.onload=e=>{const img=document.getElementById(previewId);img.src=e.target.result;img.style.display='block';};
+// ════════════════════════════════════════════════
+// IMAGE HELPERS
+// ════════════════════════════════════════════════
+function previewImg(input, previewId) {
+  const f = input.files[0]; if (!f) return;
+  const r = new FileReader();
+  r.onload = e => {
+    const img = document.getElementById(previewId);
+    img.src = e.target.result;
+    img.style.display = 'block';
+  };
   r.readAsDataURL(f);
 }
-function previewMultiple(input,previewId,varName){
-  const files=Array.from(input.files);if(!files.length)return;
-  const container=document.getElementById(previewId);
-  const arr = varName==='resultImgs' ? pendingResultImgs : pendingReviewImgs;
-  files.forEach(f=>{
-    const r=new FileReader();
-    r.onload=e=>{
+function previewMultiple(input, previewId, varName) {
+  const files = Array.from(input.files); if (!files.length) return;
+  const container = document.getElementById(previewId);
+  const arr = varName === 'resultImgs' ? pendingResultImgs : pendingReviewImgs;
+  files.forEach(f => {
+    const r = new FileReader();
+    r.onload = e => {
       arr.push(e.target.result);
-      const img=document.createElement('img');img.src=e.target.result;
+      const img = document.createElement('img');
+      img.src = e.target.result;
       container.appendChild(img);
     };
     r.readAsDataURL(f);
   });
 }
-function addPortfolioImgs(input){
-  pendingPortfolioImgs=[];
-  const files=Array.from(input.files);
-  files.forEach(f=>{
-    const r=new FileReader();
-    r.onload=e=>pendingPortfolioImgs.push(e.target.result);
+function addPortfolioImgs(input) {
+  pendingPortfolioImgs = [];
+  Array.from(input.files).forEach(f => {
+    const r = new FileReader();
+    r.onload = e => pendingPortfolioImgs.push(e.target.result);
     r.readAsDataURL(f);
   });
 }
 
-// ── PRODUCTS ──
-function addProduct(){
-  const name=document.getElementById('p-name').value.trim();
-  const price=document.getElementById('p-price').value.trim();
-  const category=document.getElementById('p-category').value;
-  const desc=document.getElementById('p-desc').value.trim();
-  const pair=document.getElementById('p-pair').value.trim();
-  const version=document.getElementById('p-version').value;
-  const type=document.getElementById('p-type').value.trim();
-  const ytLink=document.getElementById('p-youtube').value.trim();
-  const copy=document.getElementById('p-copy').value;
-  const imgEl=document.getElementById('p-img-preview');
-  const img=(imgEl.style.display!=='none'&&imgEl.src)?imgEl.src:'';
-  if(!name||!price||!desc){toast('Please fill in Name, Price, and Description','error');return;}
-  const product={
-    id:Date.now().toString(),name,price:parseFloat(price),category,desc,pair,version,type,
-    ytLink,copy,img,
-    resultImgs:[...pendingResultImgs],
-    reviewImgs:[...pendingReviewImgs]
+// ════════════════════════════════════════════════
+// PRODUCTS
+// ════════════════════════════════════════════════
+async function addProduct() {
+  const name     = document.getElementById('p-name').value.trim();
+  const price    = document.getElementById('p-price').value.trim();
+  const category = document.getElementById('p-category').value;
+  const desc     = document.getElementById('p-desc').value.trim();
+  const pair     = document.getElementById('p-pair').value.trim();
+  const version  = document.getElementById('p-version').value;
+  const type     = document.getElementById('p-type').value.trim();
+  const ytLink   = document.getElementById('p-youtube').value.trim();
+  const copy     = document.getElementById('p-copy').value;
+  const imgEl    = document.getElementById('p-img-preview');
+  const img      = (imgEl.style.display !== 'none' && imgEl.src) ? imgEl.src : '';
+  if (!name || !price || !desc) { toast('Please fill in Name, Price, and Description', 'error'); return; }
+  const product = {
+    id: Date.now().toString(), name, price: parseFloat(price), category, desc, pair, version, type,
+    ytLink, copy, img, resultImgs: [...pendingResultImgs], reviewImgs: [...pendingReviewImgs]
   };
-  siteData.products.push(product);save();
-  renderAdminProducts();renderMarketplace();renderMyEA();
-  toast('✅ "'+name+'" added!');clearProductForm();
+  siteData.products.push(product);
+  renderAdminProducts(); renderMarketplace(); renderMyEA();
+  toast('✅ "' + name + '" added! Saving...');
+  clearProductForm();
+  await save();
 }
-function clearProductForm(){
-  ['p-name','p-price','p-desc','p-pair','p-type','p-youtube'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
-  document.getElementById('p-category').value='marketplace';
-  document.getElementById('p-copy').value='no';
-  document.getElementById('p-img-preview').style.display='none';
-  document.getElementById('p-img-preview').src='';
-  document.getElementById('p-img-input').value='';
-  document.getElementById('p-results-input').value='';
-  document.getElementById('p-reviews-input').value='';
-  document.getElementById('p-results-preview').innerHTML='';
-  document.getElementById('p-reviews-preview').innerHTML='';
-  pendingResultImgs=[];pendingReviewImgs=[];
+function clearProductForm() {
+  ['p-name','p-price','p-desc','p-pair','p-type','p-youtube'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.value = '';
+  });
+  document.getElementById('p-category').value = 'marketplace';
+  document.getElementById('p-copy').value = 'no';
+  document.getElementById('p-img-preview').style.display = 'none';
+  document.getElementById('p-img-preview').src = '';
+  document.getElementById('p-img-input').value = '';
+  document.getElementById('p-results-input').value = '';
+  document.getElementById('p-reviews-input').value = '';
+  document.getElementById('p-results-preview').innerHTML = '';
+  document.getElementById('p-reviews-preview').innerHTML = '';
+  pendingResultImgs = []; pendingReviewImgs = [];
 }
-function deleteProduct(id){
-  if(!confirm('Delete this product? Cannot be undone.'))return;
-  siteData.products=siteData.products.filter(p=>p.id!==id);save();
-  renderAdminProducts();renderMarketplace();renderMyEA();
-  toast('🗑 Product deleted');
+async function deleteProduct(id) {
+  if (!confirm('Delete this product? Cannot be undone.')) return;
+  siteData.products = siteData.products.filter(p => p.id !== id);
+  renderAdminProducts(); renderMarketplace(); renderMyEA();
+  toast('🗑 Product deleted. Saving...');
+  await save();
 }
-function renderAdminProducts(){
-  const el=document.getElementById('admin-products-list');
-  const cnt=document.getElementById('products-count');
-  if(cnt)cnt.textContent=siteData.products.length?`(${siteData.products.length})`:'';
-  if(!siteData.products.length){el.innerHTML='<p style="font-size:13px;color:var(--text3);">No products yet.</p>';return;}
-  el.innerHTML=siteData.products.map(p=>`
+function renderAdminProducts() {
+  const el  = document.getElementById('admin-products-list');
+  const cnt = document.getElementById('products-count');
+  if (cnt) cnt.textContent = siteData.products.length ? `(${siteData.products.length})` : '';
+  if (!siteData.products.length) { el.innerHTML = '<p style="font-size:13px;color:var(--text3);">No products yet.</p>'; return; }
+  el.innerHTML = siteData.products.map(p => `
     <div class="admin-product-item">
-      ${p.img?`<img src="${p.img}" alt="${p.name}">`:`<div class="api-thumb-ph">📦</div>`}
+      ${p.img ? `<img src="${p.img}" alt="${p.name}">` : `<div class="api-thumb-ph">📦</div>`}
       <div class="api-info">
         <strong>${p.name}</strong>
-        <span>$${p.price} USDT · ${p.category==='myea'?'Best EA':'Marketplace'} · ${p.version}
-        ${p.ytLink?' · Video✓':''} ${p.resultImgs&&p.resultImgs.length?' · '+p.resultImgs.length+' results':''} ${p.reviewImgs&&p.reviewImgs.length?' · '+p.reviewImgs.length+' reviews':''}</span>
+        <span>$${p.price} USDT · ${p.category === 'myea' ? 'Best EA' : 'Marketplace'} · ${p.version}
+        ${p.ytLink ? ' · 🎬 Video' : ''} ${p.resultImgs && p.resultImgs.length ? ' · 📸 ' + p.resultImgs.length + ' results' : ''} ${p.reviewImgs && p.reviewImgs.length ? ' · ⭐ ' + p.reviewImgs.length + ' reviews' : ''}</span>
       </div>
       <div class="api-actions"><button class="btn btn-red btn-sm" onclick="deleteProduct('${p.id}')">Delete</button></div>
     </div>`).join('');
 }
 
-// ── RENDER MARKETPLACE / MY EAs ──
-function renderMarketplace(){
-  const g=document.getElementById('marketplace-grid');
-  const items=siteData.products.filter(p=>p.category==='marketplace');
-  g.innerHTML=items.length?items.map(p=>eaCardHTML(p,'marketplace')).join('')
-    :'<div class="empty-state"><div class="empty-icon">🏪</div><p>No EAs yet.<br>Contact us on <strong style="color:var(--accent)">Telegram</strong>.</p></div>';
+// ════════════════════════════════════════════════
+// RENDER MARKETPLACE / MY EAs
+// ════════════════════════════════════════════════
+function renderMarketplace() {
+  const g = document.getElementById('marketplace-grid');
+  const items = siteData.products.filter(p => p.category === 'marketplace');
+  g.innerHTML = items.length ? items.map(p => eaCardHTML(p, 'marketplace')).join('')
+    : '<div class="empty-state"><div class="empty-icon">🏪</div><p>No EAs yet.<br>Contact us on <strong style="color:var(--accent)">Telegram</strong>.</p></div>';
 }
-function renderMyEA(){
-  const g=document.getElementById('myea-grid');
-  const items=siteData.products.filter(p=>p.category==='myea');
-  const banner=document.getElementById('copy-trading-banner');
-  g.innerHTML=items.length?items.map(p=>eaCardHTML(p,'myea')).join('')
-    :'<div class="empty-state"><div class="empty-icon">⚡</div><p>No personal EAs yet.<br>Contact us on <strong style="color:var(--accent)">Telegram</strong>.</p></div>';
-  if(banner)banner.style.display=items.length?'block':'none';
+function renderMyEA() {
+  const g = document.getElementById('myea-grid');
+  const items = siteData.products.filter(p => p.category === 'myea');
+  const banner = document.getElementById('copy-trading-banner');
+  g.innerHTML = items.length ? items.map(p => eaCardHTML(p, 'myea')).join('')
+    : '<div class="empty-state"><div class="empty-icon">⚡</div><p>No personal EAs yet.<br>Contact us on <strong style="color:var(--accent)">Telegram</strong>.</p></div>';
+  if (banner) banner.style.display = items.length ? 'block' : 'none';
 }
-function eaCardHTML(p,fromPage){
-  const isMyEA=p.category==='myea';
-  const imgH=p.img?`<img class="ea-thumb" src="${p.img}" alt="${p.name}">`:`<div class="ea-thumb-placeholder">${isMyEA?'⚡':'📦'}</div>`;
-  // Copy button ONLY for Our Best EAs
-  const copyBtn=(isMyEA&&p.copy==='yes')?`<button class="ea-copy-btn" onclick="event.stopPropagation();openLink('telegram')">📊 Copy Our Trades</button>`:'';
-  return`<div class="ea-card${isMyEA?' premium':''}">
+function eaCardHTML(p, fromPage) {
+  const isMyEA = p.category === 'myea';
+  const imgH = p.img ? `<img class="ea-thumb" src="${p.img}" alt="${p.name}">` : `<div class="ea-thumb-placeholder">${isMyEA ? '⚡' : '📦'}</div>`;
+  const copyBtn = (isMyEA && p.copy === 'yes') ? `<button class="ea-copy-btn" onclick="event.stopPropagation();openLink('telegram')">📊 Copy Our Trades</button>` : '';
+  return `<div class="ea-card${isMyEA ? ' premium' : ''}">
     ${imgH}
     <div class="ea-body">
-      <div class="ea-top"><span class="ea-name">${p.name}</span><span class="ea-price${isMyEA?' gp':''}">$${p.price}</span></div>
+      <div class="ea-top"><span class="ea-name">${p.name}</span><span class="ea-price${isMyEA ? ' gp' : ''}">$${p.price}</span></div>
       <p class="ea-desc">${p.desc}</p>
       <div class="ea-pills">
-        ${p.version?`<span class="ea-pill">${p.version}</span>`:''}
-        ${p.pair?`<span class="ea-pill">${p.pair}</span>`:''}
-        ${p.type?`<span class="ea-pill">${p.type}</span>`:''}
-        ${p.resultImgs&&p.resultImgs.length?`<span class="ea-pill">📸 ${p.resultImgs.length} results</span>`:''}
+        ${p.version ? `<span class="ea-pill">${p.version}</span>` : ''}
+        ${p.pair    ? `<span class="ea-pill">${p.pair}</span>` : ''}
+        ${p.type    ? `<span class="ea-pill">${p.type}</span>` : ''}
+        ${p.resultImgs && p.resultImgs.length ? `<span class="ea-pill">📸 ${p.resultImgs.length} results</span>` : ''}
       </div>
       <div class="ea-actions">
-        <button class="ea-buy-btn ${isMyEA?'buy-g':'buy-a'}" onclick="showDetail('${p.id}','${fromPage}')">🛒 Buy — Pay USDT</button>
+        <button class="ea-buy-btn ${isMyEA ? 'buy-g' : 'buy-a'}" onclick="showDetail('${p.id}','${fromPage}')">🛒 Buy — Pay USDT</button>
         ${copyBtn}
       </div>
     </div>
   </div>`;
 }
 
-// ── DETAIL ──
-function showDetail(id,fromPage){
-  const p=siteData.products.find(x=>x.id===id);if(!p)return;
-  const isMyEA=p.category==='myea';
-  const bb=document.getElementById('detail-back-btn');
-  bb.onclick=()=>showPage(fromPage);
-  bb.textContent='← Back to '+(fromPage==='myea'?'Our Best EAs':'Marketplace');
-  document.getElementById('det-name').textContent=p.name;
-  document.getElementById('det-price').textContent='$'+p.price+' USDT';
-  document.getElementById('det-price').className='detail-price'+(isMyEA?' gp':' ap');
-  document.getElementById('det-desc').textContent=p.desc;
-  const pills=[p.version,p.pair,p.type].filter(Boolean);
-  document.getElementById('det-pills').innerHTML=pills.map(t=>`<span class="tag tag-a">${t}</span>`).join('');
-  const iw=document.getElementById('detail-img-wrap');
-  iw.innerHTML=p.img?`<img class="detail-main-img" src="${p.img}" alt="${p.name}">`:`<div class="detail-img-ph">${isMyEA?'⚡':'📦'}</div>`;
-  // Copy row — ONLY for Our Best EAs
-  document.getElementById('det-copy-row').style.display=(isMyEA&&p.copy==='yes')?'block':'none';
-  // Media section — one video only
-  const mw=document.getElementById('detail-media-wrap');
-  let mediaHTML='';
-  if(p.ytLink){
-    const vid=getYtId(p.ytLink);
-    if(vid){
-      mediaHTML+=`<div class="media-section-title">🎬 EA WORKING VIDEO</div>
-      <div class="detail-video-embed"><iframe src="https://www.youtube.com/embed/${vid}" allowfullscreen></iframe></div>`;
-    }else{
-      mediaHTML+=`<div class="media-section-title">🎬 EA WORKING VIDEO</div>
-      <a class="btn btn-ghost" href="${p.ytLink}" target="_blank" style="display:inline-flex;margin-bottom:10px;">▶ Watch EA Video</a>`;
+// ════════════════════════════════════════════════
+// DETAIL
+// ════════════════════════════════════════════════
+function showDetail(id, fromPage) {
+  const p = siteData.products.find(x => x.id === id); if (!p) return;
+  const isMyEA = p.category === 'myea';
+  const bb = document.getElementById('detail-back-btn');
+  bb.onclick = () => showPage(fromPage);
+  bb.textContent = '← Back to ' + (fromPage === 'myea' ? 'Our Best EAs' : 'Marketplace');
+  document.getElementById('det-name').textContent = p.name;
+  document.getElementById('det-price').textContent = '$' + p.price + ' USDT';
+  document.getElementById('det-price').className = 'detail-price' + (isMyEA ? ' gp' : ' ap');
+  document.getElementById('det-desc').textContent = p.desc;
+  const pills = [p.version, p.pair, p.type].filter(Boolean);
+  document.getElementById('det-pills').innerHTML = pills.map(t => `<span class="tag tag-a">${t}</span>`).join('');
+  const iw = document.getElementById('detail-img-wrap');
+  iw.innerHTML = p.img ? `<img class="detail-main-img" src="${p.img}" alt="${p.name}">` : `<div class="detail-img-ph">${isMyEA ? '⚡' : '📦'}</div>`;
+  document.getElementById('det-copy-row').style.display = (isMyEA && p.copy === 'yes') ? 'block' : 'none';
+  const mw = document.getElementById('detail-media-wrap');
+  let mediaHTML = '';
+  if (p.ytLink) {
+    const vid = getYtId(p.ytLink);
+    if (vid) {
+      mediaHTML += `<div class="media-section-title">🎬 EA WORKING VIDEO</div><div class="detail-video-embed"><iframe src="https://www.youtube.com/embed/${vid}" allowfullscreen></iframe></div>`;
+    } else {
+      mediaHTML += `<div class="media-section-title">🎬 EA WORKING VIDEO</div><a class="btn btn-ghost" href="${p.ytLink}" target="_blank" style="display:inline-flex;margin-bottom:10px;">▶ Watch EA Video</a>`;
     }
   }
-  if(p.resultImgs&&p.resultImgs.length){
-    mediaHTML+=`<div class="media-section-title" style="margin-top:30px;">📊 PROFIT & RESULTS SCREENSHOTS</div>
-    <div class="screenshots-grid">${p.resultImgs.map(s=>`<img class="screenshot-thumb" src="${s}" alt="result" onclick="openLightbox('${s}')">`).join('')}</div>`;
+  if (p.resultImgs && p.resultImgs.length) {
+    mediaHTML += `<div class="media-section-title" style="margin-top:30px;">📊 PROFIT & RESULTS SCREENSHOTS</div><div class="screenshots-grid">${p.resultImgs.map(s => `<img class="screenshot-thumb" src="${s}" alt="result" onclick="openLightbox('${s}')">`).join('')}</div>`;
   }
-  if(p.reviewImgs&&p.reviewImgs.length){
-    mediaHTML+=`<div class="media-section-title" style="margin-top:30px;">⭐ CLIENT REVIEWS & FEEDBACK</div>
-    <div class="screenshots-grid">${p.reviewImgs.map(s=>`<img class="screenshot-thumb" src="${s}" alt="review" onclick="openLightbox('${s}')">`).join('')}</div>`;
+  if (p.reviewImgs && p.reviewImgs.length) {
+    mediaHTML += `<div class="media-section-title" style="margin-top:30px;">⭐ CLIENT REVIEWS & FEEDBACK</div><div class="screenshots-grid">${p.reviewImgs.map(s => `<img class="screenshot-thumb" src="${s}" alt="review" onclick="openLightbox('${s}')">`).join('')}</div>`;
   }
-  mw.innerHTML=mediaHTML;
-  updateUSDT();showPage('detail');
+  mw.innerHTML = mediaHTML;
+  updateUSDT();
+  showPage('detail');
 }
-function getYtId(url){
-  const m=url.match(/(?:v=|youtu\.be\/|embed\/)([a-zA-Z0-9_-]{11})/);return m?m[1]:null;
+function getYtId(url) {
+  const m = url.match(/(?:v=|youtu\.be\/|embed\/)([a-zA-Z0-9_-]{11})/);
+  return m ? m[1] : null;
 }
 
-// ── PORTFOLIO ──
-function savePortfolio(){
-  const label=document.getElementById('port-label').value.trim()||'Client Result';
-  if(!pendingPortfolioImgs.length){toast('Please upload at least one image','warn');return;}
-  pendingPortfolioImgs.forEach(img=>siteData.portfolio.push({id:Date.now().toString()+Math.random(),img,label}));
-  save();renderPortfolio();renderAdminPortfolio();
-  pendingPortfolioImgs=[];
-  document.getElementById('port-img-input').value='';
-  document.getElementById('port-label').value='';
-  toast('✅ Portfolio updated!');
+// ════════════════════════════════════════════════
+// PORTFOLIO
+// ════════════════════════════════════════════════
+async function savePortfolio() {
+  const label = document.getElementById('port-label').value.trim() || 'Client Result';
+  if (!pendingPortfolioImgs.length) { toast('Please upload at least one image', 'warn'); return; }
+  pendingPortfolioImgs.forEach(img => siteData.portfolio.push({ id: Date.now().toString() + Math.random(), img, label }));
+  renderPortfolio(); renderAdminPortfolio();
+  pendingPortfolioImgs = [];
+  document.getElementById('port-img-input').value = '';
+  document.getElementById('port-label').value = '';
+  toast('✅ Portfolio updated! Saving...');
+  await save();
 }
-function deletePortfolioItem(id){
-  siteData.portfolio=siteData.portfolio.filter(p=>p.id!==id);save();renderPortfolio();renderAdminPortfolio();toast('🗑 Item removed');
+async function deletePortfolioItem(id) {
+  siteData.portfolio = siteData.portfolio.filter(p => p.id !== id);
+  renderPortfolio(); renderAdminPortfolio();
+  toast('🗑 Item removed. Saving...');
+  await save();
 }
-function renderPortfolio(){
-  const g=document.getElementById('portfolio-grid');
-  if(!siteData.portfolio.length){
-    g.innerHTML='<div class="empty-state" style="grid-column:1/-1;padding:52px 20px;"><div class="empty-icon">🏆</div><p>Client reviews and results will appear here.<br>Add them from <strong style="color:var(--accent)">Admin → Portfolio</strong>.</p></div>';
+function renderPortfolio() {
+  const g = document.getElementById('portfolio-grid');
+  if (!siteData.portfolio.length) {
+    g.innerHTML = '<div class="empty-state" style="grid-column:1/-1;padding:52px 20px;"><div class="empty-icon">🏆</div><p>Client reviews and results will appear here.<br>Add them from <strong style="color:var(--accent)">Admin → Portfolio</strong>.</p></div>';
     return;
   }
-  g.innerHTML=siteData.portfolio.map(item=>`
+  g.innerHTML = siteData.portfolio.map(item => `
     <div class="portfolio-card" onclick="openLightbox('${item.img}')">
       <img class="portfolio-img" src="${item.img}" alt="${item.label}">
       <div class="portfolio-label">${item.label}</div>
     </div>`).join('');
 }
-function renderAdminPortfolio(){
-  const cnt=document.getElementById('portfolio-count');
-  if(cnt)cnt.textContent=siteData.portfolio.length;
-  const el=document.getElementById('admin-portfolio-list');if(!el)return;
-  if(!siteData.portfolio.length){el.innerHTML='<p style="font-size:13px;color:var(--text3);">No portfolio items yet.</p>';return;}
-  el.innerHTML=siteData.portfolio.map(item=>`
+function renderAdminPortfolio() {
+  const cnt = document.getElementById('portfolio-count');
+  if (cnt) cnt.textContent = siteData.portfolio.length;
+  const el = document.getElementById('admin-portfolio-list'); if (!el) return;
+  if (!siteData.portfolio.length) { el.innerHTML = '<p style="font-size:13px;color:var(--text3);">No portfolio items yet.</p>'; return; }
+  el.innerHTML = siteData.portfolio.map(item => `
     <div style="position:relative;display:inline-block;">
       <img src="${item.img}" style="width:92px;height:72px;object-fit:cover;border-radius:9px;border:1px solid var(--border);cursor:pointer;" onclick="openLightbox('${item.img}')" title="${item.label}">
       <button onclick="deletePortfolioItem('${item.id}')" style="position:absolute;top:-6px;right:-6px;background:var(--red);border:none;color:#fff;border-radius:50%;width:21px;height:21px;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:900;">✕</button>
     </div>`).join('');
 }
 
-// ── SOCIAL ──
-function saveSocial(){
-  ['telegram','whatsapp','youtube','facebook'].forEach(k=>{
-    const el=document.getElementById('s-'+k);if(el)siteData.social[k]=el.value.trim();
+// ════════════════════════════════════════════════
+// SOCIAL / PAYMENT / SETTINGS
+// ════════════════════════════════════════════════
+async function saveSocial() {
+  ['telegram','whatsapp','youtube','facebook'].forEach(k => {
+    const el = document.getElementById('s-' + k); if (el) siteData.social[k] = el.value.trim();
   });
-  save();toast('✅ Social links saved!');
+  toast('✅ Social links saved! Syncing...');
+  await save();
 }
-
-// ── PAYMENT ──
-function savePayment(){
-  siteData.usdt=document.getElementById('p-usdt-addr').value.trim();
-  save();updateUSDT();toast('✅ Payment settings saved!');
+async function savePayment() {
+  siteData.usdt = document.getElementById('p-usdt-addr').value.trim();
+  updateUSDT();
+  toast('✅ Payment settings saved! Syncing...');
+  await save();
 }
-function updateUSDT(){
-  const el=document.getElementById('usdt-display');
-  if(el)el.textContent=siteData.usdt||'[ USDT TRC20 address not set — update in Admin → Payment ]';
+function updateUSDT() {
+  const el = document.getElementById('usdt-display');
+  if (el) el.textContent = siteData.usdt || '[ USDT TRC20 address not set — update in Admin → Payment ]';
 }
-function copyAddr(){
-  if(!siteData.usdt){toast('No USDT address saved yet','warn');return;}
-  navigator.clipboard.writeText(siteData.usdt).then(()=>toast('📋 Address copied!')).catch(()=>{
-    const t=document.createElement('textarea');t.value=siteData.usdt;document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);toast('📋 Copied!');
+function copyAddr() {
+  if (!siteData.usdt) { toast('No USDT address saved yet', 'warn'); return; }
+  navigator.clipboard.writeText(siteData.usdt).then(() => toast('📋 Address copied!')).catch(() => {
+    const t = document.createElement('textarea');
+    t.value = siteData.usdt; document.body.appendChild(t); t.select();
+    document.execCommand('copy'); document.body.removeChild(t); toast('📋 Copied!');
   });
 }
+async function changePw() {
+  const old = document.getElementById('set-old-pw').value;
+  const nw  = document.getElementById('set-new-pw').value;
+  const cf  = document.getElementById('set-confirm-pw').value;
+  if (old !== siteData.password) { toast('❌ Current password incorrect', 'error'); return; }
+  if (nw.length < 6)              { toast('❌ Min 6 characters', 'error'); return; }
+  if (nw !== cf)                  { toast('❌ Passwords do not match', 'error'); return; }
+  siteData.password = nw;
+  ['set-old-pw','set-new-pw','set-confirm-pw'].forEach(id => document.getElementById(id).value = '');
+  toast('✅ Password updated! Syncing...');
+  await save();
+}
+async function saveSettings() {
+  siteData.tagline = document.getElementById('set-tagline').value.trim();
+  updateHeroTagline();
+  toast('✅ Saved! Syncing...');
+  await save();
+}
+function updateHeroTagline() {
+  const el = document.getElementById('hero-tagline');
+  if (el && siteData.tagline) el.textContent = siteData.tagline;
+}
 
-// ── SETTINGS ──
-function changePw(){
-  const old=document.getElementById('set-old-pw').value;
-  const nw=document.getElementById('set-new-pw').value;
-  const cf=document.getElementById('set-confirm-pw').value;
-  if(old!==siteData.password){toast('❌ Current password incorrect','error');return;}
-  if(nw.length<6){toast('❌ Min 6 characters','error');return;}
-  if(nw!==cf){toast('❌ Passwords do not match','error');return;}
-  siteData.password=nw;save();
-  ['set-old-pw','set-new-pw','set-confirm-pw'].forEach(id=>document.getElementById(id).value='');
-  toast('✅ Password updated!');
-}
-function saveSettings(){
-  siteData.tagline=document.getElementById('set-tagline').value.trim();save();updateHeroTagline();toast('✅ Saved!');
-}
-function updateHeroTagline(){
-  const el=document.getElementById('hero-tagline');
-  if(el&&siteData.tagline)el.textContent=siteData.tagline;
-}
-
-// ── TOAST ──
-function toast(msg,type='success'){
-  const t=document.getElementById('toast');
-  t.textContent=msg;
-  t.style.borderColor=type==='error'?'rgba(255,77,106,0.5)':type==='warn'?'rgba(245,200,66,0.4)':'var(--border-accent)';
-  t.style.color=type==='error'?'#ff8a9a':type==='warn'?'var(--gold)':'var(--accent)';
-  t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),3200);
+// ════════════════════════════════════════════════
+// TOAST
+// ════════════════════════════════════════════════
+function toast(msg, type = 'success') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.borderColor = type === 'error' ? 'rgba(255,77,106,0.5)' : type === 'warn' ? 'rgba(245,200,66,0.4)' : 'var(--border-accent)';
+  t.style.color = type === 'error' ? '#ff8a9a' : type === 'warn' ? 'var(--gold)' : 'var(--accent)';
+  t.classList.add('show');
+  clearTimeout(t._t);
+  t._t = setTimeout(() => t.classList.remove('show'), 3200);
 }
 </script>
 </body>
 </html>
- 
