@@ -73,11 +73,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 44px
 
 /* HERO */
 .hero{padding:90px 44px 72px;text-align:center;position:relative;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;background:
-  radial-gradient(ellipse 60% 50% at 20% 50%,rgba(124,92,252,0.07) 0%,transparent 60%),
-  radial-gradient(ellipse 60% 50% at 80% 40%,rgba(0,229,255,0.06) 0%,transparent 60%),
-  radial-gradient(ellipse 40% 60% at 50% 100%,rgba(79,157,255,0.05) 0%,transparent 70%);
-  pointer-events:none;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 20% 50%,rgba(124,92,252,0.07) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 40%,rgba(0,229,255,0.06) 0%,transparent 60%),radial-gradient(ellipse 40% 60% at 50% 100%,rgba(79,157,255,0.05) 0%,transparent 70%);pointer-events:none;}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(124,92,252,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(124,92,252,0.04) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,black 0%,transparent 100%);pointer-events:none;}
 .hero-badge{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--border-accent);color:var(--accent);font-size:11px;letter-spacing:2px;padding:8px 20px;border-radius:28px;margin-bottom:36px;background:rgba(124,92,252,0.07);}
 .hero-badge .pulse{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2.2s infinite;flex-shrink:0;}
@@ -236,14 +232,18 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 44px
 .tg-cta h3{font-size:22px;font-weight:900;margin-bottom:12px;letter-spacing:-0.4px;}
 .tg-cta p{font-size:14px;color:var(--text2);margin-bottom:28px;line-height:1.75;max-width:440px;margin-left:auto;margin-right:auto;}
 
-/* ADMIN */
+/* ADMIN LOGIN — SIMPLIFIED */
 .admin-login-page{min-height:calc(100vh - 66px);display:flex;align-items:center;justify-content:center;padding:40px;}
-.admin-login-card{max-width:420px;width:100%;background:var(--bg2);border:1px solid var(--border-accent);border-radius:20px;padding:48px;text-align:center;}
-.admin-login-card .lock-icon{width:64px;height:64px;background:rgba(124,92,252,0.1);border:1px solid var(--border-accent);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 24px;}
-.admin-login-card h2{font-size:22px;font-weight:900;margin-bottom:9px;}
-.admin-login-card p{font-size:13px;color:var(--text2);margin-bottom:30px;line-height:1.65;}
-.admin-login-card input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px 16px;color:#fff;font-size:15px;margin-bottom:14px;transition:border-color .2s;}
-.admin-login-card input:focus{outline:none;border-color:var(--border-accent);}
+.admin-login-card{max-width:400px;width:100%;background:var(--bg2);border:1px solid var(--border-accent);border-radius:20px;padding:44px;text-align:center;}
+.admin-login-card .lock-icon{width:64px;height:64px;background:rgba(124,92,252,0.1);border:1px solid var(--border-accent);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 20px;}
+.admin-login-card h2{font-size:22px;font-weight:900;margin-bottom:6px;}
+.admin-login-card .login-subtitle{font-size:12px;color:var(--text3);margin-bottom:28px;line-height:1.6;}
+.login-field{margin-bottom:14px;text-align:left;}
+.login-field label{display:block;font-size:10px;font-weight:800;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:7px;}
+.login-field input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:13px 15px;color:#fff;font-size:14px;transition:border-color .2s;}
+.login-field input:focus{outline:none;border-color:var(--border-accent);}
+.login-field input::placeholder{color:var(--text3);}
+
 .admin-wrap{max-width:1080px;margin:0 auto;padding:40px 44px 80px;}
 .admin-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:36px;padding-bottom:24px;border-bottom:1px solid var(--border);}
 .admin-header h2{font-size:22px;font-weight:900;margin-bottom:5px;letter-spacing:-0.4px;}
@@ -323,12 +323,6 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 44px
 .sync-dot.green{background:var(--green);}
 .sync-dot.purple{background:var(--accent);animation:pulse 1.2s infinite;}
 .sync-dot.red{background:var(--red);}
-.gh-setup-box{background:var(--bg3);border:1px solid var(--border-gold);border-radius:var(--radius-lg);padding:28px;margin-bottom:28px;}
-.gh-setup-box h3{font-size:15px;font-weight:800;color:var(--gold);margin-bottom:8px;}
-.gh-setup-box p{font-size:13px;color:var(--text2);line-height:1.68;margin-bottom:18px;}
-.gh-setup-box ol{padding-left:18px;font-size:13px;color:var(--text2);line-height:2;}
-.gh-setup-box a{color:var(--accent);text-decoration:none;}
-.gh-setup-box a:hover{text-decoration:underline;}
 
 /* TOAST */
 .toast{position:fixed;bottom:28px;right:28px;background:var(--bg2);border:1px solid var(--border-accent);border-radius:12px;padding:14px 22px;font-size:13.5px;color:var(--accent);z-index:9999;transform:translateY(16px);opacity:0;transition:all .35s;box-shadow:var(--shadow);max-width:320px;}
@@ -690,33 +684,20 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
     <div class="admin-login-page">
       <div class="admin-login-card">
         <div class="lock-icon">🔐</div>
-        <h2>Admin Panel</h2>
-        <p>Enter your password to manage site content.</p>
-        <input type="text" id="admin-gh-repo" placeholder="username/repo-name (CEO NAME)" style="letter-spacing:0;text-align:left;">
-        <input type="text" id="admin-gh-token" placeholder="Personal Access Code" style="letter-spacing:0;text-align:left;">
-        <input type="password" id="admin-pw-input" placeholder="Site Password ••••••••••">
-        <button class="btn btn-accent" style="width:100%;padding:14px;font-size:14px;" onclick="checkPw()">Login →</button>
-        <p style="font-size:11px;color:var(--text3);margin-top:16px;line-height:1.7;">Login for CEO. <a href="#" onclick="showGhHelp();return false;" style="color:var(--accent);">How to create a token →</a></p>
-      </div>
-    </div>
-  </div>
+        <h2>Admin Login</h2>
+        <p class="login-subtitle">Smart Trade Systems — CEO Access Only</p>
 
-  <!-- GitHub Help Modal -->
-  <div id="gh-help-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9500;align-items:center;justify-content:center;padding:20px;">
-    <div style="max-width:540px;width:100%;background:var(--bg2);border:1px solid var(--border-accent);border-radius:20px;padding:36px;position:relative;">
-      <button onclick="document.getElementById('gh-help-modal').style.display='none';" style="position:absolute;top:14px;right:18px;background:none;border:none;color:var(--text2);font-size:22px;cursor:pointer;">✕</button>
-      <h3 style="font-size:18px;font-weight:900;margin-bottom:18px;color:var(--gold);">🔑 Setting Up GitHub Storage</h3>
-      <div style="font-size:13px;color:var(--text2);line-height:1.85;">
-        <p style="margin-bottom:12px;">Follow these steps <strong style="color:var(--text);">once</strong> to enable cloud sync:</p>
-        <ol style="padding-left:20px;display:flex;flex-direction:column;gap:10px;">
-          <li>Go to <a href="https://github.com" target="_blank" style="color:var(--accent);">github.com</a> and create a free account if you don't have one.</li>
-          <li>Create a <strong style="color:var(--text);">new repository</strong> (e.g. <code style="background:rgba(255,255,255,0.07);padding:1px 6px;border-radius:4px;">sts-site</code>). Make it <strong style="color:var(--text);">public</strong> so visitors can load data.</li>
-          <li>Enable <strong style="color:var(--text);">GitHub Pages</strong>: Repo → Settings → Pages → Source: main branch. Upload your <code style="background:rgba(255,255,255,0.07);padding:1px 6px;border-radius:4px;">index.html</code> to the repo.</li>
-          <li>Go to <strong style="color:var(--text);">Settings → Developer Settings → Personal Access Tokens → Fine-grained tokens</strong>.</li>
-          <li>Click <strong style="color:var(--text);">"Generate new token"</strong>. Set expiry to 1 year. Under <strong style="color:var(--text);">Repository permissions</strong>, enable <strong style="color:var(--text);">Contents: Read and Write</strong>.</li>
-          <li>Copy the token and paste it in the login form above. It's only saved in your browser.</li>
-        </ol>
-        <p style="margin-top:16px;padding:12px;background:rgba(0,217,126,0.08);border:1px solid rgba(0,217,126,0.2);border-radius:8px;color:var(--green);">✅ Once set up, all your products, portfolio, and settings sync instantly to every device through GitHub.</p>
+        <div class="login-field">
+          <label>GitHub Token</label>
+          <input type="password" id="admin-gh-token" placeholder="github_pat_...">
+        </div>
+        <div class="login-field">
+          <label>Site Password</label>
+          <input type="password" id="admin-pw-input" placeholder="Your password">
+        </div>
+
+        <button class="btn btn-accent" style="width:100%;padding:14px;font-size:14px;margin-top:6px;" onclick="checkPw()">Login →</button>
+        <p style="font-size:11px;color:var(--text3);margin-top:16px;line-height:1.7;">Data syncs to GitHub repo: <strong style="color:var(--accent)">SmartTradeSystems/smarttradesystems</strong></p>
       </div>
     </div>
   </div>
@@ -853,8 +834,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
           <button class="btn btn-accent" style="padding:12px 26px;" onclick="saveSettings()">Save Settings</button>
         </div>
         <div class="settings-block"><h3>🔗 GitHub Connection</h3>
-          <p style="font-size:13px;color:var(--text2);margin-bottom:14px;">Connected repo: <strong style="color:var(--accent)" id="show-gh-repo">—</strong></p>
-          <button class="btn btn-ghost btn-sm" onclick="logoutAdmin()">Disconnect & Re-login</button>
+          <p style="font-size:13px;color:var(--text2);margin-bottom:6px;">Repo: <strong style="color:var(--accent)">SmartTradeSystems/smarttradesystems</strong></p>
+          <p style="font-size:12px;color:var(--text3);margin-bottom:14px;">Token is saved in your browser only — never shared.</p>
+          <button class="btn btn-ghost btn-sm" onclick="logoutAdmin()">Logout & Clear Token</button>
         </div>
       </div>
 
@@ -918,94 +900,68 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
 <div class="toast" id="toast"></div>
 
 <script>
-// ════════════════════════════════════════════════
-// GITHUB STORAGE ENGINE
-// Data is stored as data.json in the GitHub repo
-// ════════════════════════════════════════════════
-
+// ══════════════════════════════════════════════
+// CONFIG — repo is hardcoded, only token needed
+// ══════════════════════════════════════════════
+const GH_REPO      = 'SmartTradeSystems/smarttradesystems';
 const GH_DATA_FILE = 'data.json';
-let ghRepo = '';    // e.g. "username/repo"
-let ghToken = '';   // Personal Access Token
-let ghFileSha = ''; // SHA of current data.json (needed to update)
 
-// Load credentials from localStorage (they stay browser-side only)
-function loadGhCredentials() {
-  ghRepo  = localStorage.getItem('sts_gh_repo')  || '';
-  ghToken = localStorage.getItem('sts_gh_token') || '';
-}
-function saveGhCredentials(repo, token) {
-  localStorage.setItem('sts_gh_repo',  repo);
-  localStorage.setItem('sts_gh_token', token);
-  ghRepo  = repo;
-  ghToken = token;
-}
-function clearGhCredentials() {
-  localStorage.removeItem('sts_gh_repo');
-  localStorage.removeItem('sts_gh_token');
-  ghRepo = ''; ghToken = '';
-}
+let ghToken   = '';
+let ghFileSha = '';
 
-// Fetch data.json from GitHub (public raw content — no token needed for public repos)
+function loadToken()       { ghToken = localStorage.getItem('sts_gh_token') || ''; }
+function saveToken(token)  { localStorage.setItem('sts_gh_token', token); ghToken = token; }
+function clearToken()      { localStorage.removeItem('sts_gh_token'); ghToken = ''; }
+
+// ══════════════════════════════════════════════
+// GITHUB FETCH — with cache busting
+// ══════════════════════════════════════════════
 async function ghFetchData() {
-  if (!ghRepo) return null;
   try {
-    // Use the API so we also get the SHA for future writes
     const headers = { 'Accept': 'application/vnd.github+json' };
     if (ghToken) headers['Authorization'] = 'Bearer ' + ghToken;
-    const res = await fetch(`https://api.github.com/repos/${ghRepo}/contents/${GH_DATA_FILE}`, { headers });
-    if (res.status === 404) return null; // File doesn't exist yet
-    if (!res.ok) throw new Error('GitHub fetch failed: ' + res.status);
+    const url = `https://api.github.com/repos/${GH_REPO}/contents/${GH_DATA_FILE}?t=${Date.now()}`;
+    const res = await fetch(url, { headers, cache: 'no-store' });
+    if (res.status === 404) return null;
+    if (!res.ok) throw new Error('Status ' + res.status);
     const json = await res.json();
     ghFileSha = json.sha;
-    const decoded = decodeURIComponent(escape(atob(json.content.replace(/\n/g, ''))));
-    return JSON.parse(decoded);
+    return JSON.parse(decodeURIComponent(escape(atob(json.content.replace(/\n/g,'')))));
   } catch(e) {
-    console.error('ghFetchData error:', e);
+    console.error('ghFetchData:', e);
     return null;
   }
 }
 
-// Write data.json to GitHub (requires token with Contents: write)
+// ══════════════════════════════════════════════
+// GITHUB SAVE
+// ══════════════════════════════════════════════
 async function ghSaveData(data) {
-  if (!ghRepo || !ghToken) {
-    toast('⚠ No GitHub token — data saved locally only', 'warn');
-    return false;
-  }
+  if (!ghToken) { toast('⚠ No token — saved locally only', 'warn'); return false; }
   setSyncStatus('syncing', 'Saving to GitHub...');
   try {
     const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
-    const body = {
-      message: 'Update site data',
-      content,
-      ...(ghFileSha ? { sha: ghFileSha } : {})
-    };
-    const res = await fetch(`https://api.github.com/repos/${ghRepo}/contents/${GH_DATA_FILE}`, {
+    const body = { message: 'Update site data', content, ...(ghFileSha ? { sha: ghFileSha } : {}) };
+    const res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_DATA_FILE}`, {
       method: 'PUT',
-      headers: {
-        'Authorization': 'Bearer ' + ghToken,
-        'Content-Type': 'application/json',
-        'Accept': 'application/vnd.github+json'
-      },
+      headers: { 'Authorization': 'Bearer ' + ghToken, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github+json' },
       body: JSON.stringify(body)
     });
-    if (!res.ok) {
-      const errJson = await res.json();
-      throw new Error(errJson.message || 'Save failed');
-    }
+    if (!res.ok) { const e = await res.json(); throw new Error(e.message || 'Save failed'); }
     const result = await res.json();
     ghFileSha = result.content.sha;
     setSyncStatus('synced', 'Synced with GitHub ✓');
     return true;
   } catch(e) {
     setSyncStatus('error', 'Sync failed — ' + e.message);
-    toast('❌ GitHub save failed: ' + e.message, 'error');
+    toast('❌ Save failed: ' + e.message, 'error');
     return false;
   }
 }
 
 function setSyncStatus(state, text) {
   const badge = document.getElementById('sync-status-badge');
-  const dot   = badge ? badge.querySelector('.sync-dot') : null;
+  const dot   = badge && badge.querySelector('.sync-dot');
   const label = document.getElementById('sync-status-text');
   if (!badge) return;
   badge.className = 'sync-bar ' + state;
@@ -1013,41 +969,37 @@ function setSyncStatus(state, text) {
   if (label) label.textContent = text;
 }
 
-// ════════════════════════════════════════════════
-// SITE DATA STATE
-// ════════════════════════════════════════════════
+// ══════════════════════════════════════════════
+// SITE DATA
+// ══════════════════════════════════════════════
 let siteData = {
   password: 'admin123',
-  usdt: '',
-  tagline: '',
+  usdt: '', tagline: '',
   social: { telegram:'', whatsapp:'', youtube:'', facebook:'' },
-  products: [],
-  portfolio: []
+  products: [], portfolio: []
 };
 let pendingResultImgs = [], pendingReviewImgs = [], pendingPortfolioImgs = [];
 let adminLoggedIn = false;
 
-// Merge remote data into siteData
 function applyRemoteData(remote) {
   if (!remote) return;
   siteData = { ...siteData, ...remote };
   if (remote.social) siteData.social = { ...siteData.social, ...remote.social };
 }
 
-// Save to both GitHub and localStorage fallback
 async function save() {
   try { localStorage.setItem('sts_v4_cache', JSON.stringify(siteData)); } catch(e) {}
   await ghSaveData(siteData);
 }
 
-// Load from cache first, then GitHub
+// ══════════════════════════════════════════════
+// LOAD DATA ON PAGE START
+// ══════════════════════════════════════════════
 async function loadData() {
-  // 1. Load cached credentials
-  loadGhCredentials();
+  loadToken();
 
-  // 2. If we have a repo, try to fetch live data
-  if (ghRepo) {
-    showLoading('Loading data from GitHub...');
+  if (ghToken) {
+    showLoading('Loading latest data...');
     const remote = await ghFetchData();
     hideLoading();
     if (remote) {
@@ -1058,13 +1010,10 @@ async function loadData() {
     }
   }
 
-  // 3. Fall back to localStorage cache
+  // Fallback to localStorage cache
   try {
-    const cached = localStorage.getItem('sts_v4_cache') || localStorage.getItem('sts_v4');
-    if (cached) {
-      const p = JSON.parse(cached);
-      applyRemoteData(p);
-    }
+    const cached = localStorage.getItem('sts_v4_cache');
+    if (cached) applyRemoteData(JSON.parse(cached));
   } catch(e) {}
   renderAll();
 }
@@ -1073,16 +1022,13 @@ function showLoading(msg) {
   const ol = document.getElementById('loading-overlay');
   const lm = document.getElementById('loading-msg');
   if (ol) ol.classList.add('show');
-  if (lm) lm.textContent = msg || 'Loading...';
+  if (lm && msg) lm.textContent = msg;
 }
 function hideLoading() {
   const ol = document.getElementById('loading-overlay');
   if (ol) ol.classList.remove('show');
 }
 
-// ════════════════════════════════════════════════
-// INIT
-// ════════════════════════════════════════════════
 loadData();
 
 function renderAll() {
@@ -1093,9 +1039,9 @@ function renderAll() {
   updateHeroTagline();
 }
 
-// ════════════════════════════════════════════════
+// ══════════════════════════════════════════════
 // NAV
-// ════════════════════════════════════════════════
+// ══════════════════════════════════════════════
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const pg = document.getElementById(id);
@@ -1103,7 +1049,7 @@ function showPage(id) {
   document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
   const nl = document.getElementById('nav-' + id);
   if (nl) nl.classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top:0, behavior:'smooth' });
 }
 function showAdmin() {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -1111,21 +1057,15 @@ function showAdmin() {
   if (!adminLoggedIn) {
     document.getElementById('admin-login-wrap').style.display = '';
     document.getElementById('admin-main-wrap').style.display = 'none';
-    // Pre-fill saved repo if exists
-    loadGhCredentials();
-    if (ghRepo) document.getElementById('admin-gh-repo').value = ghRepo;
+    loadToken();
     if (ghToken) document.getElementById('admin-gh-token').value = ghToken;
   }
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-function showGhHelp() {
-  const m = document.getElementById('gh-help-modal');
-  m.style.display = 'flex';
+  window.scrollTo({ top:0, behavior:'smooth' });
 }
 function openLink(type) {
   const url = siteData.social[type];
   if (url && url.trim()) window.open(url, '_blank');
-  else toast('⚠ Link not set. Add it in Admin → Social.', 'warn');
+  else toast('⚠ Link not set. Go Admin → Social.', 'warn');
 }
 function toggleFaq(el) {
   const item = el.parentElement, isOpen = item.classList.contains('open');
@@ -1133,9 +1073,9 @@ function toggleFaq(el) {
   if (!isOpen) item.classList.add('open');
 }
 
-// ════════════════════════════════════════════════
+// ══════════════════════════════════════════════
 // LIGHTBOX
-// ════════════════════════════════════════════════
+// ══════════════════════════════════════════════
 function openLightbox(src) {
   document.getElementById('lightbox-img').src = src;
   document.getElementById('lightbox').classList.add('open');
@@ -1147,37 +1087,27 @@ function closeLightbox() {
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
-// ════════════════════════════════════════════════
-// ADMIN AUTH
-// ════════════════════════════════════════════════
+// ══════════════════════════════════════════════
+// ADMIN LOGIN — only token + password needed
+// ══════════════════════════════════════════════
 async function checkPw() {
-  const repo  = document.getElementById('admin-gh-repo').value.trim();
   const token = document.getElementById('admin-gh-token').value.trim();
   const pw    = document.getElementById('admin-pw-input').value;
 
-  if (!repo)  { toast('Please enter your GitHub repo (e.g. username/repo)', 'error'); return; }
-  if (!token) { toast('Please enter your GitHub Personal Access Token', 'error'); return; }
+  if (!token) { toast('Please enter your GitHub Token', 'error'); return; }
+  if (!pw)    { toast('Please enter your password', 'error'); return; }
 
-  // Save credentials
-  saveGhCredentials(repo, token);
+  saveToken(token);
 
-  // Fetch latest data from GitHub
   showLoading('Connecting to GitHub...');
   const remote = await ghFetchData();
   hideLoading();
 
-  if (remote === null && ghFileSha === '') {
-    // data.json doesn't exist yet — that's fine, first time setup
-  } else if (remote) {
-    applyRemoteData(remote);
-    renderAll();
-  }
+  if (remote) { applyRemoteData(remote); renderAll(); }
 
-  // Check password
   if (pw !== siteData.password) {
     toast('❌ Incorrect password', 'error');
     document.getElementById('admin-pw-input').value = '';
-    document.getElementById('admin-pw-input').focus();
     return;
   }
 
@@ -1185,16 +1115,16 @@ async function checkPw() {
   document.getElementById('admin-login-wrap').style.display = 'none';
   document.getElementById('admin-main-wrap').style.display = 'block';
   document.getElementById('admin-pw-input').value = '';
-  const showRepo = document.getElementById('show-gh-repo');
-  if (showRepo) showRepo.textContent = ghRepo;
   loadAdminForms();
   renderAdminProducts();
   renderAdminPortfolio();
-  setSyncStatus('synced', 'Connected to ' + ghRepo);
+  setSyncStatus('synced', 'Connected ✓');
+  toast('✅ Logged in successfully!');
 }
 
 function logoutAdmin() {
   adminLoggedIn = false;
+  clearToken();
   showPage('home');
 }
 function switchTab(t, el) {
@@ -1214,17 +1144,13 @@ function loadAdminForms() {
   document.getElementById('set-tagline').value = siteData.tagline || '';
 }
 
-// ════════════════════════════════════════════════
+// ══════════════════════════════════════════════
 // IMAGE HELPERS
-// ════════════════════════════════════════════════
+// ══════════════════════════════════════════════
 function previewImg(input, previewId) {
   const f = input.files[0]; if (!f) return;
   const r = new FileReader();
-  r.onload = e => {
-    const img = document.getElementById(previewId);
-    img.src = e.target.result;
-    img.style.display = 'block';
-  };
+  r.onload = e => { const img = document.getElementById(previewId); img.src = e.target.result; img.style.display = 'block'; };
   r.readAsDataURL(f);
 }
 function previewMultiple(input, previewId, varName) {
@@ -1235,8 +1161,7 @@ function previewMultiple(input, previewId, varName) {
     const r = new FileReader();
     r.onload = e => {
       arr.push(e.target.result);
-      const img = document.createElement('img');
-      img.src = e.target.result;
+      const img = document.createElement('img'); img.src = e.target.result;
       container.appendChild(img);
     };
     r.readAsDataURL(f);
@@ -1251,26 +1176,23 @@ function addPortfolioImgs(input) {
   });
 }
 
-// ════════════════════════════════════════════════
+// ══════════════════════════════════════════════
 // PRODUCTS
-// ════════════════════════════════════════════════
+// ══════════════════════════════════════════════
 async function addProduct() {
-  const name     = document.getElementById('p-name').value.trim();
-  const price    = document.getElementById('p-price').value.trim();
-  const category = document.getElementById('p-category').value;
-  const desc     = document.getElementById('p-desc').value.trim();
-  const pair     = document.getElementById('p-pair').value.trim();
-  const version  = document.getElementById('p-version').value;
-  const type     = document.getElementById('p-type').value.trim();
-  const ytLink   = document.getElementById('p-youtube').value.trim();
-  const copy     = document.getElementById('p-copy').value;
-  const imgEl    = document.getElementById('p-img-preview');
-  const img      = (imgEl.style.display !== 'none' && imgEl.src) ? imgEl.src : '';
-  if (!name || !price || !desc) { toast('Please fill in Name, Price, and Description', 'error'); return; }
-  const product = {
-    id: Date.now().toString(), name, price: parseFloat(price), category, desc, pair, version, type,
-    ytLink, copy, img, resultImgs: [...pendingResultImgs], reviewImgs: [...pendingReviewImgs]
-  };
+  const name    = document.getElementById('p-name').value.trim();
+  const price   = document.getElementById('p-price').value.trim();
+  const category= document.getElementById('p-category').value;
+  const desc    = document.getElementById('p-desc').value.trim();
+  const pair    = document.getElementById('p-pair').value.trim();
+  const version = document.getElementById('p-version').value;
+  const type    = document.getElementById('p-type').value.trim();
+  const ytLink  = document.getElementById('p-youtube').value.trim();
+  const copy    = document.getElementById('p-copy').value;
+  const imgEl   = document.getElementById('p-img-preview');
+  const img     = (imgEl.style.display !== 'none' && imgEl.src) ? imgEl.src : '';
+  if (!name || !price || !desc) { toast('Please fill Name, Price, and Description', 'error'); return; }
+  const product = { id: Date.now().toString(), name, price: parseFloat(price), category, desc, pair, version, type, ytLink, copy, img, resultImgs: [...pendingResultImgs], reviewImgs: [...pendingReviewImgs] };
   siteData.products.push(product);
   renderAdminProducts(); renderMarketplace(); renderMyEA();
   toast('✅ "' + name + '" added! Saving...');
@@ -1278,9 +1200,7 @@ async function addProduct() {
   await save();
 }
 function clearProductForm() {
-  ['p-name','p-price','p-desc','p-pair','p-type','p-youtube'].forEach(id => {
-    const el = document.getElementById(id); if (el) el.value = '';
-  });
+  ['p-name','p-price','p-desc','p-pair','p-type','p-youtube'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
   document.getElementById('p-category').value = 'marketplace';
   document.getElementById('p-copy').value = 'no';
   document.getElementById('p-img-preview').style.display = 'none';
@@ -1293,10 +1213,10 @@ function clearProductForm() {
   pendingResultImgs = []; pendingReviewImgs = [];
 }
 async function deleteProduct(id) {
-  if (!confirm('Delete this product? Cannot be undone.')) return;
+  if (!confirm('Delete this product?')) return;
   siteData.products = siteData.products.filter(p => p.id !== id);
   renderAdminProducts(); renderMarketplace(); renderMyEA();
-  toast('🗑 Product deleted. Saving...');
+  toast('🗑 Deleted. Saving...');
   await save();
 }
 function renderAdminProducts() {
@@ -1309,16 +1229,15 @@ function renderAdminProducts() {
       ${p.img ? `<img src="${p.img}" alt="${p.name}">` : `<div class="api-thumb-ph">📦</div>`}
       <div class="api-info">
         <strong>${p.name}</strong>
-        <span>$${p.price} USDT · ${p.category === 'myea' ? 'Best EA' : 'Marketplace'} · ${p.version}
-        ${p.ytLink ? ' · 🎬 Video' : ''} ${p.resultImgs && p.resultImgs.length ? ' · 📸 ' + p.resultImgs.length + ' results' : ''} ${p.reviewImgs && p.reviewImgs.length ? ' · ⭐ ' + p.reviewImgs.length + ' reviews' : ''}</span>
+        <span>$${p.price} USDT · ${p.category === 'myea' ? 'Best EA' : 'Marketplace'} · ${p.version}${p.ytLink ? ' · 🎬' : ''}${p.resultImgs && p.resultImgs.length ? ' · 📸' + p.resultImgs.length : ''}${p.reviewImgs && p.reviewImgs.length ? ' · ⭐' + p.reviewImgs.length : ''}</span>
       </div>
       <div class="api-actions"><button class="btn btn-red btn-sm" onclick="deleteProduct('${p.id}')">Delete</button></div>
     </div>`).join('');
 }
 
-// ════════════════════════════════════════════════
+// ══════════════════════════════════════════════
 // RENDER MARKETPLACE / MY EAs
-// ════════════════════════════════════════════════
+// ══════════════════════════════════════════════
 function renderMarketplace() {
   const g = document.getElementById('marketplace-grid');
   const items = siteData.products.filter(p => p.category === 'marketplace');
@@ -1337,59 +1256,52 @@ function eaCardHTML(p, fromPage) {
   const isMyEA = p.category === 'myea';
   const imgH = p.img ? `<img class="ea-thumb" src="${p.img}" alt="${p.name}">` : `<div class="ea-thumb-placeholder">${isMyEA ? '⚡' : '📦'}</div>`;
   const copyBtn = (isMyEA && p.copy === 'yes') ? `<button class="ea-copy-btn" onclick="event.stopPropagation();openLink('telegram')">📊 Copy Our Trades</button>` : '';
-  return `<div class="ea-card${isMyEA ? ' premium' : ''}">
+  return `<div class="ea-card${isMyEA?' premium':''}">
     ${imgH}
     <div class="ea-body">
-      <div class="ea-top"><span class="ea-name">${p.name}</span><span class="ea-price${isMyEA ? ' gp' : ''}">$${p.price}</span></div>
+      <div class="ea-top"><span class="ea-name">${p.name}</span><span class="ea-price${isMyEA?' gp':''}">$${p.price}</span></div>
       <p class="ea-desc">${p.desc}</p>
       <div class="ea-pills">
-        ${p.version ? `<span class="ea-pill">${p.version}</span>` : ''}
-        ${p.pair    ? `<span class="ea-pill">${p.pair}</span>` : ''}
-        ${p.type    ? `<span class="ea-pill">${p.type}</span>` : ''}
-        ${p.resultImgs && p.resultImgs.length ? `<span class="ea-pill">📸 ${p.resultImgs.length} results</span>` : ''}
+        ${p.version?`<span class="ea-pill">${p.version}</span>`:''}
+        ${p.pair?`<span class="ea-pill">${p.pair}</span>`:''}
+        ${p.type?`<span class="ea-pill">${p.type}</span>`:''}
+        ${p.resultImgs&&p.resultImgs.length?`<span class="ea-pill">📸 ${p.resultImgs.length} results</span>`:''}
       </div>
       <div class="ea-actions">
-        <button class="ea-buy-btn ${isMyEA ? 'buy-g' : 'buy-a'}" onclick="showDetail('${p.id}','${fromPage}')">🛒 Buy — Pay USDT</button>
+        <button class="ea-buy-btn ${isMyEA?'buy-g':'buy-a'}" onclick="showDetail('${p.id}','${fromPage}')">🛒 Buy — Pay USDT</button>
         ${copyBtn}
       </div>
     </div>
   </div>`;
 }
 
-// ════════════════════════════════════════════════
+// ══════════════════════════════════════════════
 // DETAIL
-// ════════════════════════════════════════════════
+// ══════════════════════════════════════════════
 function showDetail(id, fromPage) {
   const p = siteData.products.find(x => x.id === id); if (!p) return;
   const isMyEA = p.category === 'myea';
   const bb = document.getElementById('detail-back-btn');
   bb.onclick = () => showPage(fromPage);
-  bb.textContent = '← Back to ' + (fromPage === 'myea' ? 'Our Best EAs' : 'Marketplace');
+  bb.textContent = '← Back to ' + (fromPage==='myea'?'Our Best EAs':'Marketplace');
   document.getElementById('det-name').textContent = p.name;
   document.getElementById('det-price').textContent = '$' + p.price + ' USDT';
-  document.getElementById('det-price').className = 'detail-price' + (isMyEA ? ' gp' : ' ap');
+  document.getElementById('det-price').className = 'detail-price' + (isMyEA?' gp':' ap');
   document.getElementById('det-desc').textContent = p.desc;
   const pills = [p.version, p.pair, p.type].filter(Boolean);
   document.getElementById('det-pills').innerHTML = pills.map(t => `<span class="tag tag-a">${t}</span>`).join('');
   const iw = document.getElementById('detail-img-wrap');
-  iw.innerHTML = p.img ? `<img class="detail-main-img" src="${p.img}" alt="${p.name}">` : `<div class="detail-img-ph">${isMyEA ? '⚡' : '📦'}</div>`;
-  document.getElementById('det-copy-row').style.display = (isMyEA && p.copy === 'yes') ? 'block' : 'none';
+  iw.innerHTML = p.img ? `<img class="detail-main-img" src="${p.img}" alt="${p.name}">` : `<div class="detail-img-ph">${isMyEA?'⚡':'📦'}</div>`;
+  document.getElementById('det-copy-row').style.display = (isMyEA && p.copy==='yes') ? 'block' : 'none';
   const mw = document.getElementById('detail-media-wrap');
   let mediaHTML = '';
   if (p.ytLink) {
     const vid = getYtId(p.ytLink);
-    if (vid) {
-      mediaHTML += `<div class="media-section-title">🎬 EA WORKING VIDEO</div><div class="detail-video-embed"><iframe src="https://www.youtube.com/embed/${vid}" allowfullscreen></iframe></div>`;
-    } else {
-      mediaHTML += `<div class="media-section-title">🎬 EA WORKING VIDEO</div><a class="btn btn-ghost" href="${p.ytLink}" target="_blank" style="display:inline-flex;margin-bottom:10px;">▶ Watch EA Video</a>`;
-    }
+    if (vid) mediaHTML += `<div class="media-section-title">🎬 EA WORKING VIDEO</div><div class="detail-video-embed"><iframe src="https://www.youtube.com/embed/${vid}" allowfullscreen></iframe></div>`;
+    else mediaHTML += `<div class="media-section-title">🎬 EA WORKING VIDEO</div><a class="btn btn-ghost" href="${p.ytLink}" target="_blank" style="display:inline-flex;margin-bottom:10px;">▶ Watch EA Video</a>`;
   }
-  if (p.resultImgs && p.resultImgs.length) {
-    mediaHTML += `<div class="media-section-title" style="margin-top:30px;">📊 PROFIT & RESULTS SCREENSHOTS</div><div class="screenshots-grid">${p.resultImgs.map(s => `<img class="screenshot-thumb" src="${s}" alt="result" onclick="openLightbox('${s}')">`).join('')}</div>`;
-  }
-  if (p.reviewImgs && p.reviewImgs.length) {
-    mediaHTML += `<div class="media-section-title" style="margin-top:30px;">⭐ CLIENT REVIEWS & FEEDBACK</div><div class="screenshots-grid">${p.reviewImgs.map(s => `<img class="screenshot-thumb" src="${s}" alt="review" onclick="openLightbox('${s}')">`).join('')}</div>`;
-  }
+  if (p.resultImgs && p.resultImgs.length) mediaHTML += `<div class="media-section-title" style="margin-top:30px;">📊 PROFIT & RESULTS SCREENSHOTS</div><div class="screenshots-grid">${p.resultImgs.map(s=>`<img class="screenshot-thumb" src="${s}" onclick="openLightbox('${s}')">`).join('')}</div>`;
+  if (p.reviewImgs && p.reviewImgs.length) mediaHTML += `<div class="media-section-title" style="margin-top:30px;">⭐ CLIENT REVIEWS & FEEDBACK</div><div class="screenshots-grid">${p.reviewImgs.map(s=>`<img class="screenshot-thumb" src="${s}" onclick="openLightbox('${s}')">`).join('')}</div>`;
   mw.innerHTML = mediaHTML;
   updateUSDT();
   showPage('detail');
@@ -1399,13 +1311,13 @@ function getYtId(url) {
   return m ? m[1] : null;
 }
 
-// ════════════════════════════════════════════════
+// ══════════════════════════════════════════════
 // PORTFOLIO
-// ════════════════════════════════════════════════
+// ══════════════════════════════════════════════
 async function savePortfolio() {
   const label = document.getElementById('port-label').value.trim() || 'Client Result';
   if (!pendingPortfolioImgs.length) { toast('Please upload at least one image', 'warn'); return; }
-  pendingPortfolioImgs.forEach(img => siteData.portfolio.push({ id: Date.now().toString() + Math.random(), img, label }));
+  pendingPortfolioImgs.forEach(img => siteData.portfolio.push({ id: Date.now().toString()+Math.random(), img, label }));
   renderPortfolio(); renderAdminPortfolio();
   pendingPortfolioImgs = [];
   document.getElementById('port-img-input').value = '';
@@ -1416,7 +1328,7 @@ async function savePortfolio() {
 async function deletePortfolioItem(id) {
   siteData.portfolio = siteData.portfolio.filter(p => p.id !== id);
   renderPortfolio(); renderAdminPortfolio();
-  toast('🗑 Item removed. Saving...');
+  toast('🗑 Removed. Saving...');
   await save();
 }
 function renderPortfolio() {
@@ -1443,21 +1355,19 @@ function renderAdminPortfolio() {
     </div>`).join('');
 }
 
-// ════════════════════════════════════════════════
+// ══════════════════════════════════════════════
 // SOCIAL / PAYMENT / SETTINGS
-// ════════════════════════════════════════════════
+// ══════════════════════════════════════════════
 async function saveSocial() {
   ['telegram','whatsapp','youtube','facebook'].forEach(k => {
     const el = document.getElementById('s-' + k); if (el) siteData.social[k] = el.value.trim();
   });
-  toast('✅ Social links saved! Syncing...');
-  await save();
+  toast('✅ Social links saved! Syncing...'); await save();
 }
 async function savePayment() {
   siteData.usdt = document.getElementById('p-usdt-addr').value.trim();
   updateUSDT();
-  toast('✅ Payment settings saved! Syncing...');
-  await save();
+  toast('✅ Payment settings saved! Syncing...'); await save();
 }
 function updateUSDT() {
   const el = document.getElementById('usdt-display');
@@ -1466,9 +1376,9 @@ function updateUSDT() {
 function copyAddr() {
   if (!siteData.usdt) { toast('No USDT address saved yet', 'warn'); return; }
   navigator.clipboard.writeText(siteData.usdt).then(() => toast('📋 Address copied!')).catch(() => {
-    const t = document.createElement('textarea');
-    t.value = siteData.usdt; document.body.appendChild(t); t.select();
-    document.execCommand('copy'); document.body.removeChild(t); toast('📋 Copied!');
+    const t = document.createElement('textarea'); t.value = siteData.usdt;
+    document.body.appendChild(t); t.select(); document.execCommand('copy');
+    document.body.removeChild(t); toast('📋 Copied!');
   });
 }
 async function changePw() {
@@ -1476,32 +1386,30 @@ async function changePw() {
   const nw  = document.getElementById('set-new-pw').value;
   const cf  = document.getElementById('set-confirm-pw').value;
   if (old !== siteData.password) { toast('❌ Current password incorrect', 'error'); return; }
-  if (nw.length < 6)              { toast('❌ Min 6 characters', 'error'); return; }
-  if (nw !== cf)                  { toast('❌ Passwords do not match', 'error'); return; }
+  if (nw.length < 6)             { toast('❌ Min 6 characters', 'error'); return; }
+  if (nw !== cf)                 { toast('❌ Passwords do not match', 'error'); return; }
   siteData.password = nw;
   ['set-old-pw','set-new-pw','set-confirm-pw'].forEach(id => document.getElementById(id).value = '');
-  toast('✅ Password updated! Syncing...');
-  await save();
+  toast('✅ Password updated! Syncing...'); await save();
 }
 async function saveSettings() {
   siteData.tagline = document.getElementById('set-tagline').value.trim();
   updateHeroTagline();
-  toast('✅ Saved! Syncing...');
-  await save();
+  toast('✅ Saved! Syncing...'); await save();
 }
 function updateHeroTagline() {
   const el = document.getElementById('hero-tagline');
   if (el && siteData.tagline) el.textContent = siteData.tagline;
 }
 
-// ════════════════════════════════════════════════
+// ══════════════════════════════════════════════
 // TOAST
-// ════════════════════════════════════════════════
-function toast(msg, type = 'success') {
+// ══════════════════════════════════════════════
+function toast(msg, type='success') {
   const t = document.getElementById('toast');
   t.textContent = msg;
-  t.style.borderColor = type === 'error' ? 'rgba(255,77,106,0.5)' : type === 'warn' ? 'rgba(245,200,66,0.4)' : 'var(--border-accent)';
-  t.style.color = type === 'error' ? '#ff8a9a' : type === 'warn' ? 'var(--gold)' : 'var(--accent)';
+  t.style.borderColor = type==='error'?'rgba(255,77,106,0.5)':type==='warn'?'rgba(245,200,66,0.4)':'var(--border-accent)';
+  t.style.color = type==='error'?'#ff8a9a':type==='warn'?'var(--gold)':'var(--accent)';
   t.classList.add('show');
   clearTimeout(t._t);
   t._t = setTimeout(() => t.classList.remove('show'), 3200);
