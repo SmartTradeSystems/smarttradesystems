@@ -16,6 +16,8 @@
   --border-cyan:rgba(0,229,255,0.25);
   --border-gold:rgba(245,200,66,0.28);
   --glow-accent:rgba(124,92,252,0.18);
+  --glow-cyan:rgba(0,229,255,0.12);
+  --glow-gold:rgba(245,200,66,0.12);
   --radius:10px;--radius-lg:16px;
   --shadow:0 8px 40px rgba(0,0,0,0.5);
 }
@@ -117,6 +119,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 44px
 .ic-accent{background:rgba(124,92,252,0.12);color:var(--accent);border:1px solid rgba(124,92,252,0.2);}
 .ic-cyan{background:rgba(0,229,255,0.1);color:var(--cyan);border:1px solid rgba(0,229,255,0.18);}
 .ic-gold{background:rgba(245,200,66,0.1);color:var(--gold);border:1px solid rgba(245,200,66,0.2);}
+.ic-green{background:rgba(0,217,126,0.1);color:var(--green);border:1px solid rgba(0,217,126,0.18);}
 .svc-card h3{font-size:17px;font-weight:800;margin-bottom:11px;letter-spacing:-0.3px;}
 .svc-card p{font-size:13.5px;color:var(--text2);line-height:1.72;margin-bottom:22px;}
 .tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px;}
@@ -240,8 +243,6 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 44px
 .login-field input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:13px 15px;color:#fff;font-size:14px;transition:border-color .2s;}
 .login-field input:focus{outline:none;border-color:var(--border-accent);}
 .login-field input::placeholder{color:var(--text3);}
-
-/* ADMIN MAIN */
 .admin-wrap{max-width:1080px;margin:0 auto;padding:40px 44px 80px;}
 .admin-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:36px;padding-bottom:24px;border-bottom:1px solid var(--border);}
 .admin-header h2{font-size:22px;font-weight:900;margin-bottom:5px;letter-spacing:-0.4px;}
@@ -289,6 +290,8 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 44px
 .notice strong{color:var(--accent);}
 .notice-gold{background:rgba(245,200,66,0.06);border-color:var(--border-gold);}
 .notice-gold strong{color:var(--gold);}
+.notice-green{background:rgba(0,217,126,0.06);border-color:rgba(0,217,126,0.3);}
+.notice-green strong{color:var(--green);}
 
 /* WHY */
 .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:20px;max-width:1040px;margin:0 auto;}
@@ -325,7 +328,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 44px
 .toast.show{transform:translateY(0);opacity:1;}
 
 /* LOADING OVERLAY */
-.loading-overlay{position:fixed;inset:0;background:rgba(5,8,15,0.88);z-index:8000;display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px;}
+.loading-overlay{position:fixed;inset:0;background:rgba(5,8,15,0.85);z-index:8000;display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px;}
 .loading-overlay.show{display:flex;}
 .loading-spinner{width:42px;height:42px;border:3px solid rgba(124,92,252,0.2);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -369,7 +372,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
 <!-- LOADING OVERLAY -->
 <div class="loading-overlay" id="loading-overlay">
   <div class="loading-spinner"></div>
-  <p id="loading-msg">Loading...</p>
+  <p id="loading-msg">Loading data...</p>
 </div>
 
 <!-- TICKER -->
@@ -539,7 +542,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Can I see the EA performance before buying? <span class="faq-arr">+</span></div>
-        <div class="faq-a">Yes. Each EA product page includes performance screenshots, real account results, and a link to our YouTube channel where we upload live performance review videos.</div>
+        <div class="faq-a">Yes. Each EA product page includes performance screenshots, real account results, and a link to our YouTube channel where we upload live performance review videos. You can review everything before purchasing.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">What brokers and platforms do your EAs work on? <span class="faq-arr">+</span></div>
@@ -547,7 +550,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Do you offer refunds? <span class="faq-arr">+</span></div>
-        <div class="faq-a">For custom-coded EAs, refunds are not available once work has begun. For marketplace EAs, if the file does not match what was described, we will fix or replace it promptly.</div>
+        <div class="faq-a">For custom-coded EAs, refunds are not available once work has begun. For marketplace EAs, if the file does not match what was described, we will fix or replace it promptly. Our reputation depends on your satisfaction.</div>
       </div>
     </div>
   </div>
@@ -599,7 +602,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
         </div>
       </div>
       <div class="ea-grid" id="marketplace-grid">
-        <div class="empty-state"><div class="empty-icon">🏪</div><p>No EAs in the marketplace yet.<br>Contact us on <strong style="color:var(--accent)">Telegram</strong>.</p></div>
+        <div class="empty-state"><div class="empty-icon">🏪</div><p>No EAs in the marketplace yet.<br>Check back soon or contact us on <strong style="color:var(--accent)">Telegram</strong>.</p></div>
       </div>
     </div>
   </div>
@@ -688,7 +691,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
         </div>
         <div class="login-field">
           <label>Site Password</label>
-          <input type="password" id="admin-pw-input" placeholder="Your password" onkeydown="if(event.key==='Enter')checkPw()">
+          <input type="password" id="admin-pw-input" placeholder="Your password">
         </div>
         <button class="btn btn-accent" style="width:100%;padding:14px;font-size:14px;margin-top:6px;" onclick="checkPw()">Login →</button>
         <p style="font-size:11px;color:var(--text3);margin-top:16px;line-height:1.7;">Data syncs to GitHub repo: <strong style="color:var(--accent)">SmartTradeSystems/smarttradesystems</strong></p>
@@ -701,10 +704,10 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
       <div class="admin-header">
         <div>
           <h2>⚙ Admin Panel</h2>
-          <p>Changes save to GitHub and sync to all visitors automatically.</p>
+          <p>Changes save to GitHub and sync to all devices automatically.</p>
         </div>
         <div style="display:flex;gap:8px;align-items:center;">
-          <div id="sync-status-badge" class="sync-bar synced"><div class="sync-dot green"></div><span id="sync-status-text">Connected to GitHub</span></div>
+          <div id="sync-status-badge" class="sync-bar synced"><div class="sync-dot green"></div><span id="sync-status-text">Synced with GitHub</span></div>
           <button class="btn btn-ghost btn-sm" onclick="logoutAdmin()">Logout</button>
         </div>
       </div>
@@ -742,7 +745,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
             <div class="form-group">
               <label>🎬 EA WORKING VIDEO URL</label>
               <input type="url" id="p-youtube" placeholder="https://youtube.com/watch?v=...">
-              <p class="form-helper">A YouTube link showing the EA working. Shown on the EA detail page.</p>
+              <p class="form-helper">A video showing the EA working. Shown on the EA detail page.</p>
             </div>
             <div class="form-group"><label>COPY TRADING AVAILABLE? (Our Best EAs only)</label>
               <select id="p-copy"><option value="no">No</option><option value="yes">Yes — show Copy Trading button</option></select>
@@ -829,8 +832,8 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
         </div>
         <div class="settings-block"><h3>🔗 GitHub Connection</h3>
           <p style="font-size:13px;color:var(--text2);margin-bottom:6px;">Repo: <strong style="color:var(--accent)">SmartTradeSystems/smarttradesystems</strong></p>
-          <p style="font-size:12px;color:var(--text3);margin-bottom:14px;">Your GitHub token is kept only in memory for this session. You will need to re-enter it on next login — this is by design for security.</p>
-          <button class="btn btn-ghost btn-sm" onclick="logoutAdmin()">Logout & Clear Session</button>
+          <p style="font-size:12px;color:var(--text3);margin-bottom:14px;">Your GitHub token is entered each login session and never stored on this device.</p>
+          <button class="btn btn-ghost btn-sm" onclick="logoutAdmin()">Logout</button>
         </div>
       </div>
 
@@ -900,48 +903,58 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
 const GH_REPO      = 'SmartTradeSystems/smarttradesystems';
 const GH_DATA_FILE = 'data.json';
 
-// All state lives in memory only — no localStorage, no sessionStorage
-let ghToken   = '';   // entered at login, held in memory for this session only
-let ghFileSha = '';   // SHA of the current data.json on GitHub
+// Token is held only in memory — never written to localStorage or any browser storage
+let ghToken   = '';
+let ghFileSha = '';
 
 // ══════════════════════════════════════════════
-// GITHUB API
+// GITHUB FETCH
 // ══════════════════════════════════════════════
 async function ghFetchData() {
-  const headers = { 'Accept': 'application/vnd.github+json' };
-  if (ghToken) headers['Authorization'] = 'Bearer ' + ghToken;
-  const url = `https://api.github.com/repos/${GH_REPO}/contents/${GH_DATA_FILE}?t=${Date.now()}`;
-  const res = await fetch(url, { headers, cache: 'no-store' });
-  if (res.status === 404) return null;
-  if (!res.ok) throw new Error('GitHub API error: ' + res.status);
-  const json = await res.json();
-  ghFileSha = json.sha;
-  return JSON.parse(decodeURIComponent(escape(atob(json.content.replace(/\n/g, '')))));
+  try {
+    const headers = { 'Accept': 'application/vnd.github+json' };
+    if (ghToken) headers['Authorization'] = 'Bearer ' + ghToken;
+    const url = `https://api.github.com/repos/${GH_REPO}/contents/${GH_DATA_FILE}?t=${Date.now()}`;
+    const res = await fetch(url, { headers, cache: 'no-store' });
+    if (res.status === 404) return null;
+    if (!res.ok) throw new Error('Status ' + res.status);
+    const json = await res.json();
+    ghFileSha = json.sha;
+    return JSON.parse(decodeURIComponent(escape(atob(json.content.replace(/\n/g,'')))));
+  } catch(e) {
+    console.error('ghFetchData:', e);
+    return null;
+  }
 }
 
+// ══════════════════════════════════════════════
+// GITHUB SAVE
+// ══════════════════════════════════════════════
 async function ghSaveData(data) {
-  if (!ghToken) { toast('No GitHub token — please log in again', 'error'); return false; }
+  if (!ghToken) { toast('⚠ No token — cannot save without GitHub token', 'warn'); return false; }
   setSyncStatus('syncing', 'Saving to GitHub...');
-  const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
-  const body = { message: 'Update site data', content };
-  if (ghFileSha) body.sha = ghFileSha;
-  const res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_DATA_FILE}`, {
-    method: 'PUT',
-    headers: {
-      'Authorization': 'Bearer ' + ghToken,
-      'Content-Type': 'application/json',
-      'Accept': 'application/vnd.github+json'
-    },
-    body: JSON.stringify(body)
-  });
-  if (!res.ok) {
-    const e = await res.json();
-    throw new Error(e.message || 'Save failed');
+  try {
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+    const body = { message: 'Update site data', content, ...(ghFileSha ? { sha: ghFileSha } : {}) };
+    const res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_DATA_FILE}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'Bearer ' + ghToken,
+        'Content-Type': 'application/json',
+        'Accept': 'application/vnd.github+json'
+      },
+      body: JSON.stringify(body)
+    });
+    if (!res.ok) { const e = await res.json(); throw new Error(e.message || 'Save failed'); }
+    const result = await res.json();
+    ghFileSha = result.content.sha;
+    setSyncStatus('synced', 'Synced with GitHub ✓');
+    return true;
+  } catch(e) {
+    setSyncStatus('error', 'Sync failed — ' + e.message);
+    toast('❌ Save failed: ' + e.message, 'error');
+    return false;
   }
-  const result = await res.json();
-  ghFileSha = result.content.sha;
-  setSyncStatus('synced', 'Saved to GitHub ✓');
-  return true;
 }
 
 function setSyncStatus(state, text) {
@@ -950,26 +963,23 @@ function setSyncStatus(state, text) {
   const label = document.getElementById('sync-status-text');
   if (!badge) return;
   badge.className = 'sync-bar ' + state;
-  if (dot) dot.className = 'sync-dot ' + (state === 'synced' ? 'green' : state === 'syncing' ? 'purple' : 'red');
+  if (dot) dot.className = 'sync-dot ' + (state==='synced'?'green':state==='syncing'?'purple':'red');
   if (label) label.textContent = text;
 }
 
 // ══════════════════════════════════════════════
-// SITE DATA — in-memory only
+// SITE DATA — all in memory only
 // ══════════════════════════════════════════════
 let siteData = {
   password: 'admin123',
   usdt: '',
   tagline: '',
-  social: { telegram: '', whatsapp: '', youtube: '', facebook: '' },
+  social: { telegram:'', whatsapp:'', youtube:'', facebook:'' },
   products: [],
   portfolio: []
 };
-
-let pendingResultImgs    = [];
-let pendingReviewImgs    = [];
-let pendingPortfolioImgs = [];
-let adminLoggedIn        = false;
+let pendingResultImgs = [], pendingReviewImgs = [], pendingPortfolioImgs = [];
+let adminLoggedIn = false;
 
 function applyRemoteData(remote) {
   if (!remote) return;
@@ -978,43 +988,25 @@ function applyRemoteData(remote) {
 }
 
 async function save() {
-  try {
-    await ghSaveData(siteData);
-  } catch (e) {
-    setSyncStatus('error', 'Save failed — ' + e.message);
-    toast('❌ Save failed: ' + e.message, 'error');
-  }
+  await ghSaveData(siteData);
 }
 
 // ══════════════════════════════════════════════
-// PUBLIC PAGE LOAD — fetch data without a token
-// (public repos only; private repos show empty state)
+// LOAD DATA ON PAGE START — public fetch (no token needed for public repos)
 // ══════════════════════════════════════════════
-async function loadPublicData() {
-  showLoading('Loading...');
-  try {
-    const remote = await ghFetchData();
-    if (remote) applyRemoteData(remote);
-  } catch (e) {
-    // Silently fail — site just shows empty states
-  }
+async function loadData() {
+  showLoading('Loading latest data...');
+  const remote = await ghFetchData();
   hideLoading();
-  renderAll();
+  if (remote) {
+    applyRemoteData(remote);
+    renderAll();
+  } else {
+    // Render with defaults if repo is empty or unreachable
+    renderAll();
+  }
 }
 
-loadPublicData();
-
-function renderAll() {
-  renderMarketplace();
-  renderMyEA();
-  renderPortfolio();
-  updateUSDT();
-  updateHeroTagline();
-}
-
-// ══════════════════════════════════════════════
-// LOADING OVERLAY
-// ══════════════════════════════════════════════
 function showLoading(msg) {
   const ol = document.getElementById('loading-overlay');
   const lm = document.getElementById('loading-msg');
@@ -1024,6 +1016,16 @@ function showLoading(msg) {
 function hideLoading() {
   const ol = document.getElementById('loading-overlay');
   if (ol) ol.classList.remove('show');
+}
+
+loadData();
+
+function renderAll() {
+  renderMarketplace();
+  renderMyEA();
+  renderPortfolio();
+  updateUSDT();
+  updateHeroTagline();
 }
 
 // ══════════════════════════════════════════════
@@ -1036,7 +1038,7 @@ function showPage(id) {
   document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
   const nl = document.getElementById('nav-' + id);
   if (nl) nl.classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top:0, behavior:'smooth' });
 }
 
 function showAdmin() {
@@ -1044,9 +1046,12 @@ function showAdmin() {
   document.getElementById('admin-page').classList.add('active');
   if (!adminLoggedIn) {
     document.getElementById('admin-login-wrap').style.display = '';
-    document.getElementById('admin-main-wrap').style.display  = 'none';
+    document.getElementById('admin-main-wrap').style.display = 'none';
+    // Never pre-fill token — user must type it each session
+    document.getElementById('admin-gh-token').value = '';
+    document.getElementById('admin-pw-input').value = '';
   }
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top:0, behavior:'smooth' });
 }
 
 function openLink(type) {
@@ -1056,8 +1061,7 @@ function openLink(type) {
 }
 
 function toggleFaq(el) {
-  const item   = el.parentElement;
-  const isOpen = item.classList.contains('open');
+  const item = el.parentElement, isOpen = item.classList.contains('open');
   document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
   if (!isOpen) item.classList.add('open');
 }
@@ -1078,6 +1082,9 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbo
 
 // ══════════════════════════════════════════════
 // ADMIN LOGIN
+// Token is stored only in the in-memory variable `ghToken`.
+// It is never written to localStorage, sessionStorage, or any other
+// persistent browser storage. The user must re-enter it each session.
 // ══════════════════════════════════════════════
 async function checkPw() {
   const token = document.getElementById('admin-gh-token').value.trim();
@@ -1086,19 +1093,11 @@ async function checkPw() {
   if (!token) { toast('Please enter your GitHub Token', 'error'); return; }
   if (!pw)    { toast('Please enter your password', 'error'); return; }
 
-  // Store token in memory (not localStorage)
+  // Store token in memory only
   ghToken = token;
 
   showLoading('Connecting to GitHub...');
-  let remote = null;
-  try {
-    remote = await ghFetchData();
-  } catch (e) {
-    hideLoading();
-    toast('❌ GitHub error: ' + e.message, 'error');
-    ghToken = ''; // clear on failure
-    return;
-  }
+  const remote = await ghFetchData();
   hideLoading();
 
   if (remote) {
@@ -1109,30 +1108,25 @@ async function checkPw() {
   if (pw !== siteData.password) {
     toast('❌ Incorrect password', 'error');
     document.getElementById('admin-pw-input').value = '';
-    ghToken = ''; // clear token if password wrong
+    ghToken = ''; // Clear token from memory on failed login
     return;
   }
 
   adminLoggedIn = true;
   document.getElementById('admin-login-wrap').style.display = 'none';
-  document.getElementById('admin-main-wrap').style.display  = 'block';
+  document.getElementById('admin-main-wrap').style.display = 'block';
   document.getElementById('admin-pw-input').value = '';
-  // Keep token field populated so admin can see it was entered (masked by type=password)
   loadAdminForms();
   renderAdminProducts();
   renderAdminPortfolio();
-  setSyncStatus('synced', 'Connected to GitHub ✓');
+  setSyncStatus('synced', 'Connected ✓');
   toast('✅ Logged in successfully!');
 }
 
 function logoutAdmin() {
   adminLoggedIn = false;
-  ghToken       = ''; // wipe from memory
-  ghFileSha     = '';
-  document.getElementById('admin-gh-token').value  = '';
-  document.getElementById('admin-pw-input').value  = '';
-  document.getElementById('admin-login-wrap').style.display = '';
-  document.getElementById('admin-main-wrap').style.display  = 'none';
+  ghToken = ''; // Clear token from memory on logout
+  ghFileSha = '';
   showPage('home');
 }
 
@@ -1146,22 +1140,19 @@ function switchTab(t, el) {
 
 function loadAdminForms() {
   const s = siteData.social;
-  ['telegram', 'whatsapp', 'youtube', 'facebook'].forEach(k => {
+  ['telegram','whatsapp','youtube','facebook'].forEach(k => {
     const el = document.getElementById('s-' + k);
     if (el) el.value = s[k] || '';
   });
-  const usdtEl   = document.getElementById('p-usdt-addr');
-  const tagEl    = document.getElementById('set-tagline');
-  if (usdtEl) usdtEl.value = siteData.usdt    || '';
-  if (tagEl)  tagEl.value  = siteData.tagline || '';
+  document.getElementById('p-usdt-addr').value = siteData.usdt || '';
+  document.getElementById('set-tagline').value = siteData.tagline || '';
 }
 
 // ══════════════════════════════════════════════
 // IMAGE HELPERS
 // ══════════════════════════════════════════════
 function previewImg(input, previewId) {
-  const f = input.files[0];
-  if (!f) return;
+  const f = input.files[0]; if (!f) return;
   const r = new FileReader();
   r.onload = e => {
     const img = document.getElementById(previewId);
@@ -1172,10 +1163,9 @@ function previewImg(input, previewId) {
 }
 
 function previewMultiple(input, previewId, varName) {
-  const files = Array.from(input.files);
-  if (!files.length) return;
+  const files = Array.from(input.files); if (!files.length) return;
   const container = document.getElementById(previewId);
-  const arr       = varName === 'resultImgs' ? pendingResultImgs : pendingReviewImgs;
+  const arr = varName === 'resultImgs' ? pendingResultImgs : pendingReviewImgs;
   files.forEach(f => {
     const r = new FileReader();
     r.onload = e => {
@@ -1213,40 +1203,35 @@ async function addProduct() {
   const imgEl    = document.getElementById('p-img-preview');
   const img      = (imgEl.style.display !== 'none' && imgEl.src) ? imgEl.src : '';
 
-  if (!name || !price || !desc) {
-    toast('Please fill Name, Price, and Description', 'error');
-    return;
-  }
+  if (!name || !price || !desc) { toast('Please fill Name, Price, and Description', 'error'); return; }
 
   const product = {
     id: Date.now().toString(),
     name, price: parseFloat(price), category, desc, pair, version, type, ytLink, copy, img,
-    resultImgs:  [...pendingResultImgs],
-    reviewImgs:  [...pendingReviewImgs]
+    resultImgs: [...pendingResultImgs],
+    reviewImgs: [...pendingReviewImgs]
   };
 
   siteData.products.push(product);
   renderAdminProducts();
   renderMarketplace();
   renderMyEA();
-  toast('✅ "' + name + '" added! Saving to GitHub...');
+  toast('✅ "' + name + '" added! Saving...');
   clearProductForm();
   await save();
 }
 
 function clearProductForm() {
   ['p-name','p-price','p-desc','p-pair','p-type','p-youtube'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.value = '';
+    const el = document.getElementById(id); if (el) el.value = '';
   });
   document.getElementById('p-category').value = 'marketplace';
-  document.getElementById('p-copy').value     = 'no';
-  const prev = document.getElementById('p-img-preview');
-  prev.style.display = 'none';
-  prev.src = '';
-  document.getElementById('p-img-input').value      = '';
-  document.getElementById('p-results-input').value  = '';
-  document.getElementById('p-reviews-input').value  = '';
+  document.getElementById('p-copy').value = 'no';
+  document.getElementById('p-img-preview').style.display = 'none';
+  document.getElementById('p-img-preview').src = '';
+  document.getElementById('p-img-input').value = '';
+  document.getElementById('p-results-input').value = '';
+  document.getElementById('p-reviews-input').value = '';
   document.getElementById('p-results-preview').innerHTML = '';
   document.getElementById('p-reviews-preview').innerHTML = '';
   pendingResultImgs = [];
@@ -1254,12 +1239,12 @@ function clearProductForm() {
 }
 
 async function deleteProduct(id) {
-  if (!confirm('Delete this product? This cannot be undone.')) return;
+  if (!confirm('Delete this product?')) return;
   siteData.products = siteData.products.filter(p => p.id !== id);
   renderAdminProducts();
   renderMarketplace();
   renderMyEA();
-  toast('🗑 Deleted. Saving to GitHub...');
+  toast('🗑 Deleted. Saving...');
   await save();
 }
 
@@ -1273,16 +1258,12 @@ function renderAdminProducts() {
   }
   el.innerHTML = siteData.products.map(p => `
     <div class="admin-product-item">
-      ${p.img
-        ? `<img src="${p.img}" alt="${p.name}">`
-        : `<div class="api-thumb-ph">📦</div>`}
+      ${p.img ? `<img src="${p.img}" alt="${p.name}">` : `<div class="api-thumb-ph">📦</div>`}
       <div class="api-info">
         <strong>${p.name}</strong>
         <span>$${p.price} USDT · ${p.category === 'myea' ? 'Best EA' : 'Marketplace'} · ${p.version}${p.ytLink ? ' · 🎬' : ''}${p.resultImgs && p.resultImgs.length ? ' · 📸' + p.resultImgs.length : ''}${p.reviewImgs && p.reviewImgs.length ? ' · ⭐' + p.reviewImgs.length : ''}</span>
       </div>
-      <div class="api-actions">
-        <button class="btn btn-red btn-sm" onclick="deleteProduct('${p.id}')">Delete</button>
-      </div>
+      <div class="api-actions"><button class="btn btn-red btn-sm" onclick="deleteProduct('${p.id}')">Delete</button></div>
     </div>`).join('');
 }
 
@@ -1290,47 +1271,44 @@ function renderAdminProducts() {
 // RENDER MARKETPLACE / MY EAs
 // ══════════════════════════════════════════════
 function renderMarketplace() {
-  const g     = document.getElementById('marketplace-grid');
+  const g = document.getElementById('marketplace-grid');
   const items = siteData.products.filter(p => p.category === 'marketplace');
   g.innerHTML = items.length
     ? items.map(p => eaCardHTML(p, 'marketplace')).join('')
-    : '<div class="empty-state"><div class="empty-icon">🏪</div><p>No EAs in the marketplace yet.<br>Contact us on <strong style="color:var(--accent)">Telegram</strong>.</p></div>';
+    : '<div class="empty-state"><div class="empty-icon">🏪</div><p>No EAs yet.<br>Contact us on <strong style="color:var(--accent)">Telegram</strong>.</p></div>';
 }
 
 function renderMyEA() {
-  const g      = document.getElementById('myea-grid');
-  const items  = siteData.products.filter(p => p.category === 'myea');
+  const g = document.getElementById('myea-grid');
+  const items = siteData.products.filter(p => p.category === 'myea');
   const banner = document.getElementById('copy-trading-banner');
-  g.innerHTML  = items.length
+  g.innerHTML = items.length
     ? items.map(p => eaCardHTML(p, 'myea')).join('')
-    : '<div class="empty-state"><div class="empty-icon">⚡</div><p>No personal EAs added yet.<br>Contact us on <strong style="color:var(--accent)">Telegram</strong>.</p></div>';
+    : '<div class="empty-state"><div class="empty-icon">⚡</div><p>No personal EAs yet.<br>Contact us on <strong style="color:var(--accent)">Telegram</strong>.</p></div>';
   if (banner) banner.style.display = items.length ? 'block' : 'none';
 }
 
 function eaCardHTML(p, fromPage) {
   const isMyEA = p.category === 'myea';
-  const imgH   = p.img
+  const imgH = p.img
     ? `<img class="ea-thumb" src="${p.img}" alt="${p.name}">`
     : `<div class="ea-thumb-placeholder">${isMyEA ? '⚡' : '📦'}</div>`;
   const copyBtn = (isMyEA && p.copy === 'yes')
     ? `<button class="ea-copy-btn" onclick="event.stopPropagation();openLink('telegram')">📊 Copy Our Trades</button>`
     : '';
-  return `<div class="ea-card${isMyEA ? ' premium' : ''}">
+  return `<div class="ea-card${isMyEA?' premium':''}">
     ${imgH}
     <div class="ea-body">
-      <div class="ea-top">
-        <span class="ea-name">${p.name}</span>
-        <span class="ea-price${isMyEA ? ' gp' : ''}">$${p.price}</span>
-      </div>
+      <div class="ea-top"><span class="ea-name">${p.name}</span><span class="ea-price${isMyEA?' gp':''}">$${p.price}</span></div>
       <p class="ea-desc">${p.desc}</p>
       <div class="ea-pills">
-        ${p.version ? `<span class="ea-pill">${p.version}</span>` : ''}
-        ${p.pair    ? `<span class="ea-pill">${p.pair}</span>`    : ''}
-        ${p.type    ? `<span class="ea-pill">${p.type}</span>`    : ''}
-        ${p.resultImgs && p.resultImgs.length ? `<span class="ea-pill">📸 ${p.resultImgs.length} results</span>` : ''}
+        ${p.version?`<span class="ea-pill">${p.version}</span>`:''}
+        ${p.pair?`<span class="ea-pill">${p.pair}</span>`:''}
+        ${p.type?`<span class="ea-pill">${p.type}</span>`:''}
+        ${p.resultImgs&&p.resultImgs.length?`<span class="ea-pill">📸 ${p.resultImgs.length} results</span>`:''}
       </div>
       <div class="ea-actions">
-        <button class="ea-buy-btn ${isMyEA ? 'buy-g' : 'buy-a'}" onclick="showDetail('${p.id}','${fromPage}')">🛒 Buy — Pay USDT</button>
+        <button class="ea-buy-btn ${isMyEA?'buy-g':'buy-a'}" onclick="showDetail('${p.id}','${fromPage}')">🛒 Buy — Pay USDT</button>
         ${copyBtn}
       </div>
     </div>
@@ -1338,47 +1316,35 @@ function eaCardHTML(p, fromPage) {
 }
 
 // ══════════════════════════════════════════════
-// DETAIL PAGE
+// DETAIL
 // ══════════════════════════════════════════════
 function showDetail(id, fromPage) {
-  const p = siteData.products.find(x => x.id === id);
-  if (!p) return;
+  const p = siteData.products.find(x => x.id === id); if (!p) return;
   const isMyEA = p.category === 'myea';
-
   const bb = document.getElementById('detail-back-btn');
-  bb.onclick     = () => showPage(fromPage);
+  bb.onclick = () => showPage(fromPage);
   bb.textContent = '← Back to ' + (fromPage === 'myea' ? 'Our Best EAs' : 'Marketplace');
-
-  document.getElementById('det-name').textContent   = p.name;
-  document.getElementById('det-price').textContent  = '$' + p.price + ' USDT';
-  document.getElementById('det-price').className    = 'detail-price' + (isMyEA ? ' gp' : ' ap');
-  document.getElementById('det-desc').textContent   = p.desc;
-
+  document.getElementById('det-name').textContent = p.name;
+  document.getElementById('det-price').textContent = '$' + p.price + ' USDT';
+  document.getElementById('det-price').className = 'detail-price' + (isMyEA ? ' gp' : ' ap');
+  document.getElementById('det-desc').textContent = p.desc;
   const pills = [p.version, p.pair, p.type].filter(Boolean);
-  document.getElementById('det-pills').innerHTML    = pills.map(t => `<span class="tag tag-a">${t}</span>`).join('');
-
+  document.getElementById('det-pills').innerHTML = pills.map(t => `<span class="tag tag-a">${t}</span>`).join('');
   const iw = document.getElementById('detail-img-wrap');
   iw.innerHTML = p.img
     ? `<img class="detail-main-img" src="${p.img}" alt="${p.name}">`
     : `<div class="detail-img-ph">${isMyEA ? '⚡' : '📦'}</div>`;
-
   document.getElementById('det-copy-row').style.display = (isMyEA && p.copy === 'yes') ? 'block' : 'none';
-
   const mw = document.getElementById('detail-media-wrap');
   let mediaHTML = '';
   if (p.ytLink) {
     const vid = getYtId(p.ytLink);
     if (vid) mediaHTML += `<div class="media-section-title">🎬 EA WORKING VIDEO</div><div class="detail-video-embed"><iframe src="https://www.youtube.com/embed/${vid}" allowfullscreen></iframe></div>`;
-    else      mediaHTML += `<div class="media-section-title">🎬 EA WORKING VIDEO</div><a class="btn btn-ghost" href="${p.ytLink}" target="_blank" style="display:inline-flex;margin-bottom:10px;">▶ Watch EA Video</a>`;
+    else mediaHTML += `<div class="media-section-title">🎬 EA WORKING VIDEO</div><a class="btn btn-ghost" href="${p.ytLink}" target="_blank" style="display:inline-flex;margin-bottom:10px;">▶ Watch EA Video</a>`;
   }
-  if (p.resultImgs && p.resultImgs.length) {
-    mediaHTML += `<div class="media-section-title" style="margin-top:30px;">📊 PROFIT & RESULTS SCREENSHOTS</div><div class="screenshots-grid">${p.resultImgs.map(s => `<img class="screenshot-thumb" src="${s}" onclick="openLightbox('${s}')">`).join('')}</div>`;
-  }
-  if (p.reviewImgs && p.reviewImgs.length) {
-    mediaHTML += `<div class="media-section-title" style="margin-top:30px;">⭐ CLIENT REVIEWS & FEEDBACK</div><div class="screenshots-grid">${p.reviewImgs.map(s => `<img class="screenshot-thumb" src="${s}" onclick="openLightbox('${s}')">`).join('')}</div>`;
-  }
+  if (p.resultImgs && p.resultImgs.length) mediaHTML += `<div class="media-section-title" style="margin-top:30px;">📊 PROFIT & RESULTS SCREENSHOTS</div><div class="screenshots-grid">${p.resultImgs.map(s=>`<img class="screenshot-thumb" src="${s}" onclick="openLightbox('${s}')">`).join('')}</div>`;
+  if (p.reviewImgs && p.reviewImgs.length) mediaHTML += `<div class="media-section-title" style="margin-top:30px;">⭐ CLIENT REVIEWS & FEEDBACK</div><div class="screenshots-grid">${p.reviewImgs.map(s=>`<img class="screenshot-thumb" src="${s}" onclick="openLightbox('${s}')">`).join('')}</div>`;
   mw.innerHTML = mediaHTML;
-
   updateUSDT();
   showPage('detail');
 }
@@ -1394,15 +1360,15 @@ function getYtId(url) {
 async function savePortfolio() {
   const label = document.getElementById('port-label').value.trim() || 'Client Result';
   if (!pendingPortfolioImgs.length) { toast('Please upload at least one image', 'warn'); return; }
-  pendingPortfolioImgs.forEach(img => {
-    siteData.portfolio.push({ id: Date.now().toString() + Math.random(), img, label });
-  });
+  pendingPortfolioImgs.forEach(img => siteData.portfolio.push({
+    id: Date.now().toString() + Math.random(), img, label
+  }));
   renderPortfolio();
   renderAdminPortfolio();
   pendingPortfolioImgs = [];
   document.getElementById('port-img-input').value = '';
-  document.getElementById('port-label').value     = '';
-  toast('✅ Portfolio updated! Saving to GitHub...');
+  document.getElementById('port-label').value = '';
+  toast('✅ Portfolio updated! Saving...');
   await save();
 }
 
@@ -1410,7 +1376,7 @@ async function deletePortfolioItem(id) {
   siteData.portfolio = siteData.portfolio.filter(p => p.id !== id);
   renderPortfolio();
   renderAdminPortfolio();
-  toast('🗑 Removed. Saving to GitHub...');
+  toast('🗑 Removed. Saving...');
   await save();
 }
 
@@ -1430,8 +1396,7 @@ function renderPortfolio() {
 function renderAdminPortfolio() {
   const cnt = document.getElementById('portfolio-count');
   if (cnt) cnt.textContent = siteData.portfolio.length;
-  const el = document.getElementById('admin-portfolio-list');
-  if (!el) return;
+  const el = document.getElementById('admin-portfolio-list'); if (!el) return;
   if (!siteData.portfolio.length) {
     el.innerHTML = '<p style="font-size:13px;color:var(--text3);">No portfolio items yet.</p>';
     return;
@@ -1447,18 +1412,18 @@ function renderAdminPortfolio() {
 // SOCIAL / PAYMENT / SETTINGS
 // ══════════════════════════════════════════════
 async function saveSocial() {
-  ['telegram', 'whatsapp', 'youtube', 'facebook'].forEach(k => {
+  ['telegram','whatsapp','youtube','facebook'].forEach(k => {
     const el = document.getElementById('s-' + k);
     if (el) siteData.social[k] = el.value.trim();
   });
-  toast('✅ Social links saved! Syncing to GitHub...');
+  toast('✅ Social links saved! Syncing...');
   await save();
 }
 
 async function savePayment() {
   siteData.usdt = document.getElementById('p-usdt-addr').value.trim();
   updateUSDT();
-  toast('✅ Payment settings saved! Syncing to GitHub...');
+  toast('✅ Payment settings saved! Syncing...');
   await save();
 }
 
@@ -1487,20 +1452,18 @@ async function changePw() {
   const nw  = document.getElementById('set-new-pw').value;
   const cf  = document.getElementById('set-confirm-pw').value;
   if (old !== siteData.password) { toast('❌ Current password incorrect', 'error'); return; }
-  if (nw.length < 6)             { toast('❌ Minimum 6 characters required', 'error'); return; }
+  if (nw.length < 6)             { toast('❌ Min 6 characters', 'error'); return; }
   if (nw !== cf)                 { toast('❌ Passwords do not match', 'error'); return; }
   siteData.password = nw;
-  ['set-old-pw', 'set-new-pw', 'set-confirm-pw'].forEach(id => {
-    document.getElementById(id).value = '';
-  });
-  toast('✅ Password updated! Syncing to GitHub...');
+  ['set-old-pw','set-new-pw','set-confirm-pw'].forEach(id => document.getElementById(id).value = '');
+  toast('✅ Password updated! Syncing...');
   await save();
 }
 
 async function saveSettings() {
   siteData.tagline = document.getElementById('set-tagline').value.trim();
   updateHeroTagline();
-  toast('✅ Settings saved! Syncing to GitHub...');
+  toast('✅ Saved! Syncing...');
   await save();
 }
 
@@ -1512,11 +1475,15 @@ function updateHeroTagline() {
 // ══════════════════════════════════════════════
 // TOAST
 // ══════════════════════════════════════════════
-function toast(msg, type = 'success') {
+function toast(msg, type='success') {
   const t = document.getElementById('toast');
   t.textContent = msg;
-  t.style.borderColor = type === 'error' ? 'rgba(255,77,106,0.5)' : type === 'warn' ? 'rgba(245,200,66,0.4)' : 'var(--border-accent)';
-  t.style.color       = type === 'error' ? '#ff8a9a'              : type === 'warn' ? 'var(--gold)'            : 'var(--accent)';
+  t.style.borderColor = type==='error' ? 'rgba(255,77,106,0.5)' : type==='warn' ? 'rgba(245,200,66,0.4)' : 'var(--border-accent)';
+  t.style.color = type==='error' ? '#ff8a9a' : type==='warn' ? 'var(--gold)' : 'var(--accent)';
   t.classList.add('show');
   clearTimeout(t._t);
-  t._t = setTimeout(() => t.classList.remove('show'), 3400);
+  t._t = setTimeout(() => t.classList.remove('show'), 3200);
+}
+</script>
+</body>
+</html>
