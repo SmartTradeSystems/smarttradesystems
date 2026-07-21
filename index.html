@@ -760,17 +760,17 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
               <select id="p-copy"><option value="no">No</option><option value="yes">Yes — show Copy Trading button</option></select>
             </div>
             <div class="form-group"><label>EA COVER IMAGE</label>
-              <div class="img-upload-area"><input type="file" id="p-img-input" accept="image/*" onchange="previewImg(this,'p-img-preview')"><div class="up-icon">🖼</div><p>Click to upload cover image</p><small>JPG, PNG, WebP</small></div>
+              <div class="img-upload-area"><input type="file" id="p-img-input" accept="image/*" onchange="previewImg(this,'p-img-preview')"><div class="up-icon">🖼</div><p>Click to upload cover image</p><small>JPG, PNG, WebP — max 300 KB</small></div>
               <img id="p-img-preview" class="img-preview" style="display:none">
             </div>
             <div class="form-group">
               <label>📸 PROFIT / RESULTS SCREENSHOTS</label>
-              <div class="img-upload-area"><input type="file" id="p-results-input" accept="image/*" multiple onchange="previewMultiple(this,'p-results-preview','resultImgs')"><div class="up-icon">📊</div><p>Click to upload profit / results screenshots</p><small>Multiple files allowed</small></div>
+              <div class="img-upload-area"><input type="file" id="p-results-input" accept="image/*" multiple onchange="previewMultiple(this,'p-results-preview','resultImgs')"><div class="up-icon">📊</div><p>Click to upload profit / results screenshots</p><small>Multiple files allowed — max 300 KB each</small></div>
               <div id="p-results-preview" class="screenshots-preview"></div>
             </div>
             <div class="form-group">
               <label>⭐ CLIENT REVIEW SCREENSHOTS</label>
-              <div class="img-upload-area"><input type="file" id="p-reviews-input" accept="image/*" multiple onchange="previewMultiple(this,'p-reviews-preview','reviewImgs')"><div class="up-icon">⭐</div><p>Click to upload client review screenshots</p><small>Multiple files allowed</small></div>
+              <div class="img-upload-area"><input type="file" id="p-reviews-input" accept="image/*" multiple onchange="previewMultiple(this,'p-reviews-preview','reviewImgs')"><div class="up-icon">⭐</div><p>Click to upload client review screenshots</p><small>Multiple files allowed — max 300 KB each</small></div>
               <div id="p-reviews-preview" class="screenshots-preview"></div>
             </div>
             <button class="btn btn-accent" style="width:100%;padding:14px;font-size:14px;" onclick="addProduct()">+ Add Product</button>
@@ -810,7 +810,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
         <p style="font-size:13px;color:var(--text2);margin-bottom:26px;line-height:1.68;">These screenshots appear on the homepage "Client Results & Reviews" section.</p>
         <div class="form-group">
           <label>UPLOAD PORTFOLIO SCREENSHOTS</label>
-          <div class="img-upload-area"><input type="file" id="port-img-input" accept="image/*" multiple onchange="addPortfolioImgs(this)"><div class="up-icon">🏆</div><p>Click to upload client results / review screenshots</p><small>Multiple files allowed</small></div>
+          <div class="img-upload-area"><input type="file" id="port-img-input" accept="image/*" multiple onchange="addPortfolioImgs(this)"><div class="up-icon">🏆</div><p>Click to upload client results / review screenshots</p><small>Multiple files allowed — max 300 KB each</small></div>
         </div>
         <div class="form-group"><label>LABEL FOR THESE IMAGES</label><input type="text" id="port-label" placeholder="e.g. Client Profit — XAUUSD EA, May 2025"></div>
         <button class="btn btn-accent" style="padding:12px 30px;" onclick="savePortfolio()">Add to Portfolio</button>
@@ -1185,10 +1185,20 @@ function loadAdminForms() {
 }
 
 // ══════════════════════════════════════════════
-// IMAGE HELPERS
+// IMAGE HELPERS — now with a 300 KB per-image size guard.
+// This stops oversized images from ever being added to siteData,
+// which is what previously caused data.json to exceed GitHub's
+// ~1MB read limit and silently wipe out existing data on save.
 // ══════════════════════════════════════════════
+const MAX_IMAGE_BYTES = 300 * 1024; // 300 KB per image
+
 function previewImg(input, previewId) {
   const f = input.files[0]; if (!f) return;
+  if (f.size > MAX_IMAGE_BYTES) {
+    toast('⚠ Image too large (' + (f.size/1024/1024).toFixed(2) + ' MB). Max allowed is 300 KB. Please compress it first.', 'error');
+    input.value = '';
+    return;
+  }
   const r = new FileReader();
   r.onload = e => {
     const img = document.getElementById(previewId);
@@ -1202,7 +1212,9 @@ function previewMultiple(input, previewId, varName) {
   const files = Array.from(input.files); if (!files.length) return;
   const container = document.getElementById(previewId);
   const arr = varName === 'resultImgs' ? pendingResultImgs : pendingReviewImgs;
+  let rejected = 0;
   files.forEach(f => {
+    if (f.size > MAX_IMAGE_BYTES) { rejected++; return; }
     const r = new FileReader();
     r.onload = e => {
       arr.push(e.target.result);
@@ -1212,15 +1224,24 @@ function previewMultiple(input, previewId, varName) {
     };
     r.readAsDataURL(f);
   });
+  if (rejected > 0) {
+    toast('⚠ ' + rejected + ' image(s) skipped — over 300 KB limit. Compress them first.', 'error');
+  }
+  input.value = ''; // reset so re-selecting the same file re-triggers onchange
 }
 
 function addPortfolioImgs(input) {
   pendingPortfolioImgs = [];
+  let rejected = 0;
   Array.from(input.files).forEach(f => {
+    if (f.size > MAX_IMAGE_BYTES) { rejected++; return; }
     const r = new FileReader();
     r.onload = e => pendingPortfolioImgs.push(e.target.result);
     r.readAsDataURL(f);
   });
+  if (rejected > 0) {
+    toast('⚠ ' + rejected + ' image(s) skipped — over 300 KB limit. Compress them first.', 'error');
+  }
 }
 
 // ══════════════════════════════════════════════
