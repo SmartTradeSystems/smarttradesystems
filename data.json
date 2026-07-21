@@ -26,14 +26,5 @@
     }
   ],
   "portfolio": [],
-  "authorizedAccounts": [
-    {
-      "id": "1784655453951",
-      "eaId": "1784636939772",
-      "eaName": "Smart Gold Nitro EA",
-      "account": "786",
-      "note": "",
-      "expiry": ""
-    }
-  ]
+  "authorizedAccounts": []
 }
