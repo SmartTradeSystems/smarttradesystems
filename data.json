@@ -8,23 +8,7 @@
     "youtube": "https://youtube.com/@smartealab2252?si=SsLo_XStRoWUvu3c",
     "facebook": ""
   },
-  "products": [
-    {
-      "id": "1784636939772",
-      "name": "Smart Gold Nitro EA",
-      "price": 450,
-      "category": "myea",
-      "desc": "XAUUSD SCALPER",
-      "pair": "XAUUSD",
-      "version": "MQL5",
-      "type": "SCALPER",
-      "ytLink": "",
-      "copy": "no",
-      "img": "",
-      "resultImgs": [],
-      "reviewImgs": []
-    }
-  ],
+  "products": [],
   "portfolio": [
     {
       "id": "17846611212460.5881462128449892",
