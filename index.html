@@ -323,6 +323,14 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 44px
 .sync-dot.purple{background:var(--accent);animation:pulse 1.2s infinite;}
 .sync-dot.red{background:var(--red);}
 
+/* ACCOUNT / LICENSE LIST */
+.account-item{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;display:flex;align-items:center;gap:14px;transition:border-color .2s;margin-bottom:10px;}
+.account-item:hover{border-color:var(--border-accent);}
+.account-badge{width:46px;height:46px;border-radius:10px;background:rgba(124,92,252,0.1);border:1px solid rgba(124,92,252,0.2);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;}
+.account-info{flex:1;min-width:0;}
+.account-info strong{font-size:14.5px;font-weight:800;display:block;margin-bottom:3px;font-family:'Consolas','Courier New',monospace;letter-spacing:0.3px;}
+.account-info span{font-size:12px;color:var(--text2);}
+
 /* TOAST */
 .toast{position:fixed;bottom:28px;right:28px;background:var(--bg2);border:1px solid var(--border-accent);border-radius:12px;padding:14px 22px;font-size:13.5px;color:var(--accent);z-index:9999;transform:translateY(16px);opacity:0;transition:all .35s;box-shadow:var(--shadow);max-width:320px;}
 .toast.show{transform:translateY(0);opacity:1;}
@@ -713,6 +721,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
       </div>
       <div class="admin-tabs">
         <button class="admin-tab active" onclick="switchTab('products',this)">🏪 Products</button>
+        <button class="admin-tab" onclick="switchTab('accounts',this)">🔑 Accounts</button>
         <button class="admin-tab" onclick="switchTab('portfolio',this)">🏆 Portfolio</button>
         <button class="admin-tab" onclick="switchTab('social',this)">📱 Social</button>
         <button class="admin-tab" onclick="switchTab('payment',this)">💳 Payment</button>
@@ -769,6 +778,28 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
           <div class="products-panel">
             <h3>Your Products <span id="products-count" style="font-size:12px;color:var(--text3);font-weight:400;"></span></h3>
             <div id="admin-products-list"><p style="font-size:13px;color:var(--text3);">No products yet.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACCOUNTS TAB (EA LICENSING) -->
+      <div id="atab-accounts" class="admin-section">
+        <div class="add-layout">
+          <div>
+            <h3 style="font-size:15px;font-weight:800;margin-bottom:22px;">Add Authorized MT4/MT5 Account</h3>
+            <div class="notice" style="margin-bottom:22px;"><strong>How this works:</strong> Add the client's MetaTrader account number here and link it to one of your EAs below. Your EA (using the license check code) will only run for account numbers listed here. Deleting an account instantly revokes that EA's access after the next sync.</div>
+            <div class="form-group"><label>LINKED EA</label>
+              <select id="acc-ea"><option value="">— Select an EA from your Products —</option></select>
+              <p class="form-helper">Only EAs added in the Products tab appear here. Add the EA there first if you don't see it.</p>
+            </div>
+            <div class="form-group"><label>MT4 / MT5 ACCOUNT NUMBER</label><input type="text" id="acc-number" placeholder="e.g. 12345678" inputmode="numeric"></div>
+            <div class="form-group"><label>CLIENT NAME / NOTE (optional)</label><input type="text" id="acc-note" placeholder="e.g. Ali — purchased 21 July 2026"></div>
+            <div class="form-group"><label>EXPIRY DATE (optional)</label><input type="date" id="acc-expiry"><p class="form-helper">Leave blank for a lifetime license.</p></div>
+            <button class="btn btn-accent" style="width:100%;padding:14px;font-size:14px;" onclick="addAccount()">+ Add Authorized Account</button>
+          </div>
+          <div class="products-panel">
+            <h3>Authorized Accounts <span id="accounts-count" style="font-size:12px;color:var(--text3);font-weight:400;"></span></h3>
+            <div id="admin-accounts-list"><p style="font-size:13px;color:var(--text3);">No accounts added yet.</p></div>
           </div>
         </div>
       </div>
@@ -976,7 +1007,8 @@ let siteData = {
   tagline: '',
   social: { telegram:'', whatsapp:'', youtube:'', facebook:'' },
   products: [],
-  portfolio: []
+  portfolio: [],
+  authorizedAccounts: []
 };
 let pendingResultImgs = [], pendingReviewImgs = [], pendingPortfolioImgs = [];
 let adminLoggedIn = false;
@@ -985,6 +1017,7 @@ function applyRemoteData(remote) {
   if (!remote) return;
   siteData = { ...siteData, ...remote };
   if (remote.social) siteData.social = { ...siteData.social, ...remote.social };
+  if (!Array.isArray(siteData.authorizedAccounts)) siteData.authorizedAccounts = [];
 }
 
 async function save() {
@@ -1119,6 +1152,8 @@ async function checkPw() {
   loadAdminForms();
   renderAdminProducts();
   renderAdminPortfolio();
+  renderAccountEaDropdown();
+  renderAdminAccounts();
   setSyncStatus('synced', 'Connected ✓');
   toast('✅ Logged in successfully!');
 }
@@ -1136,6 +1171,7 @@ function switchTab(t, el) {
   if (el) el.classList.add('active');
   const sec = document.getElementById('atab-' + t);
   if (sec) sec.classList.add('active');
+  if (t === 'accounts') { renderAccountEaDropdown(); renderAdminAccounts(); }
 }
 
 function loadAdminForms() {
@@ -1216,6 +1252,7 @@ async function addProduct() {
   renderAdminProducts();
   renderMarketplace();
   renderMyEA();
+  renderAccountEaDropdown();
   toast('✅ "' + name + '" added! Saving...');
   clearProductForm();
   await save();
@@ -1239,11 +1276,13 @@ function clearProductForm() {
 }
 
 async function deleteProduct(id) {
-  if (!confirm('Delete this product?')) return;
+  if (!confirm('Delete this product? Any authorized accounts linked to it will remain linked by name, but you should remove them too if the EA is discontinued.')) return;
   siteData.products = siteData.products.filter(p => p.id !== id);
   renderAdminProducts();
   renderMarketplace();
   renderMyEA();
+  renderAccountEaDropdown();
+  renderAdminAccounts();
   toast('🗑 Deleted. Saving...');
   await save();
 }
@@ -1264,6 +1303,75 @@ function renderAdminProducts() {
         <span>$${p.price} USDT · ${p.category === 'myea' ? 'Best EA' : 'Marketplace'} · ${p.version}${p.ytLink ? ' · 🎬' : ''}${p.resultImgs && p.resultImgs.length ? ' · 📸' + p.resultImgs.length : ''}${p.reviewImgs && p.reviewImgs.length ? ' · ⭐' + p.reviewImgs.length : ''}</span>
       </div>
       <div class="api-actions"><button class="btn btn-red btn-sm" onclick="deleteProduct('${p.id}')">Delete</button></div>
+    </div>`).join('');
+}
+
+// ══════════════════════════════════════════════
+// AUTHORIZED ACCOUNTS (EA LICENSING)
+// ══════════════════════════════════════════════
+function renderAccountEaDropdown() {
+  const sel = document.getElementById('acc-ea');
+  if (!sel) return;
+  const current = sel.value;
+  sel.innerHTML = '<option value="">— Select an EA from your Products —</option>' +
+    siteData.products.map(p => `<option value="${p.id}">${p.name} (${p.category === 'myea' ? 'Best EA' : 'Marketplace'})</option>`).join('');
+  if (current && siteData.products.some(p => p.id === current)) sel.value = current;
+}
+
+async function addAccount() {
+  const eaId   = document.getElementById('acc-ea').value;
+  const number = document.getElementById('acc-number').value.trim();
+  const note   = document.getElementById('acc-note').value.trim();
+  const expiry = document.getElementById('acc-expiry').value;
+
+  if (!eaId)   { toast('Please select which EA this account is for', 'error'); return; }
+  if (!number) { toast('Please enter the MT4/MT5 account number', 'error'); return; }
+  if (!/^\d+$/.test(number)) { toast('Account number should contain digits only', 'error'); return; }
+
+  const ea = siteData.products.find(p => p.id === eaId);
+  const eaName = ea ? ea.name : 'Unknown EA';
+
+  const duplicate = siteData.authorizedAccounts.find(a => a.eaId === eaId && a.account === number);
+  if (duplicate) { toast('⚠ This account is already authorized for this EA', 'warn'); return; }
+
+  siteData.authorizedAccounts.push({
+    id: Date.now().toString(),
+    eaId, eaName, account: number, note, expiry
+  });
+
+  renderAdminAccounts();
+  toast('✅ Account ' + number + ' authorized for "' + eaName + '"! Saving...');
+  document.getElementById('acc-number').value = '';
+  document.getElementById('acc-note').value = '';
+  document.getElementById('acc-expiry').value = '';
+  await save();
+}
+
+async function deleteAccount(id) {
+  if (!confirm('Remove this account? The EA will stop working for this account number after the next sync.')) return;
+  siteData.authorizedAccounts = siteData.authorizedAccounts.filter(a => a.id !== id);
+  renderAdminAccounts();
+  toast('🗑 Account removed. Saving...');
+  await save();
+}
+
+function renderAdminAccounts() {
+  const el  = document.getElementById('admin-accounts-list');
+  const cnt = document.getElementById('accounts-count');
+  if (!el) return;
+  if (cnt) cnt.textContent = siteData.authorizedAccounts.length ? `(${siteData.authorizedAccounts.length})` : '';
+  if (!siteData.authorizedAccounts.length) {
+    el.innerHTML = '<p style="font-size:13px;color:var(--text3);">No accounts added yet.</p>';
+    return;
+  }
+  el.innerHTML = siteData.authorizedAccounts.map(a => `
+    <div class="account-item">
+      <div class="account-badge">🔑</div>
+      <div class="account-info">
+        <strong>${a.account}</strong>
+        <span>${a.eaName}${a.note ? ' · ' + a.note : ''}${a.expiry ? ' · expires ' + a.expiry : ' · lifetime'}</span>
+      </div>
+      <div class="api-actions"><button class="btn btn-red btn-sm" onclick="deleteAccount('${a.id}')">Delete</button></div>
     </div>`).join('');
 }
 
