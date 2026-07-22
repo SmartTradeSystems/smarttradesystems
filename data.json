@@ -8,7 +8,23 @@
     "youtube": "https://youtube.com/@smartealab2252?si=SsLo_XStRoWUvu3c",
     "facebook": ""
   },
-  "products": [],
+  "products": [
+    {
+      "id": "1784684212883",
+      "name": "Smart Gold Nitro EA",
+      "price": 450,
+      "category": "myea",
+      "desc": "Smart Gold Nitro EA",
+      "pair": "XAUUSD",
+      "version": "MQL5",
+      "type": "Hedge Scalper",
+      "ytLink": "https://youtu.be/wgb7xizl06s",
+      "copy": "no",
+      "img": "",
+      "resultImgs": [],
+      "reviewImgs": []
+    }
+  ],
   "portfolio": [],
   "authorizedAccounts": []
 }
