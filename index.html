@@ -760,6 +760,1760 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44p
               <select id="p-copy"><option value="no">No</option><option value="yes">Yes — show Copy Trading button</option></select>
             </div>
             <div class="form-group"><label>EA COVER IMAGE</label>
+              <div class="img-upload-area"><input type="file" id="p-img-input" accept="image/*" onchange="previewImg(this,'p-img-preview')"><div class="up-icon">🖼</div><p>Click to upload cover image</p><small id="p-img-help">JPG, PNG, WebP — max 500 KB</small></div>
+              <img id="p-img-preview" class="img-preview" style="display:none">
+            </div>
+            <div class="form-group">
+              <label>📸 PROFIT / RESULTS SCREENSHOTS</label>
+              <div class="img-upload-area"><input type="file" id="p-results-input" accept="image/*" multiple onchange="previewMultiple(this,'p-results-preview','resultImgs')"><div class="up-icon">📊</div><p>Click to upload profit / results screenshots</p><small>Multiple files allowed — max 500 KB each</small></div>
+              <div id="p-results-preview" class="screenshots-preview"></div>
+            </div>
+            <div class="form-group">
+              <label>⭐ CLIENT REVIEW SCREENSHOTS</label>
+              <div class="img-upload-area"><input type="file" id="p-reviews-input" accept="image/*" multiple onchange="previewMultiple(this,'p-reviews-preview','reviewImgs')"><div class="up-icon">⭐</div><p>Click to upload client review screenshots</p><small>Multiple files allowed — max 500 KB each</small></div>
+              <div id="p-reviews-preview" class="screenshots-preview"></div>
+            </div>
+            <button class="btn btn-accent" style="width:100%;padding:14px;font-size:14px;" onclick="addProduct()">+ Add Product</button>
+          </div>
+          <div class="products-panel">
+            <h3>Your Products <span id="products-count" style="font-size:12px;color:var(--text3);font-weight:400;"></span></h3>
+            <div id="admin-products-list"><p style="font-size:13px;color:var(--text3);">No products yet.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACCOUNTS TAB (EA LICENSING) -->
+      <div id="atab-accounts" class="admin-section">
+        <div class="add-layout">
+          <div>
+            <h3 style="font-size:15px;font-weight:800;margin-bottom:22px;">Add Authorized MT4/MT5 Account</h3>
+            <div class="notice" style="margin-bottom:22px;"><strong>How this works:</strong> Add the client's MetaTrader account number here and link it to one of your EAs below. Your EA (using the license check code) will only run for account numbers listed here. Deleting an account instantly revokes that EA's access after the next sync.</div>
+            <div class="form-group"><label>LINKED EA</label>
+              <select id="acc-ea"><option value="">— Select an EA from your Products —</option></select>
+              <p class="form-helper">Only EAs added in the Products tab appear here. Add the EA there first if you don't see it.</p>
+            </div>
+            <div class="form-group"><label>MT4 / MT5 ACCOUNT NUMBER</label><input type="text" id="acc-number" placeholder="e.g. 12345678" inputmode="numeric"></div>
+            <div class="form-group"><label>CLIENT NAME / NOTE (optional)</label><input type="text" id="acc-note" placeholder="e.g. Ali — purchased 21 July 2026"></div>
+            <div class="form-group"><label>EXPIRY DATE (optional)</label><input type="date" id="acc-expiry"><p class="form-helper">Leave blank for a lifetime license.</p></div>
+            <button class="btn btn-accent" style="width:100%;padding:14px;font-size:14px;" onclick="addAccount()">+ Add Authorized Account</button>
+          </div>
+          <div class="products-panel">
+            <h3>Authorized Accounts <span id="accounts-count" style="font-size:12px;color:var(--text3);font-weight:400;"></span></h3>
+            <div id="admin-accounts-list"><p style="font-size:13px;color:var(--text3);">No accounts added yet.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PORTFOLIO TAB -->
+      <div id="atab-portfolio" class="admin-section">
+        <h3 style="font-size:15px;font-weight:800;margin-bottom:22px;">Client Results & Portfolio</h3>
+        <p style="font-size:13px;color:var(--text2);margin-bottom:26px;line-height:1.68;">These screenshots appear on the homepage "Client Results & Reviews" section.</p>
+        <div class="form-group">
+          <label>UPLOAD PORTFOLIO SCREENSHOTS</label>
+          <div class="img-upload-area"><input type="file" id="port-img-input" accept="image/*" multiple onchange="addPortfolioImgs(this)"><div class="up-icon">🏆</div><p>Click to upload client results / review screenshots</p><small>Multiple files allowed — max 500 KB each</small></div>
+        </div>
+        <div class="form-group"><label>LABEL FOR THESE IMAGES</label><input type="text" id="port-label" placeholder="e.g. Client Profit — XAUUSD EA, May 2025"></div>
+        <button class="btn btn-accent" style="padding:12px 30px;" onclick="savePortfolio()">Add to Portfolio</button>
+        <div style="margin-top:30px;">
+          <h4 style="font-size:14px;font-weight:700;margin-bottom:16px;color:var(--text2);">Current Portfolio (<span id="portfolio-count">0</span> items)</h4>
+          <div id="admin-portfolio-list" style="display:flex;flex-wrap:wrap;gap:10px;"></div>
+        </div>
+      </div>
+
+      <!-- SOCIAL TAB -->
+      <div id="atab-social" class="admin-section">
+        <h3 style="font-size:15px;font-weight:800;margin-bottom:22px;">Social Media & Contact Links</h3>
+        <div class="settings-block"><h3>✈ Telegram</h3>
+          <div class="form-group"><label>LINK</label><input type="text" id="s-telegram" placeholder="https://t.me/yourusername"></div>
+        </div>
+        <div class="settings-block"><h3>💬 WhatsApp</h3>
+          <div class="form-group"><label>LINK</label><input type="text" id="s-whatsapp" placeholder="https://wa.me/923001234567"></div>
+        </div>
+        <div class="settings-block"><h3>▶ YouTube</h3>
+          <div class="form-group"><label>CHANNEL LINK</label><input type="text" id="s-youtube" placeholder="https://youtube.com/@yourchannel"></div>
+        </div>
+        <div class="settings-block"><h3>📘 Facebook</h3>
+          <div class="form-group"><label>PAGE LINK</label><input type="text" id="s-facebook" placeholder="https://facebook.com/yourpage"></div>
+        </div>
+        <button class="btn btn-accent" style="padding:12px 30px;" onclick="saveSocial()">Save Social Links</button>
+      </div>
+
+      <!-- PAYMENT TAB -->
+      <div id="atab-payment" class="admin-section">
+        <h3 style="font-size:15px;font-weight:800;margin-bottom:22px;">Payment Settings</h3>
+        <div class="settings-block"><h3>💳 USDT TRC20 Wallet Address</h3>
+          <div class="form-group"><label>USDT ADDRESS (TRC20)</label><input type="text" id="p-usdt-addr" placeholder="Your USDT TRC20 wallet address..."></div>
+          <div class="notice notice-gold" style="margin-top:6px;"><strong>Important:</strong> We accept USDT on the TRC20 (TRON) network only. Double-check your wallet address before saving.</div>
+          <button class="btn btn-accent" style="margin-top:18px;padding:12px 28px;" onclick="savePayment()">Save Payment Settings</button>
+        </div>
+      </div>
+
+      <!-- SETTINGS TAB -->
+      <div id="atab-settings" class="admin-section">
+        <h3 style="font-size:15px;font-weight:800;margin-bottom:22px;">Website Settings</h3>
+        <div class="settings-block"><h3>🔐 Change Password</h3>
+          <div class="form-group"><label>CURRENT PASSWORD</label><input type="password" id="set-old-pw" placeholder="Current password"></div>
+          <div class="form-group"><label>NEW PASSWORD</label><input type="password" id="set-new-pw" placeholder="Min 6 characters"></div>
+          <div class="form-group"><label>CONFIRM NEW PASSWORD</label><input type="password" id="set-confirm-pw" placeholder="Repeat new password"></div>
+          <button class="btn btn-accent" style="padding:12px 26px;" onclick="changePw()">Update Password</button>
+        </div>
+        <div class="settings-block"><h3>🌐 Homepage Hero Text</h3>
+          <div class="form-group"><label>SUBTITLE TEXT</label><textarea id="set-tagline" style="min-height:80px;" placeholder="Custom text shown on the homepage hero..."></textarea></div>
+          <button class="btn btn-accent" style="padding:12px 26px;" onclick="saveSettings()">Save Settings</button>
+        </div>
+        <div class="settings-block"><h3>🔗 GitHub Connection</h3>
+          <p style="font-size:13px;color:var(--text2);margin-bottom:6px;">Repo: <strong style="color:var(--accent)">SmartTradeSystems/smarttradesystems</strong></p>
+          <p style="font-size:12px;color:var(--text3);margin-bottom:6px;">Branch: <strong style="color:var(--accent)" id="gh-branch-label">main</strong> — images upload to the <code>images/</code> folder in this branch.</p>
+          <p style="font-size:12px;color:var(--text3);margin-bottom:14px;">Your GitHub token is entered each login session and never stored on this device.</p>
+          <button class="btn btn-ghost btn-sm" onclick="logoutAdmin()">Logout</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:11px;">
+        <div class="logo-icon" style="width:34px;height:34px;border-radius:8px;flex-shrink:0;">
+          <svg viewBox="0 0 22 22" fill="none" style="width:16px;height:16px;"><polyline points="2,17 6,10 11,13 16,5 20,8" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span class="logo-name-f">Smart Trade Systems</span>
+      </div>
+      <p>Professional Forex EA development, marketplace, and copy trading. Backed by 10+ years of live market experience.</p>
+      <div class="footer-social">
+        <a class="soc-btn soc-tg" onclick="openLink('telegram')" title="Telegram">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M21.94 4.43a1.5 1.5 0 0 0-1.55-.22L2.8 11.14a1.5 1.5 0 0 0 .1 2.79l3.98 1.35 1.96 5.89a.75.75 0 0 0 1.27.27l2.37-2.54 4.18 3.08a1.5 1.5 0 0 0 2.33-.93l2.96-15.5a1.5 1.5 0 0 0-.01-.12 1.5 1.5 0 0 0-.9-1.1zm-11.7 10.63-1.02 3.08-.94-2.82 7.7-6.06-5.74 5.8z" fill="#24A1DE"/></svg>
+        </a>
+        <a class="soc-btn soc-wa" onclick="openLink('whatsapp')" title="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.306A9.953 9.953 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm5.043 14.4c-.216.607-1.267 1.16-1.741 1.196-.474.036-.49.354-3.087-.716-2.597-1.07-4.2-3.72-4.327-3.893-.127-.173-1.032-1.434-1.032-2.738 0-1.305.658-1.949.908-2.213.25-.265.545-.332.727-.332.18 0 .36.003.519.01.166.008.388-.063.607.48.22.546.748 1.84.814 1.974.066.133.11.29.022.464-.088.175-.133.284-.265.437-.132.153-.278.34-.397.457-.133.13-.271.27-.117.53.155.26.687 1.11 1.472 1.8.99.87 1.82 1.15 2.085 1.28.264.13.418.11.572-.065.154-.175.66-.77.836-1.034.177-.265.353-.22.595-.132.242.088 1.534.726 1.797.858.263.132.438.198.503.308.065.11.065.635-.152 1.249z" fill="#25D366"/></svg>
+        </a>
+        <a class="soc-btn soc-yt" onclick="openLink('youtube')" title="YouTube">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M21.8 7.2s-.2-1.4-.82-2.02c-.79-.82-1.67-.82-2.07-.87C16.24 4.1 12 4.1 12 4.1s-4.24 0-6.91.21c-.4.05-1.28.05-2.07.87C2.4 5.8 2.2 7.2 2.2 7.2S2 8.84 2 10.48v1.53c0 1.64.2 3.28.2 3.28s.2 1.4.82 2.02c.79.82 1.83.79 2.29.88C6.8 18.38 12 18.4 12 18.4s4.24 0 6.91-.22c.4-.05 1.28-.06 2.07-.88.62-.62.82-2.02.82-2.02S22 13.65 22 12v-1.53c0-1.64-.2-3.27-.2-3.27zM9.74 14.85V8.66l5.59 3.1-5.59 3.09z" fill="#FF0000"/></svg>
+        </a>
+        <a class="soc-btn soc-fb" onclick="openLink('facebook')" title="Facebook">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill="#1877F2"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>SERVICES</h4>
+      <a onclick="showPage('coding')">Custom EA Coding</a>
+      <a onclick="showPage('marketplace')">EA Marketplace</a>
+      <a onclick="showPage('myea')">Our Best EAs</a>
+      <a onclick="openLink('telegram')">Copy Trading</a>
+    </div>
+    <div class="footer-col">
+      <h4>QUICK LINKS</h4>
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="showPage('home');setTimeout(()=>document.querySelector('.faq-list').scrollIntoView({behavior:'smooth'}),300)">FAQ</a>
+      <a onclick="showAdmin()">Admin Login</a>
+      <a onclick="openLink('telegram')">Contact Us</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 <strong>Smart Trade Systems</strong> — All rights reserved.</p>
+    <p>Trading involves risk. Past performance does not guarantee future results.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════════
+// CONFIG
+// ══════════════════════════════════════════════
+const GH_REPO       = 'SmartTradeSystems/smarttradesystems';
+const GH_DATA_FILE  = 'data.json';
+const GH_BRANCH     = 'main';          // <-- set this to your repo's default branch name (check on GitHub if unsure — 'main' or 'master')
+const GH_IMAGES_DIR = 'images';        // images are uploaded here as separate files, NOT inside data.json
+
+// Token is held only in memory — never written to localStorage or any browser storage
+let ghToken   = '';
+let ghFileSha = '';
+
+// ══════════════════════════════════════════════
+// GITHUB FETCH (data.json)
+// ══════════════════════════════════════════════
+async function ghFetchData() {
+  try {
+    const headers = { 'Accept': 'application/vnd.github+json' };
+    if (ghToken) headers['Authorization'] = 'Bearer ' + ghToken;
+    const url = `https://api.github.com/repos/${GH_REPO}/contents/${GH_DATA_FILE}?ref=${GH_BRANCH}&t=${Date.now()}`;
+    const res = await fetch(url, { headers, cache: 'no-store' });
+    if (res.status === 404) return null;
+    if (!res.ok) throw new Error('Status ' + res.status);
+    const json = await res.json();
+    ghFileSha = json.sha;
+    if (!json.content) {
+      // File too large for the Contents API to inline (this should no longer happen
+      // now that images are stored separately, but guard against it anyway).
+      throw new Error('data.json has no inline content — it may be too large. Check the images/ folder migration.');
+    }
+    return JSON.parse(decodeURIComponent(escape(atob(json.content.replace(/\n/g,'')))));
+  } catch(e) {
+    console.error('ghFetchData:', e);
+    return null;
+  }
+}
+
+// ══════════════════════════════════════════════
+// GITHUB SAVE (data.json — text only, no images)
+// ══════════════════════════════════════════════
+async function ghSaveData(data) {
+  if (!ghToken) { toast('⚠ No token — cannot save without GitHub token', 'warn'); return false; }
+  setSyncStatus('syncing', 'Saving to GitHub...');
+  try {
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+    const body = { message: 'Update site data', content, branch: GH_BRANCH, ...(ghFileSha ? { sha: ghFileSha } : {}) };
+    const res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_DATA_FILE}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'Bearer ' + ghToken,
+        'Content-Type': 'application/json',
+        'Accept': 'application/vnd.github+json'
+      },
+      body: JSON.stringify(body)
+    });
+    if (!res.ok) { const e = await res.json(); throw new Error(e.message || 'Save failed'); }
+    const result = await res.json();
+    ghFileSha = result.content.sha;
+    setSyncStatus('synced', 'Synced with GitHub ✓');
+    return true;
+  } catch(e) {
+    setSyncStatus('error', 'Sync failed — ' + e.message);
+    toast('❌ Save failed: ' + e.message, 'error');
+    return false;
+  }
+}
+
+// ══════════════════════════════════════════════
+// GITHUB IMAGE UPLOAD — images are uploaded as their own files under images/
+// and data.json only ever stores the resulting raw.githubusercontent.com URL
+// (a short string). This is what keeps data.json small and readable no matter
+// how many products/screenshots you add, and is the fix for the "wiped all
+// data" bug: the old code stored full base64 images inline in data.json,
+// which eventually exceeded GitHub's ~1MB Contents-API read limit — at that
+// point every device's ghFetchData() silently failed, siteData reset to
+// empty defaults, and the next save overwrote data.json with that empty state.
+// ══════════════════════════════════════════════
+function dataUrlToBase64(dataUrl) {
+  const parts = dataUrl.split(',');
+  return parts.length > 1 ? parts[1] : dataUrl;
+}
+
+function dataUrlExt(dataUrl) {
+  const m = dataUrl.match(/^data:image\/(\w+);/);
+  const ext = m ? m[1].toLowerCase() : 'jpg';
+  return ext === 'jpeg' ? 'jpg' : ext;
+}
+
+function makeImageFilename(dataUrl) {
+  const rand = Math.random().toString(36).slice(2, 9);
+  return `${Date.now()}-${rand}.${dataUrlExt(dataUrl)}`;
+}
+
+async function ghUploadImage(dataUrl) {
+  if (!ghToken) { toast('⚠ No token — cannot upload images without GitHub token', 'warn'); return null; }
+  const filename = makeImageFilename(dataUrl);
+  const path = `${GH_IMAGES_DIR}/${filename}`;
+  try {
+    const res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${path}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'Bearer ' + ghToken,
+        'Content-Type': 'application/json',
+        'Accept': 'application/vnd.github+json'
+      },
+      body: JSON.stringify({
+        message: 'Upload image ' + filename,
+        content: dataUrlToBase64(dataUrl),
+        branch: GH_BRANCH
+      })
+    });
+    if (!res.ok) { const e = await res.json(); throw new Error(e.message || 'Image upload failed'); }
+    return `https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/${path}`;
+  } catch(e) {
+    toast('❌ Image upload failed (' + filename + '): ' + e.message, 'error');
+    return null;
+  }
+}
+
+// Uploads an array of data-URL images sequentially (safer for GitHub API rate limits
+// than firing them all in parallel) and returns the array of resulting URLs.
+// Skips (and reports) any that failed rather than aborting the whole batch.
+async function ghUploadImages(dataUrls, progressLabel) {
+  const urls = [];
+  for (let i = 0; i < dataUrls.length; i++) {
+    showLoading(`${progressLabel} (${i + 1}/${dataUrls.length})...`);
+    const url = await ghUploadImage(dataUrls[i]);
+    if (url) urls.push(url);
+  }
+  return urls;
+}
+
+function setSyncStatus(state, text) {
+  const badge = document.getElementById('sync-status-badge');
+  const dot   = badge && badge.querySelector('.sync-dot');
+  const label = document.getElementById('sync-status-text');
+  if (!badge) return;
+  badge.className = 'sync-bar ' + state;
+  if (dot) dot.className = 'sync-dot ' + (state==='synced'?'green':state==='syncing'?'purple':'red');
+  if (label) label.textContent = text;
+}
+
+// ══════════════════════════════════════════════
+// SITE DATA — all in memory only (products/portfolio now store image URLs, not base64)
+// ══════════════════════════════════════════════
+let siteData = {
+  password: 'admin123',
+  usdt: '',
+  tagline: '',
+  social: { telegram:'', whatsapp:'', youtube:'', facebook:'' },
+  products: [],
+  portfolio: [],
+  authorizedAccounts: []
+};
+
+// Pending uploads are kept as data-URLs (for preview) until the moment of save,
+// when they get uploaded to GitHub as real image files.
+let pendingCoverImg = null;      // single data URL string or null
+let pendingResultImgs = [];      // array of data URL strings
+let pendingReviewImgs = [];      // array of data URL strings
+let pendingPortfolioImgs = [];   // array of data URL strings
+
+let adminLoggedIn = false;
+
+function applyRemoteData(remote) {
+  if (!remote) return;
+  siteData = { ...siteData, ...remote };
+  if (remote.social) siteData.social = { ...siteData.social, ...remote.social };
+  if (!Array.isArray(siteData.authorizedAccounts)) siteData.authorizedAccounts = [];
+}
+
+async function save() {
+  return await ghSaveData(siteData);
+}
+
+// ══════════════════════════════════════════════
+// LOAD DATA ON PAGE START — public fetch (no token needed for public repos)
+// ══════════════════════════════════════════════
+async function loadData() {
+  showLoading('Loading latest data...');
+  const remote = await ghFetchData();
+  hideLoading();
+  const branchLabel = document.getElementById('gh-branch-label');
+  if (branchLabel) branchLabel.textContent = GH_BRANCH;
+  if (remote) {
+    applyRemoteData(remote);
+    renderAll();
+  } else {
+    // Render with defaults if repo is empty or unreachable
+    renderAll();
+  }
+}
+
+function showLoading(msg) {
+  const ol = document.getElementById('loading-overlay');
+  const lm = document.getElementById('loading-msg');
+  if (ol) ol.classList.add('show');
+  if (lm && msg) lm.textContent = msg;
+}
+function hideLoading() {
+  const ol = document.getElementById('loading-overlay');
+  if (ol) ol.classList.remove('show');
+}
+
+loadData();
+
+function renderAll() {
+  renderMarketplace();
+  renderMyEA();
+  renderPortfolio();
+  updateUSDT();
+  updateHeroTagline();
+}
+
+// ══════════════════════════════════════════════
+// NAV
+// ══════════════════════════════════════════════
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const pg = document.getElementById(id);
+  if (pg) pg.classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const nl = document.getElementById('nav-' + id);
+  if (nl) nl.classList.add('active');
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+
+function showAdmin() {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('admin-page').classList.add('active');
+  if (!adminLoggedIn) {
+    document.getElementById('admin-login-wrap').style.display = '';
+    document.getElementById('admin-main-wrap').style.display = 'none';
+    // Never pre-fill token — user must type it each session
+    document.getElementById('admin-gh-token').value = '';
+    document.getElementById('admin-pw-input').value = '';
+  }
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+
+function openLink(type) {
+  const url = siteData.social[type];
+  if (url && url.trim()) window.open(url, '_blank');
+  else toast('⚠ Link not set. Go Admin → Social.', 'warn');
+}
+
+function toggleFaq(el) {
+  const item = el.parentElement, isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ══════════════════════════════════════════════
+// LIGHTBOX
+// ══════════════════════════════════════════════
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+// ══════════════════════════════════════════════
+// ADMIN LOGIN
+// Token is stored only in the in-memory variable `ghToken`.
+// It is never written to localStorage, sessionStorage, or any other
+// persistent browser storage. The user must re-enter it each session.
+// ══════════════════════════════════════════════
+async function checkPw() {
+  const token = document.getElementById('admin-gh-token').value.trim();
+  const pw    = document.getElementById('admin-pw-input').value;
+
+  if (!token) { toast('Please enter your GitHub Token', 'error'); return; }
+  if (!pw)    { toast('Please enter your password', 'error'); return; }
+
+  // Store token in memory only
+  ghToken = token;
+
+  showLoading('Connecting to GitHub...');
+  const remote = await ghFetchData();
+  hideLoading();
+
+  if (remote) {
+    applyRemoteData(remote);
+    renderAll();
+  }
+
+  if (pw !== siteData.password) {
+    toast('❌ Incorrect password', 'error');
+    document.getElementById('admin-pw-input').value = '';
+    ghToken = ''; // Clear token from memory on failed login
+    return;
+  }
+
+  adminLoggedIn = true;
+  document.getElementById('admin-login-wrap').style.display = 'none';
+  document.getElementById('admin-main-wrap').style.display = 'block';
+  document.getElementById('admin-pw-input').value = '';
+  loadAdminForms();
+  renderAdminProducts();
+  renderAdminPortfolio();
+  renderAccountEaDropdown();
+  renderAdminAccounts();
+  setSyncStatus('synced', 'Connected ✓');
+  toast('✅ Logged in successfully!');
+}
+
+function logoutAdmin() {
+  adminLoggedIn = false;
+  ghToken = ''; // Clear token from memory on logout
+  ghFileSha = '';
+  showPage('home');
+}
+
+function switchTab(t, el) {
+  document.querySelectorAll('.admin-tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
+  if (el) el.classList.add('active');
+  const sec = document.getElementById('atab-' + t);
+  if (sec) sec.classList.add('active');
+  if (t === 'accounts') { renderAccountEaDropdown(); renderAdminAccounts(); }
+}
+
+function loadAdminForms() {
+  const s = siteData.social;
+  ['telegram','whatsapp','youtube','facebook'].forEach(k => {
+    const el = document.getElementById('s-' + k);
+    if (el) el.value = s[k] || '';
+  });
+  document.getElementById('p-usdt-addr').value = siteData.usdt || '';
+  document.getElementById('set-tagline').value = siteData.tagline || '';
+}
+
+// ══════════════════════════════════════════════
+// IMAGE HELPERS — 500 KB per-image guard.
+// This is now purely a "keep pages fast" limit, not a data-safety limit —
+// images no longer live inside data.json, so oversized images can no longer
+// wipe your site data. Raise MAX_IMAGE_BYTES if you want, but very large
+// images will slow down page loads for visitors.
+// ══════════════════════════════════════════════
+const MAX_IMAGE_BYTES = 500 * 1024; // 500 KB per image
+
+function previewImg(input, previewId) {
+  const f = input.files[0]; if (!f) return;
+  if (f.size > MAX_IMAGE_BYTES) {
+    toast('⚠ Image too large (' + (f.size/1024/1024).toFixed(2) + ' MB). Max allowed is 500 KB. Please compress it first.', 'error');
+    input.value = '';
+    return;
+  }
+  const r = new FileReader();
+  r.onload = e => {
+    const img = document.getElementById(previewId);
+    img.src = e.target.result;
+    img.style.display = 'block';
+    // Store the data URL for upload at save time (uploaded to GitHub, not kept in data.json)
+    pendingCoverImg = e.target.result;
+  };
+  r.readAsDataURL(f);
+}
+
+function previewMultiple(input, previewId, varName) {
+  const files = Array.from(input.files); if (!files.length) return;
+  const container = document.getElementById(previewId);
+  const arr = varName === 'resultImgs' ? pendingResultImgs : pendingReviewImgs;
+  let rejected = 0;
+  files.forEach(f => {
+    if (f.size > MAX_IMAGE_BYTES) { rejected++; return; }
+    const r = new FileReader();
+    r.onload = e => {
+      arr.push(e.target.result); // data URL kept only until upload at save time
+      const img = document.createElement('img');
+      img.src = e.target.result;
+      container.appendChild(img);
+    };
+    r.readAsDataURL(f);
+  });
+  if (rejected > 0) {
+    toast('⚠ ' + rejected + ' image(s) skipped — over 500 KB limit. Compress them first.', 'error');
+  }
+  input.value = ''; // reset so re-selecting the same file re-triggers onchange
+}
+
+function addPortfolioImgs(input) {
+  pendingPortfolioImgs = [];
+  let rejected = 0;
+  Array.from(input.files).forEach(f => {
+    if (f.size > MAX_IMAGE_BYTES) { rejected++; return; }
+    const r = new FileReader();
+    r.onload = e => pendingPortfolioImgs.push(e.target.result);
+    r.readAsDataURL(f);
+  });
+  if (rejected > 0) {
+    toast('⚠ ' + rejected + ' image(s) skipped — over 500 KB limit. Compress them first.', 'error');
+  }
+}
+
+// ══════════════════════════════════════════════
+// PRODUCTS
+// Images are uploaded to GitHub as separate files first; only the resulting
+// URLs are stored in siteData / data.json.
+// ══════════════════════════════════════════════
+async function addProduct() {
+  const name     = document.getElementById('p-name').value.trim();
+  const price    = document.getElementById('p-price').value.trim();
+  const category = document.getElementById('p-category').value;
+  const desc     = document.getElementById('p-desc').value.trim();
+  const pair     = document.getElementById('p-pair').value.trim();
+  const version  = document.getElementById('p-version').value;
+  const type     = document.getElementById('p-type').value.trim();
+  const ytLink   = document.getElementById('p-youtube').value.trim();
+  const copy     = document.getElementById('p-copy').value;
+
+  if (!name || !price || !desc) { toast('Please fill Name, Price, and Description', 'error'); return; }
+  if (!ghToken) { toast('⚠ Please log in with your GitHub Token first', 'error'); return; }
+
+  showLoading('Uploading cover image...');
+  let imgUrl = '';
+  if (pendingCoverImg) {
+    imgUrl = await ghUploadImage(pendingCoverImg) || '';
+  }
+
+  const resultUrls = pendingResultImgs.length
+    ? await ghUploadImages(pendingResultImgs, 'Uploading results screenshots')
+    : [];
+  const reviewUrls = pendingReviewImgs.length
+    ? await ghUploadImages(pendingReviewImgs, 'Uploading review screenshots')
+    : [];
+
+  showLoading('Saving product data...');
+
+  const product = {
+    id: Date.now().toString(),
+    name, price: parseFloat(price), category, desc, pair, version, type, ytLink, copy,
+    img: imgUrl,
+    resultImgs: resultUrls,
+    reviewImgs: reviewUrls
+  };
+
+  siteData.products.push(product);
+  renderAdminProducts();
+  renderMarketplace();
+  renderMyEA();
+  renderAccountEaDropdown();
+  const ok = await save();
+  hideLoading();
+  if (ok) {
+    toast('✅ "' + name + '" added and synced!');
+    clearProductForm();
+  } else {
+    toast('❌ Product saved locally but sync failed — check your token/connection and try again.', 'error');
+  }
+}
+
+function clearProductForm() {
+  ['p-name','p-price','p-desc','p-pair','p-type','p-youtube'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.value = '';
+  });
+  document.getElementById('p-category').value = 'marketplace';
+  document.getElementById('p-copy').value = 'no';
+  document.getElementById('p-img-preview').style.display = 'none';
+  document.getElementById('p-img-preview').src = '';
+  document.getElementById('p-img-input').value = '';
+  document.getElementById('p-results-input').value = '';
+  document.getElementById('p-reviews-input').value = '';
+  document.getElementById('p-results-preview').innerHTML = '';
+  document.getElementById('p-reviews-preview').innerHTML = '';
+  pendingCoverImg = null;
+  pendingResultImgs = [];
+  pendingReviewImgs = [];
+}
+
+async function deleteProduct(id) {
+  if (!confirm('Delete this product? Its uploaded images will remain in the images/ folder on GitHub (unused, but harmless) — only the product entry is removed. Any authorized accounts linked to it will remain linked by name, but you should remove them too if the EA is discontinued.')) return;
+  siteData.products = siteData.products.filter(p => p.id !== id);
+  renderAdminProducts();
+  renderMarketplace();
+  renderMyEA();
+  renderAccountEaDropdown();
+  renderAdminAccounts();
+  showLoading('Saving...');
+  const ok = await save();
+  hideLoading();
+  toast(ok ? '🗑 Deleted and synced.' : '❌ Delete saved locally but sync failed.', ok ? 'success' : 'error');
+}
+
+function renderAdminProducts() {
+  const el  = document.getElementById('admin-products-list');
+  const cnt = document.getElementById('products-count');
+  if (cnt) cnt.textContent = siteData.products.length ? `(${siteData.products.length})` : '';
+  if (!siteData.products.length) {
+    el.innerHTML = '<p style="font-size:13px;color:var(--text3);">No products yet.</p>';
+    return;
+  }
+  el.innerHTML = siteData.products.map(p => `
+    <div class="admin-product-item">
+      ${p.img ? `<img src="${p.img}" alt="${p.name}">` : `<div class="api-thumb-ph">📦</div>`}
+      <div class="api-info">
+        <strong>${p.name}</strong>
+        <span>$${p.price} USDT · ${p.category === 'myea' ? 'Best EA' : 'Marketplace'} · ${p.version}${p.ytLink ? ' · 🎬' : ''}${p.resultImgs && p.resultImgs.length ? ' · 📸' + p.resultImgs.length : ''}${p.reviewImgs && p.reviewImgs.length ? ' · ⭐' + p.reviewImgs.length : ''}</span>
+      </div>
+      <div class="api-actions"><button class="btn btn-red btn-sm" onclick="deleteProduct('${p.id}')">Delete</button></div>
+    </div>`).join('');
+}
+
+// ══════════════════════════════════════════════
+// AUTHORIZED ACCOUNTS (EA LICENSING)
+// ══════════════════════════════════════════════
+function renderAccountEaDropdown() {
+  const sel = document.getElementById('acc-ea');
+  if (!sel) return;
+  const current = sel.value;
+  sel.innerHTML = '<option value="">— Select an EA from your Products —</option>' +
+    siteData.products.map(p => `<option value="${p.id}">${p.name} (${p.category === 'myea' ? 'Best EA' : 'Marketplace'})</option>`).join('');
+  if (current && siteData.products.some(p => p.id === current)) sel.value = current;
+}
+
+async function addAccount() {
+  const eaId   = document.getElementById('acc-ea').value;
+  const number = document.getElementById('acc-number').value.trim();
+  const note   = document.getElementById('acc-note').value.trim();
+  const expiry = document.getElementById('acc-expiry').value;
+
+  if (!eaId)   { toast('Please select which EA this account is for', 'error'); return; }
+  if (!number) { toast('Please enter the MT4/MT5 account number', 'error'); return; }
+  if (!/^\d+$/.test(number)) { toast('Account number should contain digits only', 'error'); return; }
+
+  const ea = siteData.products.find(p => p.id === eaId);
+  const eaName = ea ? ea.name : 'Unknown EA';
+
+  const duplicate = siteData.authorizedAccounts.find(a => a.eaId === eaId && a.account === number);
+  if (duplicate) { toast('⚠ This account is already authorized for this EA', 'warn'); return; }
+
+  siteData.authorizedAccounts.push({
+    id: Date.now().toString(),
+    eaId, eaName, account: number, note, expiry
+  });
+
+  renderAdminAccounts();
+  showLoading('Saving...');
+  const ok = await save();
+  hideLoading();
+  if (ok) {
+    toast('✅ Account ' + number + ' authorized for "' + eaName + '" and synced!');
+    document.getElementById('acc-number').value = '';
+    document.getElementById('acc-note').value = '';
+    document.getElementById('acc-expiry').value = '';
+  } else {
+    toast('❌ Saved locally but sync failed — check your token/connection.', 'error');
+  }
+}
+
+async function deleteAccount(id) {
+  if (!confirm('Remove this account? The EA will stop working for this account number after the next sync.')) return;
+  siteData.authorizedAccounts = siteData.authorizedAccounts.filter(a => a.id !== id);
+  renderAdminAccounts();
+  showLoading('Saving...');
+  const ok = await save();
+  hideLoading();
+  toast(ok ? '🗑 Account removed and synced.' : '❌ Removed locally but sync failed.', ok ? 'success' : 'error');
+}
+
+function renderAdminAccounts() {
+  const el  = document.getElementById('admin-accounts-list');
+  const cnt = document.getElementById('accounts-count');
+  if (!el) return;
+  if (cnt) cnt.textContent = siteData.authorizedAccounts.length ? `(${siteData.authorizedAccounts.length})` : '';
+  if (!siteData.authorizedAccounts.length) {
+    el.innerHTML = '<p style="font-size:13px;color:var(--text3);">No accounts added yet.</p>';
+    return;
+  }
+  el.innerHTML = siteData.authorizedAccounts.map(a => `
+    <div class="account-item">
+      <div class="account-badge">🔑</div>
+      <div class="account-info">
+        <strong>${a.account}</strong>
+        <span>${a.eaName}${a.note ? ' · ' + a.note : ''}${a.expiry ? ' · expires ' + a.expiry : ' · lifetime'}</span>
+      </div>
+      <div class="api-actions"><button class="btn btn-red btn-sm" onclick="deleteAccount('${a.id}')">Delete</button></div>
+    </div>`).join('');
+}
+
+// ══════════════════════════════════════════════
+// RENDER MARKETPLACE / MY EAs
+// ══════════════════════════════════════════════
+function renderMarketplace() {
+  const g = document.getElementById('marketplace-grid');
+  const items = siteData.products.filter(p => p.category === 'marketplace');
+  g.innerHTML = items.length
+    ? items.map(p => eaCardHTML(p, 'marketplace')).join('')
+    : '<div class="empty-state"><div class="empty-icon">🏪</div><p>No EAs yet.<br>Contact us on <strong style="color:var(--accent)">Telegram</strong>.</p></div>';
+}
+
+function renderMyEA() {
+  const g = document.getElementById('myea-grid');
+  const items = siteData.products.filter(p => p.category === 'myea');
+  const banner = document.getElementById('copy-trading-banner');
+  g.innerHTML = items.length
+    ? items.map(p => eaCardHTML(p, 'myea')).join('')
+    : '<div class="empty-state"><div class="empty-icon">⚡</div><p>No personal EAs yet.<br>Contact us on <strong style="color:var(--accent)">Telegram</strong>.</p></div>';
+  if (banner) banner.style.display = items.length ? 'block' : 'none';
+}
+
+function eaCardHTML(p, fromPage) {
+  const isMyEA = p.category === 'myea';
+  const imgH = p.img
+    ? `<img class="ea-thumb" src="${p.img}" alt="${p.name}">`
+    : `<div class="ea-thumb-placeholder">${isMyEA ? '⚡' : '📦'}</div>`;
+  const copyBtn = (isMyEA && p.copy === 'yes')
+    ? `<button class="ea-copy-btn" onclick="event.stopPropagation();openLink('telegram')">📊 Copy Our Trades</button>`
+    : '';
+  return `<div class="ea-card${isMyEA?' premium':''}">
+    ${imgH}
+    <div class="ea-body">
+      <div class="ea-top"><span class="ea-name">${p.name}</span><span class="ea-price${isMyEA?' gp':''}">$${p.price}</span></div>
+      <p class="ea-desc">${p.desc}</p>
+      <div class="ea-pills">
+        ${p.version?`<span class="ea-pill">${p.version}</span>`:''}
+        ${p.pair?`<span class="ea-pill">${p.pair}</span>`:''}
+        ${p.type?`<span class="ea-pill">${p.type}</span>`:''}
+        ${p.resultImgs&&p.resultImgs.length?`<span class="ea-pill">📸 ${p.resultImgs.length} results</span>`:''}
+      </div>
+      <div class="ea-actions">
+        <button class="ea-buy-btn ${isMyEA?'buy-g':'buy-a'}" onclick="showDetail('${p.id}','${fromPage}')">🛒 Buy — Pay USDT</button>
+        ${copyBtn}
+      </div>
+    </div>
+  </div>`;
+}
+
+// ══════════════════════════════════════════════
+// DETAIL
+// ══════════════════════════════════════════════
+function showDetail(id, fromPage) {
+  const p = siteData.products.find(x => x.id === id); if (!p) return;
+  const isMyEA = p.category === 'myea';
+  const bb = document.getElementById('detail-back-btn');
+  bb.onclick = () => showPage(fromPage);
+  bb.textContent = '← Back to ' + (fromPage === 'myea' ? 'Our Best EAs' : 'Marketplace');
+  document.getElementById('det-name').textContent = p.name;
+  document.getElementById('det-price').textContent = '$' + p.price + ' USDT';
+  document.getElementById('det-price').className = 'detail-price' + (isMyEA ? ' gp' : ' ap');
+  document.getElementById('det-desc').textContent = p.desc;
+  const pills = [p.version, p.pair, p.type].filter(Boolean);
+  document.getElementById('det-pills').innerHTML = pills.map(t => `<span class="tag tag-a">${t}</span>`).join('');
+  const iw = document.getElementById('detail-img-wrap');
+  iw.innerHTML = p.img
+    ? `<img class="detail-main-img" src="${p.img}" alt="${p.name}">`
+    : `<div class="detail-img-ph">${isMyEA ? '⚡' : '📦'}</div>`;
+  document.getElementById('det-copy-row').style.display = (isMyEA && p.copy === 'yes') ? 'block' : 'none';
+  const mw = document.getElementById('detail-media-wrap');
+  let mediaHTML = '';
+  if (p.ytLink) {
+    const vid = getYtId(p.ytLink);
+    if (vid) mediaHTML += `<div class="media-section-title">🎬 EA WORKING VIDEO</div><div class="detail-video-embed"><iframe src="https://www.youtube.com/embed/${vid}" allowfullscreen></iframe></div>`;
+    else mediaHTML += `<div class="media-section-title">🎬 EA WORKING VIDEO</div><a class="btn btn-ghost" href="${p.ytLink}" target="_blank" style="display:inline-flex;margin-bottom:10px;">▶ Watch EA Video</a>`;
+  }
+  if (p.resultImgs && p.resultImgs.length) mediaHTML += `<div class="media-section-title" style="margin-top:30px;">📊 PROFIT & RESULTS SCREENSHOTS</div><div class="screenshots-grid">${p.resultImgs.map(s=>`<img class="screenshot-thumb" src="${s}" onclick="openLightbox('${s}')">`).join('')}</div>`;
+  if (p.reviewImgs && p.reviewImgs.length) mediaHTML += `<div class="media-section-title" style="margin-top:30px;">⭐ CLIENT REVIEWS & FEEDBACK</div><div class="screenshots-grid">${p.reviewImgs.map(s=>`<img class="screenshot-thumb" src="${s}" onclick="openLightbox('${s}')">`).join('')}</div>`;
+  mw.innerHTML = mediaHTML;
+  updateUSDT();
+  showPage('detail');
+}
+
+function getYtId(url) {
+  const m = url.match(/(?:v=|youtu\.be\/|embed\/)([a-zA-Z0-9_-]{11})/);
+  return m ? m[1] : null;
+}
+
+// ══════════════════════════════════════════════
+// PORTFOLIO
+// Images uploaded to GitHub as separate files; only URLs stored in data.json.
+// ══════════════════════════════════════════════
+async function savePortfolio() {
+  const label = document.getElementById('port-label').value.trim() || 'Client Result';
+  if (!pendingPortfolioImgs.length) { toast('Please upload at least one image', 'warn'); return; }
+  if (!ghToken) { toast('⚠ Please log in with your GitHub Token first', 'error'); return; }
+
+  const urls = await ghUploadImages(pendingPortfolioImgs, 'Uploading portfolio images');
+  showLoading('Saving portfolio data...');
+
+  urls.forEach(url => siteData.portfolio.push({
+    id: Date.now().toString() + Math.random(), img: url, label
+  }));
+
+  renderPortfolio();
+  renderAdminPortfolio();
+  pendingPortfolioImgs = [];
+  document.getElementById('port-img-input').value = '';
+  document.getElementById('port-label').value = '';
+
+  const ok = await save();
+  hideLoading();
+  toast(ok ? '✅ Portfolio updated and synced!' : '❌ Saved locally but sync failed — check your token/connection.', ok ? 'success' : 'error');
+}
+
+async function deletePortfolioItem(id) {
+  siteData.portfolio = siteData.portfolio.filter(p => p.id !== id);
+  renderPortfolio();
+  renderAdminPortfolio();
+  showLoading('Saving...');
+  const ok = await save();
+  hideLoading();
+  toast(ok ? '🗑 Removed and synced.' : '❌ Removed locally but sync failed.', ok ? 'success' : 'error');
+}
+
+function renderPortfolio() {
+  const g = document.getElementById('portfolio-grid');
+  if (!siteData.portfolio.length) {
+    g.innerHTML = '<div class="empty-state" style="grid-column:1/-1;padding:52px 20px;"><div class="empty-icon">🏆</div><p>Client reviews and results will appear here.<br>Add them from <strong style="color:var(--accent)">Admin → Portfolio</strong>.</p></div>';
+    return;
+  }
+  g.innerHTML = siteData.portfolio.map(item => `
+    <div class="portfolio-card" onclick="openLightbox('${item.img}')">
+      <img class="portfolio-img" src="${item.img}" alt="${item.label}">
+      <div class="portfolio-label">${item.label}</div>
+    </div>`).join('');
+}
+
+function renderAdminPortfolio() {
+  const cnt = document.getElementById('portfolio-count');
+  if (cnt) cnt.textContent = siteData.portfolio.length;
+  const el = document.getElementById('admin-portfolio-list'); if (!el) return;
+  if (!siteData.portfolio.length) {
+    el.innerHTML = '<p style="font-size:13px;color:var(--text3);">No portfolio items yet.</p>';
+    return;
+  }
+  el.innerHTML = siteData.portfolio.map(item => `
+    <div style="position:relative;display:inline-block;">
+      <img src="${item.img}" style="width:92px;height:72px;object-fit:cover;border-radius:9px;border:1px solid var(--border);cursor:pointer;" onclick="openLightbox('${item.img}')" title="${item.label}">
+      <button onclick="deletePortfolioItem('${item.id}')" style="position:absolute;top:-6px;right:-6px;background:var(--red);border:none;color:#fff;border-radius:50%;width:21px;height:21px;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:900;">✕</button>
+    </div>`).join('');
+}
+
+// ══════════════════════════════════════════════
+// SOCIAL / PAYMENT / SETTINGS
+// ══════════════════════════════════════════════
+async function saveSocial() {
+  ['telegram','whatsapp','youtube','facebook'].forEach(k => {
+    const el = document.getElementById('s-' + k);
+    if (el) siteData.social[k] = el.value.trim();
+  });
+  showLoading('Saving...');
+  const ok = await save();
+  hideLoading();
+  toast(ok ? '✅ Social links saved and synced!' : '❌ Saved locally but sync failed.', ok ? 'success' : 'error');
+}
+
+async function savePayment() {
+  siteData.usdt = document.getElementById('p-usdt-addr').value.trim();
+  updateUSDT();
+  showLoading('Saving...');
+  const ok = await save();
+  hideLoading();
+  toast(ok ? '✅ Payment settings saved and synced!' : '❌ Saved locally but sync failed.', ok ? 'success' : 'error');
+}
+
+function updateUSDT() {
+  const el = document.getElementById('usdt-display');
+  if (el) el.textContent = siteData.usdt || '[ USDT TRC20 address not set — update in Admin → Payment ]';
+}
+
+function copyAddr() {
+  if (!siteData.usdt) { toast('No USDT address saved yet', 'warn'); return; }
+  navigator.clipboard.writeText(siteData.usdt)
+    .then(() => toast('📋 Address copied!'))
+    .catch(() => {
+      const t = document.createElement('textarea');
+      t.value = siteData.usdt;
+      document.body.appendChild(t);
+      t.select();
+      document.execCommand('copy');
+      document.body.removeChild(t);
+      toast('📋 Copied!');
+    });
+}
+
+async function changePw() {
+  const old = document.getElementById('set-old-pw').value;
+  const nw  = document.getElementById('set-new-pw').value;
+  const cf  = document.getElementById('set-confirm-pw').value;
+  if (old !== siteData.password) { toast('❌ Current password incorrect', 'error'); return; }
+  if (nw.length < 6)             { toast('❌ Min 6 characters', 'error'); return; }
+  if (nw !== cf)                 { toast('❌ Passwords do not match', 'error'); return; }
+  siteData.password = nw;
+  ['set-old-pw','set-new-pw','set-confirm-pw'].forEach(id => document.getElementById(id).value = '');
+  showLoading('Saving...');
+  const ok = await save();
+  hideLoading();
+  toast(ok ? '✅ Password updated and synced!' : '❌ Saved locally but sync failed.', ok ? 'success' : 'error');
+}
+
+async function saveSettings() {
+  siteData.tagline = document.getElementById('set-tagline').value.trim();
+  updateHeroTagline();
+  showLoading('Saving...');
+  const ok = await save();
+  hideLoading();
+  toast(ok ? '✅ Saved and synced!' : '❌ Saved locally but sync failed.', ok ? 'success' : 'error');
+}
+
+function updateHeroTagline() {
+  const el = document.getElementById('hero-tagline');
+  if (el && siteData.tagline) el.textContent = siteData.tagline;
+}
+
+// ══════════════════════════════════════════════
+// TOAST
+// ══════════════════════════════════════════════
+function toast(msg, type='success') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.borderColor = type==='error' ? 'rgba(255,77,106,0.5)' : type==='warn' ? 'rgba(245,200,66,0.4)' : 'var(--border-accent)';
+  t.style.color = type==='error' ? '#ff8a9a' : type==='warn' ? 'var(--gold)' : 'var(--accent)';
+  t.classList.add('show');
+  clearTimeout(t._t);
+  t._t = setTimeout(() => t.classList.remove('show'), 3200);
+}
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Trade Systems — Professional Forex EA Developer</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#05080F;--bg2:#0A0F1C;--bg3:#0F1628;--bg4:#151E30;
+  --accent:#7C5CFC;--accent2:#4F9DFF;--gold:#F5C842;
+  --cyan:#00E5FF;--green:#00D97E;--red:#FF4D6A;
+  --text:#EDF0FF;--text2:rgba(237,240,255,0.55);--text3:rgba(237,240,255,0.28);
+  --border:rgba(255,255,255,0.07);
+  --border-accent:rgba(124,92,252,0.35);
+  --border-cyan:rgba(0,229,255,0.25);
+  --border-gold:rgba(245,200,66,0.28);
+  --glow-accent:rgba(124,92,252,0.18);
+  --glow-cyan:rgba(0,229,255,0.12);
+  --glow-gold:rgba(245,200,66,0.12);
+  --radius:10px;--radius-lg:16px;
+  --shadow:0 8px 40px rgba(0,0,0,0.5);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+
+/* TICKER */
+.ticker{background:linear-gradient(90deg,var(--accent),#5B4BE0);color:#fff;padding:7px 0;overflow:hidden;font-size:11px;font-weight:700;letter-spacing:0.7px;}
+.ticker-track{display:flex;gap:56px;animation:tick 35s linear infinite;white-space:nowrap;width:max-content;}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tick-val-up{color:#9EFFCC;}.tick-val-down{color:#FFB3C0;}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:0 44px;height:66px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(5,8,15,0.96);backdrop-filter:blur(24px);z-index:100;}
+.logo{display:flex;align-items:center;gap:12px;cursor:pointer;}
+.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 16px rgba(124,92,252,0.35);}
+.logo-icon svg{width:18px;height:18px;}
+.logo-name{font-size:15px;font-weight:800;color:var(--text);letter-spacing:-0.3px;}
+.logo-tag{font-size:9px;color:var(--accent);letter-spacing:2.5px;display:block;font-weight:700;margin-top:-1px;}
+.nav-links{display:flex;gap:2px;}
+.nav-links a{color:var(--text2);font-size:13px;text-decoration:none;cursor:pointer;padding:7px 14px;border-radius:8px;transition:all .2s;font-weight:500;}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,0.05);}
+.nav-links a.active{color:var(--accent);background:rgba(124,92,252,0.1);}
+.nav-right{display:flex;gap:8px;align-items:center;}
+.social-icons-nav{display:flex;gap:6px;align-items:center;margin-right:6px;}
+.soc-btn{width:38px;height:38px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,0.03);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .22s;text-decoration:none;flex-shrink:0;}
+.soc-btn svg{width:18px;height:18px;display:block;}
+.soc-btn:hover{transform:translateY(-1px);}
+.soc-tg:hover{border-color:rgba(36,161,222,0.5);background:rgba(36,161,222,0.1);}
+.soc-wa:hover{border-color:rgba(37,211,102,0.5);background:rgba(37,211,102,0.1);}
+.soc-yt:hover{border-color:rgba(255,0,0,0.45);background:rgba(255,0,0,0.1);}
+.soc-fb:hover{border-color:rgba(66,103,178,0.5);background:rgba(66,103,178,0.1);}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:9px 20px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;border:none;transition:all .22s;text-decoration:none;white-space:nowrap;letter-spacing:-0.1px;}
+.btn-accent{background:linear-gradient(135deg,var(--accent),#5B4BE0);color:#fff;box-shadow:0 4px 18px rgba(124,92,252,0.28);}
+.btn-accent:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(124,92,252,0.42);}
+.btn-cyan{background:linear-gradient(135deg,var(--cyan),#0099cc);color:#05080F;}
+.btn-cyan:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,229,255,0.28);}
+.btn-outline{background:transparent;color:var(--text2);border:1px solid var(--border);}
+.btn-outline:hover{border-color:var(--border-accent);color:var(--accent);}
+.btn-gold{background:linear-gradient(135deg,var(--gold),#D4A017);color:#05080F;}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(245,200,66,0.32);}
+.btn-red{background:var(--red);color:#fff;}
+.btn-red:hover{background:#ff6b82;}
+.btn-ghost{background:rgba(255,255,255,0.05);color:var(--text2);border:1px solid var(--border);}
+.btn-ghost:hover{background:rgba(255,255,255,0.09);color:var(--text);}
+.btn-sm{padding:6px 14px;font-size:12px;}
+.btn-lg{padding:14px 34px;font-size:15px;}
+
+/* PAGES */
+.page{display:none;}.page.active{display:block;}
+
+/* HERO */
+.hero{padding:90px 44px 72px;text-align:center;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 20% 50%,rgba(124,92,252,0.07) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 40%,rgba(0,229,255,0.06) 0%,transparent 60%),radial-gradient(ellipse 40% 60% at 50% 100%,rgba(79,157,255,0.05) 0%,transparent 70%);pointer-events:none;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(124,92,252,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(124,92,252,0.04) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,black 0%,transparent 100%);pointer-events:none;}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--border-accent);color:var(--accent);font-size:11px;letter-spacing:2px;padding:8px 20px;border-radius:28px;margin-bottom:36px;background:rgba(124,92,252,0.07);}
+.hero-badge .pulse{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2.2s infinite;flex-shrink:0;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);box-shadow:0 0 0 0 rgba(0,217,126,0.5)}55%{opacity:.7;transform:scale(1.3);box-shadow:0 0 0 6px rgba(0,217,126,0)}}
+.hero h1{font-size:58px;font-weight:900;line-height:1.06;margin-bottom:24px;letter-spacing:-2px;}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--accent2),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-size:17px;color:var(--text2);max-width:560px;margin:0 auto 44px;line-height:1.8;}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.trust-strip{display:flex;align-items:center;justify-content:center;gap:32px;margin-top:56px;padding-top:40px;border-top:1px solid var(--border);flex-wrap:wrap;}
+.trust-item{display:flex;align-items:center;gap:9px;color:var(--text2);font-size:12px;font-weight:600;}
+.trust-item span{width:20px;height:20px;border-radius:50%;background:rgba(0,217,126,0.15);display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;}
+.trust-divider{width:1px;height:22px;background:var(--border);}
+
+/* STATS */
+.stats-bar{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:32px 44px;background:var(--bg2);}
+.stats-inner{display:flex;justify-content:center;max-width:900px;margin:0 auto;}
+.stat-item{flex:1;text-align:center;padding:0 32px;border-right:1px solid var(--border);}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-size:34px;font-weight:900;letter-spacing:-1.5px;line-height:1;}
+.stat-num.ac{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.stat-num.gc{background:linear-gradient(135deg,var(--gold),#f0a500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.stat-num.cc{background:linear-gradient(135deg,var(--cyan),#0088cc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.stat-num span{font-size:20px;}
+.stat-lbl{font-size:10px;color:var(--text3);letter-spacing:2.5px;font-weight:700;margin-top:7px;}
+
+/* SECTION */
+.section{padding:80px 44px;}
+.section-alt{background:var(--bg2);}
+.eyebrow{font-size:10px;letter-spacing:3.5px;color:var(--accent);font-weight:800;display:inline-block;margin-bottom:12px;text-transform:uppercase;}
+.section-head{text-align:center;margin-bottom:52px;}
+.section-head h2{font-size:36px;font-weight:900;margin-bottom:14px;letter-spacing:-0.8px;}
+.section-head p{font-size:15px;color:var(--text2);max-width:480px;margin:0 auto;line-height:1.75;}
+
+/* SERVICE CARDS */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px;max-width:1140px;margin:0 auto;}
+.svc-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px 28px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(124,92,252,0.5),transparent);opacity:0;transition:opacity .3s;}
+.svc-card:hover{border-color:rgba(124,92,252,0.25);transform:translateY(-5px);box-shadow:0 16px 48px rgba(0,0,0,0.4),0 0 0 1px rgba(124,92,252,0.08);}
+.svc-card:hover::before{opacity:1;}
+.svc-card.gold-card:hover{border-color:rgba(245,200,66,0.3);}
+.svc-card.gold-card::before{background:linear-gradient(90deg,transparent,rgba(245,200,66,0.5),transparent);}
+.svc-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:22px;}
+.ic-accent{background:rgba(124,92,252,0.12);color:var(--accent);border:1px solid rgba(124,92,252,0.2);}
+.ic-cyan{background:rgba(0,229,255,0.1);color:var(--cyan);border:1px solid rgba(0,229,255,0.18);}
+.ic-gold{background:rgba(245,200,66,0.1);color:var(--gold);border:1px solid rgba(245,200,66,0.2);}
+.ic-green{background:rgba(0,217,126,0.1);color:var(--green);border:1px solid rgba(0,217,126,0.18);}
+.svc-card h3{font-size:17px;font-weight:800;margin-bottom:11px;letter-spacing:-0.3px;}
+.svc-card p{font-size:13.5px;color:var(--text2);line-height:1.72;margin-bottom:22px;}
+.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px;}
+.tag{font-size:10px;padding:4px 11px;border-radius:6px;font-weight:700;letter-spacing:0.5px;}
+.tag-a{background:rgba(124,92,252,0.1);color:var(--accent);border:1px solid rgba(124,92,252,0.2);}
+.tag-g{background:rgba(245,200,66,0.08);color:var(--gold);border:1px solid rgba(245,200,66,0.2);}
+.tag-c{background:rgba(0,229,255,0.08);color:var(--cyan);border:1px solid rgba(0,229,255,0.18);}
+.svc-footer{display:flex;align-items:center;justify-content:space-between;padding-top:20px;border-top:1px solid var(--border);}
+.svc-footer small{font-size:11px;color:var(--text3);font-weight:500;}
+.best-badge{position:absolute;top:16px;right:16px;background:linear-gradient(135deg,var(--gold),#D4A017);color:#05080F;font-size:9px;font-weight:900;letter-spacing:1px;padding:4px 12px;border-radius:20px;}
+
+/* PORTFOLIO */
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px;max-width:1140px;margin:0 auto;}
+.portfolio-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:all .25s;cursor:pointer;}
+.portfolio-card:hover{border-color:var(--border-accent);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.4);}
+.portfolio-img{width:100%;height:195px;object-fit:cover;background:var(--bg3);display:block;}
+.portfolio-label{padding:13px 17px;font-size:12px;color:var(--text2);font-weight:500;}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9000;display:none;align-items:center;justify-content:center;padding:20px;}
+.lightbox.open{display:flex;}
+.lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:12px;}
+.lightbox-close{position:absolute;top:20px;right:24px;font-size:28px;color:#fff;cursor:pointer;background:none;border:none;opacity:.6;transition:opacity .2s;}
+.lightbox-close:hover{opacity:1;}
+
+/* 3-STEP */
+.process-wrap{background:linear-gradient(135deg,rgba(124,92,252,0.06),rgba(0,229,255,0.04));border:1px solid var(--border-accent);border-radius:var(--radius-lg);padding:36px 32px;margin-bottom:44px;max-width:1140px;margin-left:auto;margin-right:auto;}
+.process-wrap h3{font-size:15px;font-weight:800;color:var(--accent);margin-bottom:28px;display:flex;align-items:center;gap:8px;}
+.process-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;}
+.process-steps::before{content:'';position:absolute;top:24px;left:calc(16.66% + 8px);right:calc(16.66% + 8px);height:1px;background:linear-gradient(90deg,var(--accent),rgba(124,92,252,0.2));pointer-events:none;}
+.p-step{text-align:center;padding:0 18px;}
+.p-step-circle{width:48px;height:48px;border-radius:50%;background:rgba(124,92,252,0.12);border:1px solid var(--border-accent);display:flex;align-items:center;justify-content:center;font-size:21px;margin:0 auto 16px;position:relative;z-index:1;}
+.p-step h4{font-size:14px;font-weight:800;margin-bottom:7px;}
+.p-step p{font-size:12.5px;color:var(--text2);line-height:1.65;}
+
+/* EA GRID */
+.ea-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:20px;max-width:1140px;margin:0 auto;}
+.ea-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:all .25s;}
+.ea-card:hover{border-color:rgba(124,92,252,0.28);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.45);}
+.ea-card.premium{border-color:rgba(245,200,66,0.15);}
+.ea-card.premium:hover{border-color:rgba(245,200,66,0.45);box-shadow:0 16px 48px rgba(0,0,0,0.45),0 0 32px rgba(245,200,66,0.08);}
+.ea-thumb{width:100%;height:160px;object-fit:cover;background:var(--bg3);}
+.ea-thumb-placeholder{width:100%;height:160px;background:linear-gradient(135deg,var(--bg3),var(--bg4));display:flex;align-items:center;justify-content:center;font-size:46px;}
+.ea-body{padding:20px;}
+.ea-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:9px;gap:8px;}
+.ea-name{font-size:15px;font-weight:800;line-height:1.3;letter-spacing:-0.2px;}
+.ea-price{font-size:20px;font-weight:900;color:var(--accent);flex-shrink:0;letter-spacing:-0.5px;}
+.ea-price.gp{background:linear-gradient(135deg,var(--gold),#D4A017);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.ea-desc{font-size:12.5px;color:var(--text2);line-height:1.68;margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.ea-pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:15px;}
+.ea-pill{font-size:10px;padding:3px 9px;border-radius:5px;background:rgba(255,255,255,0.04);color:var(--text2);border:1px solid var(--border);}
+.ea-actions{display:flex;flex-direction:column;gap:8px;}
+.ea-buy-btn{width:100%;padding:12px;border-radius:10px;border:none;font-size:13px;font-weight:800;cursor:pointer;transition:all .22s;letter-spacing:-0.1px;}
+.buy-a{background:linear-gradient(135deg,rgba(124,92,252,0.15),rgba(124,92,252,0.08));color:var(--accent);border:1px solid rgba(124,92,252,0.25);}
+.buy-a:hover{background:linear-gradient(135deg,rgba(124,92,252,0.28),rgba(124,92,252,0.15));}
+.buy-g{background:linear-gradient(135deg,rgba(245,200,66,0.14),rgba(245,200,66,0.07));color:var(--gold);border:1px solid rgba(245,200,66,0.25);}
+.buy-g:hover{background:linear-gradient(135deg,rgba(245,200,66,0.26),rgba(245,200,66,0.14));}
+.ea-copy-btn{display:block;width:100%;padding:10px;border-radius:9px;background:rgba(0,229,255,0.06);border:1px solid rgba(0,229,255,0.15);color:var(--cyan);font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;text-align:center;}
+.ea-copy-btn:hover{background:rgba(0,229,255,0.13);}
+
+/* EMPTY STATE */
+.empty-state{text-align:center;padding:72px 24px;color:var(--text3);grid-column:1/-1;}
+.empty-icon{font-size:52px;margin-bottom:16px;}
+.empty-state p{font-size:14px;line-height:1.7;}
+
+/* DETAIL PAGE */
+.detail-wrap{max-width:940px;margin:0 auto;padding:40px 44px 88px;}
+.back-btn{display:inline-flex;align-items:center;gap:7px;color:var(--text2);font-size:13px;cursor:pointer;border:1px solid transparent;background:none;margin-bottom:30px;padding:8px 15px 8px 11px;border-radius:9px;transition:all .2s;font-weight:600;}
+.back-btn:hover{color:var(--accent);border-color:var(--border-accent);background:rgba(124,92,252,0.07);}
+.detail-header{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start;margin-bottom:0;}
+.detail-main-img{width:100%;border-radius:var(--radius-lg);border:1px solid var(--border);background:var(--bg3);aspect-ratio:16/9;object-fit:cover;}
+.detail-img-ph{width:100%;aspect-ratio:16/9;border-radius:var(--radius-lg);border:1px solid var(--border);background:linear-gradient(135deg,var(--bg2),var(--bg3));display:flex;align-items:center;justify-content:center;font-size:66px;}
+.detail-info{display:flex;flex-direction:column;}
+.detail-info h1{font-size:26px;font-weight:900;margin-bottom:7px;letter-spacing:-0.6px;}
+.detail-price{font-size:38px;font-weight:900;letter-spacing:-1.5px;margin-bottom:16px;line-height:1;}
+.detail-price.ap{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.detail-price.gp{background:linear-gradient(135deg,var(--gold),#D4A017);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.detail-pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
+.detail-desc{font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:22px;}
+.detail-action-btns{display:flex;flex-direction:column;gap:10px;}
+
+/* DETAIL MEDIA */
+.detail-media{margin-top:40px;}
+.media-section-title{font-size:10.5px;font-weight:800;color:var(--text3);letter-spacing:2.5px;margin-bottom:16px;padding-bottom:11px;border-bottom:1px solid var(--border);text-transform:uppercase;}
+.detail-video-embed{width:100%;aspect-ratio:16/9;border-radius:var(--radius-lg);border:1px solid var(--border);background:#000;overflow:hidden;margin-bottom:10px;}
+.detail-video-embed iframe{width:100%;height:100%;border:none;}
+.screenshots-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;}
+.screenshot-thumb{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all .22s;}
+.screenshot-thumb:hover{border-color:var(--border-accent);transform:scale(1.02);}
+
+/* PAYMENT BOX */
+.payment-box{background:linear-gradient(135deg,rgba(124,92,252,0.06),rgba(0,229,255,0.04));border:1px solid var(--border-accent);border-radius:var(--radius-lg);padding:30px;margin-top:36px;box-shadow:0 0 40px rgba(124,92,252,0.06);}
+.payment-box h4{font-size:14px;font-weight:800;color:var(--accent);margin-bottom:24px;display:flex;align-items:center;gap:8px;}
+.steps{display:flex;flex-direction:column;gap:18px;}
+.step{display:flex;gap:14px;align-items:flex-start;}
+.step-n{min-width:30px;height:30px;background:rgba(124,92,252,0.14);color:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;border:1px solid var(--border-accent);flex-shrink:0;}
+.step-txt{font-size:13.5px;color:var(--text2);line-height:1.68;padding-top:5px;}
+.addr-box{background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 18px;font-size:12px;font-family:'Consolas','Courier New',monospace;color:rgba(255,255,255,0.78);margin-top:11px;word-break:break-all;display:flex;justify-content:space-between;align-items:center;gap:10px;}
+.copy-addr-btn{background:none;border:1px solid var(--border-accent);color:var(--accent);cursor:pointer;font-size:12px;font-weight:700;padding:6px 12px;border-radius:7px;flex-shrink:0;transition:all .2s;white-space:nowrap;}
+.copy-addr-btn:hover{background:rgba(124,92,252,0.1);}
+
+/* CODING PAGE */
+.coding-wrap{max-width:900px;margin:0 auto;padding:44px 44px 80px;}
+.coding-services{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px;}
+.cs-item{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:22px 20px;transition:border-color .22s;}
+.cs-item:hover{border-color:var(--border-accent);}
+.cs-item strong{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:800;color:var(--text);margin-bottom:8px;letter-spacing:-0.2px;}
+.cs-item span{font-size:13px;color:var(--text2);line-height:1.68;}
+.tg-cta{background:linear-gradient(135deg,rgba(124,92,252,0.08),rgba(0,229,255,0.04));border:1px solid var(--border-accent);border-radius:var(--radius-lg);padding:44px;text-align:center;}
+.tg-cta h3{font-size:22px;font-weight:900;margin-bottom:12px;letter-spacing:-0.4px;}
+.tg-cta p{font-size:14px;color:var(--text2);margin-bottom:28px;line-height:1.75;max-width:440px;margin-left:auto;margin-right:auto;}
+
+/* ADMIN LOGIN */
+.admin-login-page{min-height:calc(100vh - 66px);display:flex;align-items:center;justify-content:center;padding:40px;}
+.admin-login-card{max-width:400px;width:100%;background:var(--bg2);border:1px solid var(--border-accent);border-radius:20px;padding:44px;text-align:center;}
+.admin-login-card .lock-icon{width:64px;height:64px;background:rgba(124,92,252,0.1);border:1px solid var(--border-accent);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 20px;}
+.admin-login-card h2{font-size:22px;font-weight:900;margin-bottom:6px;}
+.admin-login-card .login-subtitle{font-size:12px;color:var(--text3);margin-bottom:28px;line-height:1.6;}
+.login-field{margin-bottom:14px;text-align:left;}
+.login-field label{display:block;font-size:10px;font-weight:800;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:7px;}
+.login-field input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:13px 15px;color:#fff;font-size:14px;transition:border-color .2s;}
+.login-field input:focus{outline:none;border-color:var(--border-accent);}
+.login-field input::placeholder{color:var(--text3);}
+.admin-wrap{max-width:1080px;margin:0 auto;padding:40px 44px 80px;}
+.admin-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:36px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+.admin-header h2{font-size:22px;font-weight:900;margin-bottom:5px;letter-spacing:-0.4px;}
+.admin-header p{font-size:13px;color:var(--text2);}
+.admin-tabs{display:flex;gap:4px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:4px;margin-bottom:36px;width:fit-content;flex-wrap:wrap;}
+.admin-tab{padding:9px 22px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;border:none;background:none;color:var(--text2);transition:all .2s;}
+.admin-tab.active{background:linear-gradient(135deg,var(--accent),#5B4BE0);color:#fff;box-shadow:0 4px 14px rgba(124,92,252,0.3);}
+.admin-tab:hover:not(.active){background:rgba(255,255,255,0.06);color:var(--text);}
+.admin-section{display:none;}.admin-section.active{display:block;}
+
+/* FORM */
+.form-group{margin-bottom:18px;}
+.form-group label{display:flex;align-items:center;gap:6px;font-size:10.5px;font-weight:800;color:var(--text3);margin-bottom:8px;letter-spacing:1.5px;text-transform:uppercase;}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 15px;color:var(--text);font-size:14px;font-family:inherit;transition:border-color .2s;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--border-accent);}
+.form-group textarea{resize:vertical;min-height:92px;line-height:1.68;}
+.form-group select option{background:var(--bg2);}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--text3);}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-helper{font-size:11px;color:var(--text3);margin-top:7px;line-height:1.5;}
+.img-upload-area{border:2px dashed var(--border);border-radius:12px;padding:26px;text-align:center;cursor:pointer;transition:all .22s;position:relative;overflow:hidden;}
+.img-upload-area:hover{border-color:var(--border-accent);background:rgba(124,92,252,0.05);}
+.img-upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.img-upload-area .up-icon{font-size:28px;margin-bottom:8px;}
+.img-upload-area p{font-size:13px;color:var(--text2);margin-bottom:4px;}
+.img-upload-area small{font-size:11px;color:var(--text3);}
+.img-preview{width:100%;max-height:165px;object-fit:cover;border-radius:10px;margin-top:12px;border:1px solid var(--border);}
+.screenshots-preview{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+.screenshots-preview img{width:82px;height:62px;object-fit:cover;border-radius:7px;border:1px solid var(--border);}
+.admin-product-item{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;display:flex;align-items:center;gap:14px;transition:border-color .2s;margin-bottom:10px;}
+.admin-product-item:hover{border-color:var(--border-accent);}
+.admin-product-item img,.api-thumb-ph{width:58px;height:58px;object-fit:cover;border-radius:9px;border:1px solid var(--border);flex-shrink:0;}
+.api-thumb-ph{background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:21px;}
+.api-info{flex:1;min-width:0;}
+.api-info strong{font-size:14px;font-weight:700;display:block;margin-bottom:3px;}
+.api-info span{font-size:12px;color:var(--text2);}
+.api-actions{display:flex;gap:8px;}
+.settings-block{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:26px;margin-bottom:16px;}
+.settings-block h3{font-size:15px;font-weight:800;margin-bottom:20px;color:var(--accent);}
+.add-layout{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start;}
+.products-panel h3{font-size:15px;font-weight:800;margin-bottom:20px;}
+
+/* NOTICE */
+.notice{background:rgba(124,92,252,0.06);border:1px solid var(--border-accent);border-radius:10px;padding:14px 18px;font-size:13px;color:var(--text2);line-height:1.68;}
+.notice strong{color:var(--accent);}
+.notice-gold{background:rgba(245,200,66,0.06);border-color:var(--border-gold);}
+.notice-gold strong{color:var(--gold);}
+.notice-green{background:rgba(0,217,126,0.06);border-color:rgba(0,217,126,0.3);}
+.notice-green strong{color:var(--green);}
+
+/* WHY */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:20px;max-width:1040px;margin:0 auto;}
+.why-item{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 24px;text-align:center;transition:border-color .22s;}
+.why-item:hover{border-color:var(--border-accent);}
+.why-icon-wrap{width:56px;height:56px;border-radius:16px;background:rgba(124,92,252,0.1);border:1px solid rgba(124,92,252,0.2);display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 16px;}
+.why-item h3{font-size:15px;font-weight:800;margin-bottom:8px;letter-spacing:-0.2px;}
+.why-item p{font-size:13px;color:var(--text2);line-height:1.68;}
+
+/* FAQ */
+.faq-list{max-width:740px;margin:0 auto;display:flex;flex-direction:column;gap:3px;}
+.faq-item{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color .2s;}
+.faq-item.open{border-color:var(--border-accent);}
+.faq-q{padding:18px 22px;font-size:14px;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;transition:color .2s;}
+.faq-q:hover{color:var(--accent);}
+.faq-item.open .faq-q{color:var(--accent);}
+.faq-arr{color:var(--text3);font-size:16px;flex-shrink:0;transition:transform .25s;}
+.faq-item.open .faq-arr{transform:rotate(45deg);}
+.faq-a{font-size:13.5px;color:var(--text2);line-height:1.78;max-height:0;overflow:hidden;transition:max-height .35s,padding .25s;padding:0 22px;}
+.faq-item.open .faq-a{max-height:220px;padding:0 22px 18px;}
+
+/* SYNC STATUS */
+.sync-bar{display:flex;align-items:center;gap:10px;padding:10px 18px;border-radius:10px;font-size:12px;font-weight:600;margin-bottom:20px;}
+.sync-bar.synced{background:rgba(0,217,126,0.08);border:1px solid rgba(0,217,126,0.25);color:var(--green);}
+.sync-bar.syncing{background:rgba(124,92,252,0.08);border:1px solid var(--border-accent);color:var(--accent);}
+.sync-bar.error{background:rgba(255,77,106,0.08);border:1px solid rgba(255,77,106,0.3);color:var(--red);}
+.sync-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.sync-dot.green{background:var(--green);}
+.sync-dot.purple{background:var(--accent);animation:pulse 1.2s infinite;}
+.sync-dot.red{background:var(--red);}
+
+/* ACCOUNT / LICENSE LIST */
+.account-item{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;display:flex;align-items:center;gap:14px;transition:border-color .2s;margin-bottom:10px;}
+.account-item:hover{border-color:var(--border-accent);}
+.account-badge{width:46px;height:46px;border-radius:10px;background:rgba(124,92,252,0.1);border:1px solid rgba(124,92,252,0.2);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;}
+.account-info{flex:1;min-width:0;}
+.account-info strong{font-size:14.5px;font-weight:800;display:block;margin-bottom:3px;font-family:'Consolas','Courier New',monospace;letter-spacing:0.3px;}
+.account-info span{font-size:12px;color:var(--text2);}
+
+/* TOAST */
+.toast{position:fixed;bottom:28px;right:28px;background:var(--bg2);border:1px solid var(--border-accent);border-radius:12px;padding:14px 22px;font-size:13.5px;color:var(--accent);z-index:9999;transform:translateY(16px);opacity:0;transition:all .35s;box-shadow:var(--shadow);max-width:320px;}
+.toast.show{transform:translateY(0);opacity:1;}
+
+/* LOADING OVERLAY */
+.loading-overlay{position:fixed;inset:0;background:rgba(5,8,15,0.85);z-index:8000;display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px;}
+.loading-overlay.show{display:flex;}
+.loading-spinner{width:42px;height:42px;border:3px solid rgba(124,92,252,0.2);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-overlay p{color:var(--text2);font-size:14px;}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:44px 44px 30px;}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:52px;margin-bottom:36px;max-width:1140px;margin-left:auto;margin-right:auto;}
+.footer-brand .logo-name-f{font-size:16px;font-weight:800;letter-spacing:-0.3px;}
+.footer-brand p{font-size:13px;color:var(--text2);line-height:1.75;margin-top:11px;max-width:250px;}
+.footer-social{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap;}
+.footer-col h4{font-size:10px;font-weight:800;letter-spacing:3px;color:var(--text3);margin-bottom:16px;text-transform:uppercase;}
+.footer-col a{display:block;font-size:13px;color:var(--text2);text-decoration:none;cursor:pointer;margin-bottom:11px;transition:color .2s;font-weight:500;}
+.footer-col a:hover{color:var(--accent);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:24px;border-top:1px solid var(--border);max-width:1140px;margin:0 auto;flex-wrap:wrap;gap:10px;}
+.footer-bottom p{font-size:12px;color:var(--text3);}
+.footer-bottom strong{color:var(--accent);}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:0 18px;height:58px;}
+  .nav-links{display:none;}
+  .social-icons-nav{display:none;}
+  .hero{padding:52px 20px 44px;}
+  .hero h1{font-size:34px;}
+  .section{padding:52px 20px;}
+  .stats-bar{padding:20px 20px;}
+  .stat-item{padding:0 16px;}
+  .stat-num{font-size:24px;}
+  .detail-header,.coding-services,.form-grid,.add-layout{grid-template-columns:1fr;}
+  .process-steps{grid-template-columns:1fr;}
+  .process-steps::before{display:none;}
+  .admin-wrap,.coding-wrap,.detail-wrap{padding:20px 18px 56px;}
+  footer{padding:30px 20px 22px;}
+  .footer-top{grid-template-columns:1fr;gap:32px;}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADING OVERLAY -->
+<div class="loading-overlay" id="loading-overlay">
+  <div class="loading-spinner"></div>
+  <p id="loading-msg">Loading data...</p>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>📈 EURUSD <span class="tick-val-up">+0.42%</span></span>
+    <span>GBPUSD <span class="tick-val-down">−0.18%</span></span>
+    <span>XAUUSD <span class="tick-val-up">+1.2%</span></span>
+    <span>USDJPY <span class="tick-val-up">+0.35%</span></span>
+    <span>BTCUSDT <span class="tick-val-up">+2.1%</span></span>
+    <span>NASDAQ <span class="tick-val-up">+0.8%</span></span>
+    <span>🏆 Smart Trade Systems — Professional Forex EA Development</span>
+    <span>MQL4 &amp; MQL5 Expert Coding</span>
+    <span>📈 EURUSD <span class="tick-val-up">+0.42%</span></span>
+    <span>GBPUSD <span class="tick-val-down">−0.18%</span></span>
+    <span>XAUUSD <span class="tick-val-up">+1.2%</span></span>
+    <span>USDJPY <span class="tick-val-up">+0.35%</span></span>
+    <span>BTCUSDT <span class="tick-val-up">+2.1%</span></span>
+    <span>NASDAQ <span class="tick-val-up">+0.8%</span></span>
+    <span>🏆 Smart Trade Systems — Professional Forex EA Development</span>
+    <span>MQL4 &amp; MQL5 Expert Coding</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo" onclick="showPage('home')">
+    <div class="logo-icon">
+      <svg viewBox="0 0 22 22" fill="none"><polyline points="2,17 6,10 11,13 16,5 20,8" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div>
+      <span class="logo-name">Smart Trade Systems</span>
+      <span class="logo-tag">PROFESSIONAL FOREX EA</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a onclick="showPage('home')" id="nav-home" class="active">Home</a>
+    <a onclick="showPage('coding')" id="nav-coding">EA Coding</a>
+    <a onclick="showPage('marketplace')" id="nav-marketplace">Marketplace</a>
+    <a onclick="showPage('myea')" id="nav-myea">Our Best EAs</a>
+  </div>
+  <div class="nav-right">
+    <div class="social-icons-nav">
+      <a class="soc-btn soc-tg" onclick="openLink('telegram')" title="Telegram">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M21.94 4.43a1.5 1.5 0 0 0-1.55-.22L2.8 11.14a1.5 1.5 0 0 0 .1 2.79l3.98 1.35 1.96 5.89a.75.75 0 0 0 1.27.27l2.37-2.54 4.18 3.08a1.5 1.5 0 0 0 2.33-.93l2.96-15.5a1.5 1.5 0 0 0-.01-.12 1.5 1.5 0 0 0-.9-1.1zm-11.7 10.63-1.02 3.08-.94-2.82 7.7-6.06-5.74 5.8z" fill="#24A1DE"/></svg>
+      </a>
+      <a class="soc-btn soc-wa" onclick="openLink('whatsapp')" title="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.306A9.953 9.953 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm5.043 14.4c-.216.607-1.267 1.16-1.741 1.196-.474.036-.49.354-3.087-.716-2.597-1.07-4.2-3.72-4.327-3.893-.127-.173-1.032-1.434-1.032-2.738 0-1.305.658-1.949.908-2.213.25-.265.545-.332.727-.332.18 0 .36.003.519.01.166.008.388-.063.607.48.22.546.748 1.84.814 1.974.066.133.11.29.022.464-.088.175-.133.284-.265.437-.132.153-.278.34-.397.457-.133.13-.271.27-.117.53.155.26.687 1.11 1.472 1.8.99.87 1.82 1.15 2.085 1.28.264.13.418.11.572-.065.154-.175.66-.77.836-1.034.177-.265.353-.22.595-.132.242.088 1.534.726 1.797.858.263.132.438.198.503.308.065.11.065.635-.152 1.249z" fill="#25D366"/></svg>
+      </a>
+      <a class="soc-btn soc-yt" onclick="openLink('youtube')" title="YouTube">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M21.8 7.2s-.2-1.4-.82-2.02c-.79-.82-1.67-.82-2.07-.87C16.24 4.1 12 4.1 12 4.1s-4.24 0-6.91.21c-.4.05-1.28.05-2.07.87C2.4 5.8 2.2 7.2 2.2 7.2S2 8.84 2 10.48v1.53c0 1.64.2 3.28.2 3.28s.2 1.4.82 2.02c.79.82 1.83.79 2.29.88C6.8 18.38 12 18.4 12 18.4s4.24 0 6.91-.22c.4-.05 1.28-.06 2.07-.88.62-.62.82-2.02.82-2.02S22 13.65 22 12v-1.53c0-1.64-.2-3.27-.2-3.27zM9.74 14.85V8.66l5.59 3.1-5.59 3.09z" fill="#FF0000"/></svg>
+      </a>
+      <a class="soc-btn soc-fb" onclick="openLink('facebook')" title="Facebook">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill="#1877F2"/></svg>
+      </a>
+    </div>
+    <button class="btn btn-ghost btn-sm" onclick="showAdmin()">⚙</button>
+    <button class="btn btn-accent btn-sm" onclick="openLink('telegram')">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M21.94 4.43a1.5 1.5 0 0 0-1.55-.22L2.8 11.14a1.5 1.5 0 0 0 .1 2.79l3.98 1.35 1.96 5.89a.75.75 0 0 0 1.27.27l2.37-2.54 4.18 3.08a1.5 1.5 0 0 0 2.33-.93l2.96-15.5a1.5 1.5 0 0 0-.01-.12 1.5 1.5 0 0 0-.9-1.1z" fill="#fff"/></svg>
+      Telegram
+    </button>
+  </div>
+</nav>
+
+<!-- ══════ HOME ══════ -->
+<div id="home" class="page active">
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-badge"><div class="pulse"></div>LIVE SINCE 2015 — 10+ YEARS TRADING</div>
+    <h1>Your Partner in<br><em>Automated Forex Trading</em></h1>
+    <p class="hero-sub" id="hero-tagline">We build, test, and deploy expert advisors so your strategy runs 24/7 — custom coding, a proven EA marketplace, and live copy trading, all backed by a decade of real market experience.</p>
+    <div class="hero-btns">
+      <button class="btn btn-accent btn-lg" onclick="showPage('coding')">🛠 Get EA Coded</button>
+      <button class="btn btn-outline btn-lg" onclick="showPage('marketplace')">🏪 Browse Marketplace</button>
+    </div>
+    <div class="trust-strip">
+      <div class="trust-item"><span>✓</span>Free Consultation</div>
+      <div class="trust-divider"></div>
+      <div class="trust-item"><span>⚡</span>Fast Delivery via Telegram</div>
+      <div class="trust-divider"></div>
+      <div class="trust-item"><span>🛡</span>Post-Sale Support</div>
+      <div class="trust-divider"></div>
+      <div class="trust-item"><span>📊</span>Copy Trading Available</div>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item"><div class="stat-num ac">10<span>+</span></div><div class="stat-lbl">YEARS TRADING</div></div>
+      <div class="stat-item"><div class="stat-num cc">MQL4<span>/5</span></div><div class="stat-lbl">EXPERT CODING</div></div>
+      <div class="stat-item"><div class="stat-num gc">24<span>/7</span></div><div class="stat-lbl">EA SUPPORT</div></div>
+      <div class="stat-item"><div class="stat-num ac">100<span>%</span></div><div class="stat-lbl">LIVE TESTED</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <span class="eyebrow">WHAT WE OFFER</span>
+      <h2>Choose Your Service</h2>
+      <p>Everything you need to automate your trading — all supported through direct Telegram communication</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card" onclick="showPage('coding')">
+        <div class="svc-icon ic-accent">🛠</div>
+        <h3>Custom EA & Indicator Coding</h3>
+        <p>Send us your strategy and we will code it professionally in MQL4 or MQL5. We also convert TradingView Pine Script to MetaTrader.</p>
+        <div class="tag-row"><span class="tag tag-a">MQL4</span><span class="tag tag-a">MQL5</span><span class="tag tag-a">Pine Script</span><span class="tag tag-a">Indicators</span></div>
+        <div class="svc-footer"><button class="btn btn-accent btn-sm">Discuss Strategy →</button><small>Free consultation</small></div>
+      </div>
+      <div class="svc-card" onclick="showPage('marketplace')">
+        <div class="svc-icon ic-cyan">🏪</div>
+        <h3>EA Marketplace</h3>
+        <p>Browse our collection of ready-made EAs. Pay in USDT and receive your EA file via Telegram after we verify payment.</p>
+        <div class="tag-row"><span class="tag tag-c">Scalper</span><span class="tag tag-c">Grid</span><span class="tag tag-c">Hedge</span><span class="tag tag-c">News EA</span></div>
+        <div class="svc-footer"><button class="btn btn-cyan btn-sm">Browse EAs →</button><small>Pay in USDT</small></div>
+      </div>
+      <div class="svc-card gold-card" onclick="showPage('myea')">
+        <div class="best-badge">⭐ BESTSELLER</div>
+        <div class="svc-icon ic-gold">⚡</div>
+        <h3>Our Best EAs</h3>
+        <p>Our personally developed and live-tested EAs with a verified track record. Buy the EA outright or copy our live trades directly.</p>
+        <div class="tag-row"><span class="tag tag-g">Live Tested</span><span class="tag tag-g">Copy Trading</span><span class="tag tag-g">Real Account</span></div>
+        <div class="svc-footer"><button class="btn btn-gold btn-sm">View Our EAs →</button><small>Copy trades available</small></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section section-alt">
+    <div class="section-head">
+      <span class="eyebrow">WHY CHOOSE US</span>
+      <h2>What Sets Us Apart</h2>
+      <p>We are not just coders — we are active traders who build and run these systems ourselves</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item"><div class="why-icon-wrap">📊</div><h3>Live-Tested EAs</h3><p>Every EA we sell is tested on real accounts with real money first. No backtest-only claims.</p></div>
+      <div class="why-item"><div class="why-icon-wrap">🎯</div><h3>Strategy-First Approach</h3><p>We ask questions before we code. Our goal is to understand your exact logic so the EA behaves exactly as intended.</p></div>
+      <div class="why-item"><div class="why-icon-wrap">🛡</div><h3>Post-Sale Support</h3><p>We do not disappear after payment. Our team is available on Telegram for setup help, bug fixes, and updates.</p></div>
+      <div class="why-item"><div class="why-icon-wrap">⚡</div><h3>Fast Turnaround</h3><p>Simple EAs delivered within 24–48 hours. Complex systems are scoped and scheduled transparently upfront.</p></div>
+    </div>
+  </div>
+
+  <div class="section" id="portfolio-section">
+    <div class="section-head">
+      <span class="eyebrow">PROOF OF WORK</span>
+      <h2>Client Results & Reviews</h2>
+      <p>Real screenshots from real clients — profit results, delivered projects, and feedback</p>
+    </div>
+    <div class="portfolio-grid" id="portfolio-grid">
+      <div class="empty-state" style="grid-column:1/-1;padding:52px 20px;">
+        <div class="empty-icon">🏆</div>
+        <p>Client reviews and results will appear here.<br>Add them from <strong style="color:var(--accent)">Admin → Portfolio</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section section-alt">
+    <div class="section-head"><span class="eyebrow">FAQ</span><h2>Common Questions</h2></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What payment methods do you accept? <span class="faq-arr">+</span></div>
+        <div class="faq-a">We accept USDT on the TRC20 (Tron) network. After sending payment, share your transaction screenshot with us on Telegram and we will verify it manually.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How long does custom EA development take? <span class="faq-arr">+</span></div>
+        <div class="faq-a">Simple EAs are typically delivered within 24–48 hours. More complex systems may take 3–7 days. We always agree on a clear timeline before starting any work.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can I see the EA performance before buying? <span class="faq-arr">+</span></div>
+        <div class="faq-a">Yes. Each EA product page includes performance screenshots, real account results, and a link to our YouTube channel where we upload live performance review videos. You can review everything before purchasing.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What brokers and platforms do your EAs work on? <span class="faq-arr">+</span></div>
+        <div class="faq-a">Our EAs are built for MetaTrader 4 and MetaTrader 5, supported by thousands of brokers worldwide. We recommend ECN brokers with low spreads. We are happy to advise on broker choice via Telegram.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do you offer refunds? <span class="faq-arr">+</span></div>
+        <div class="faq-a">For custom-coded EAs, refunds are not available once work has begun. For marketplace EAs, if the file does not match what was described, we will fix or replace it promptly. Our reputation depends on your satisfaction.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ CODING ══════ -->
+<div id="coding" class="page">
+  <div class="coding-wrap">
+    <button class="back-btn" onclick="showPage('home')">← Back to Home</button>
+    <span class="eyebrow">CUSTOM DEVELOPMENT</span>
+    <h1 style="font-size:33px;font-weight:900;margin-bottom:14px;letter-spacing:-0.8px;">EA & Indicator Coding Services</h1>
+    <p style="font-size:15px;color:var(--text2);margin-bottom:40px;line-height:1.78;max-width:580px;">Share your strategy, indicator idea, or Pine Script — we turn it into a professional, fully automated MQL4/MQL5 Expert Advisor. Every build includes money management, input parameters, and post-delivery support.</p>
+    <div class="coding-services">
+      <div class="cs-item"><strong>🎯 EA from Your Strategy</strong><span>Describe your entry, exit, and risk rules — we build the complete EA with money management built in.</span></div>
+      <div class="cs-item"><strong>📐 Custom Indicators</strong><span>Any technical indicator with alerts, dashboard panels, and fully customizable visual settings.</span></div>
+      <div class="cs-item"><strong>🔄 Pine Script → MQL4/5</strong><span>Convert your TradingView Pine Script strategy into a fully working MetaTrader Expert Advisor.</span></div>
+      <div class="cs-item"><strong>🔧 Complete from Your Code</strong><span>Have partial code or a detailed strategy document? We complete, clean, and optimize it for you.</span></div>
+      <div class="cs-item"><strong>🤖 Full Trading Automation</strong><span>Automate manual trading: entries, exits, trailing stops, partial close, and advanced lot sizing.</span></div>
+      <div class="cs-item"><strong>🐛 Bug Fixing & Optimization</strong><span>Your existing EA misbehaving? We diagnose, fix, and improve performance with full transparency.</span></div>
+    </div>
+    <div class="notice" style="margin-bottom:30px;"><strong>Our Process:</strong> Free consultation first — we understand your strategy, then share a clear scope and price. Work begins only after your approval.</div>
+    <div class="tg-cta">
+      <h3>Ready to get started?</h3>
+      <p>Reach us on Telegram, describe your strategy, and we will give you a fair quote. Completely free — no commitment required.</p>
+      <button class="btn btn-accent btn-lg" onclick="openLink('telegram')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21.94 4.43a1.5 1.5 0 0 0-1.55-.22L2.8 11.14a1.5 1.5 0 0 0 .1 2.79l3.98 1.35 1.96 5.89a.75.75 0 0 0 1.27.27l2.37-2.54 4.18 3.08a1.5 1.5 0 0 0 2.33-.93l2.96-15.5a1.5 1.5 0 0 0-.01-.12 1.5 1.5 0 0 0-.9-1.1z" fill="#fff"/></svg>
+        Open Telegram to Discuss
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ MARKETPLACE ══════ -->
+<div id="marketplace" class="page">
+  <div class="section" style="padding-top:44px;">
+    <div style="max-width:1140px;margin:0 auto;">
+      <button class="back-btn" onclick="showPage('home')">← Back to Home</button>
+      <div style="margin-bottom:36px;">
+        <span class="eyebrow">EA STORE</span>
+        <h2 style="font-size:33px;font-weight:900;margin-bottom:12px;letter-spacing:-0.8px;">EA Marketplace</h2>
+        <p style="font-size:15px;color:var(--text2);max-width:520px;line-height:1.75;">Browse our collection of proven Expert Advisors. Pay in USDT, send payment proof on Telegram, and we deliver your EA file promptly.</p>
+      </div>
+      <div class="process-wrap">
+        <h3>💳 How to Purchase Any EA</h3>
+        <div class="process-steps">
+          <div class="p-step"><div class="p-step-circle">🛒</div><h4>Choose & Tap Buy</h4><p>Pick the EA you want and tap the Buy button to see the full details and payment instructions.</p></div>
+          <div class="p-step"><div class="p-step-circle">💳</div><h4>Send USDT Payment</h4><p>Send the exact USDT amount to our TRC20 wallet and screenshot your confirmation.</p></div>
+          <div class="p-step"><div class="p-step-circle">✈</div><h4>Receive on Telegram</h4><p>Send us the screenshot on Telegram. We verify and deliver your EA file — usually within minutes.</p></div>
+        </div>
+      </div>
+      <div class="ea-grid" id="marketplace-grid">
+        <div class="empty-state"><div class="empty-icon">🏪</div><p>No EAs in the marketplace yet.<br>Check back soon or contact us on <strong style="color:var(--accent)">Telegram</strong>.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ MY BEST EAs ══════ -->
+<div id="myea" class="page">
+  <div class="section" style="padding-top:44px;">
+    <div style="max-width:1140px;margin:0 auto;">
+      <button class="back-btn" onclick="showPage('home')">← Back to Home</button>
+      <div style="margin-bottom:36px;">
+        <span class="eyebrow">OUR PERSONAL EAs</span>
+        <h2 style="font-size:33px;font-weight:900;margin-bottom:12px;letter-spacing:-0.8px;">Our Best EAs ⭐</h2>
+        <p style="font-size:15px;color:var(--text2);max-width:520px;line-height:1.75;">Personally developed, live-tested on real accounts. Buy the EA file outright or copy our exact live trades directly to your account.</p>
+      </div>
+      <div class="process-wrap">
+        <h3>💳 How to Purchase or Copy Trade</h3>
+        <div class="process-steps">
+          <div class="p-step"><div class="p-step-circle">⚡</div><h4>Choose Your EA</h4><p>Pick an EA, watch its video, review profit screenshots, then tap Buy or Copy Trades.</p></div>
+          <div class="p-step"><div class="p-step-circle">💳</div><h4>Send USDT Payment</h4><p>Send the exact USDT amount to our TRC20 wallet and screenshot your confirmation.</p></div>
+          <div class="p-step"><div class="p-step-circle">✈</div><h4>Receive on Telegram</h4><p>Send us the screenshot on Telegram. We verify, deliver your EA file, and handle copy trading setup.</p></div>
+        </div>
+      </div>
+      <div class="ea-grid" id="myea-grid">
+        <div class="empty-state"><div class="empty-icon">⚡</div><p>No personal EAs added yet.<br>Contact us on <strong style="color:var(--accent)">Telegram</strong>.</p></div>
+      </div>
+      <div id="copy-trading-banner" style="display:none;background:linear-gradient(135deg,rgba(124,92,252,0.07),rgba(0,229,255,0.04));border:1px solid var(--border-accent);border-radius:var(--radius-lg);padding:40px;text-align:center;margin-top:36px;">
+        <div style="font-size:36px;margin-bottom:14px;">📊</div>
+        <h3 style="font-size:20px;font-weight:900;margin-bottom:10px;letter-spacing:-0.3px;">Want to copy our live trades?</h3>
+        <p style="font-size:14px;color:var(--text2);margin-bottom:24px;line-height:1.78;max-width:460px;margin-left:auto;margin-right:auto;">Connect your MetaTrader account to mirror our EA trades in real time. We set it up for you in minutes on Telegram.</p>
+        <button class="btn btn-accent btn-lg" onclick="openLink('telegram')">Set Up Copy Trading</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ DETAIL ══════ -->
+<div id="detail" class="page">
+  <div class="detail-wrap">
+    <button class="back-btn" id="detail-back-btn">← Back</button>
+    <div class="detail-header">
+      <div id="detail-img-wrap"></div>
+      <div class="detail-info">
+        <span class="eyebrow">EA PURCHASE</span>
+        <h1 id="det-name"></h1>
+        <div class="detail-price" id="det-price"></div>
+        <div class="detail-pills" id="det-pills"></div>
+        <p class="detail-desc" id="det-desc"></p>
+        <div class="detail-action-btns">
+          <button class="btn btn-accent" style="padding:14px;font-size:14px;" id="det-buy-btn" onclick="openLink('telegram')">🛒 Buy — Send Payment Proof on Telegram</button>
+          <div id="det-copy-row" style="display:none;">
+            <button class="btn btn-cyan" style="width:100%;padding:12px;" onclick="openLink('telegram')">📊 Copy Our Trades Instead</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="detail-media-wrap" class="detail-media"></div>
+    <div class="payment-box">
+      <h4>💳 Payment Instructions</h4>
+      <div class="steps">
+        <div class="step"><div class="step-n">1</div><div class="step-txt">Send the exact USDT amount to the wallet address below. We accept <strong>TRC20 (TRON)</strong> network only.</div></div>
+        <div class="addr-box"><span id="usdt-display">Loading...</span><button class="copy-addr-btn" onclick="copyAddr()">📋 Copy</button></div>
+        <div class="step"><div class="step-n">2</div><div class="step-txt">Take a clear screenshot of your payment confirmation from your exchange or wallet app.</div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-txt">Tap the button below, open Telegram, and send us the screenshot. We verify and deliver your EA file — usually within minutes.</div></div>
+      </div>
+      <button class="btn btn-accent" style="width:100%;margin-top:22px;padding:15px;font-size:14px;" onclick="openLink('telegram')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M21.94 4.43a1.5 1.5 0 0 0-1.55-.22L2.8 11.14a1.5 1.5 0 0 0 .1 2.79l3.98 1.35 1.96 5.89a.75.75 0 0 0 1.27.27l2.37-2.54 4.18 3.08a1.5 1.5 0 0 0 2.33-.93l2.96-15.5a1.5 1.5 0 0 0-.01-.12 1.5 1.5 0 0 0-.9-1.1z" fill="#fff"/></svg>
+        Send Payment Proof on Telegram
+      </button>
+      <p style="text-align:center;font-size:11.5px;color:var(--text3);margin-top:11px;">Always double-check the wallet address before sending.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ ADMIN ══════ -->
+<div id="admin-page" class="page">
+  <div id="admin-login-wrap">
+    <div class="admin-login-page">
+      <div class="admin-login-card">
+        <div class="lock-icon">🔐</div>
+        <h2>Admin Login</h2>
+        <p class="login-subtitle">Smart Trade Systems — CEO Access Only</p>
+        <div class="login-field">
+          <label>GitHub Token</label>
+          <input type="password" id="admin-gh-token" placeholder="github_pat_...">
+        </div>
+        <div class="login-field">
+          <label>Site Password</label>
+          <input type="password" id="admin-pw-input" placeholder="Your password">
+        </div>
+        <button class="btn btn-accent" style="width:100%;padding:14px;font-size:14px;margin-top:6px;" onclick="checkPw()">Login →</button>
+        <p style="font-size:11px;color:var(--text3);margin-top:16px;line-height:1.7;">Data syncs to GitHub repo: <strong style="color:var(--accent)">SmartTradeSystems/smarttradesystems</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="admin-main-wrap" style="display:none;">
+    <div class="admin-wrap">
+      <div class="admin-header">
+        <div>
+          <h2>⚙ Admin Panel</h2>
+          <p>Changes save to GitHub and sync to all devices automatically.</p>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <div id="sync-status-badge" class="sync-bar synced"><div class="sync-dot green"></div><span id="sync-status-text">Synced with GitHub</span></div>
+          <button class="btn btn-ghost btn-sm" onclick="logoutAdmin()">Logout</button>
+        </div>
+      </div>
+      <div class="admin-tabs">
+        <button class="admin-tab active" onclick="switchTab('products',this)">🏪 Products</button>
+        <button class="admin-tab" onclick="switchTab('accounts',this)">🔑 Accounts</button>
+        <button class="admin-tab" onclick="switchTab('portfolio',this)">🏆 Portfolio</button>
+        <button class="admin-tab" onclick="switchTab('social',this)">📱 Social</button>
+        <button class="admin-tab" onclick="switchTab('payment',this)">💳 Payment</button>
+        <button class="admin-tab" onclick="switchTab('settings',this)">🔧 Settings</button>
+      </div>
+
+      <!-- PRODUCTS TAB -->
+      <div id="atab-products" class="admin-section active">
+        <div class="add-layout">
+          <div>
+            <h3 style="font-size:15px;font-weight:800;margin-bottom:22px;">Add New EA / Product</h3>
+            <div class="form-group"><label>EA NAME</label><input type="text" id="p-name" placeholder="e.g. Gold Scalper Pro"></div>
+            <div class="form-grid">
+              <div class="form-group"><label>PRICE (USDT)</label><input type="number" id="p-price" placeholder="49" min="1"></div>
+              <div class="form-group"><label>CATEGORY</label>
+                <select id="p-category">
+                  <option value="marketplace">Marketplace EA</option>
+                  <option value="myea">Our Best EA (Personal)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group"><label>DESCRIPTION</label><textarea id="p-desc" placeholder="Describe the EA — strategy, timeframe, pairs, features, performance highlights..."></textarea></div>
+            <div class="form-grid">
+              <div class="form-group"><label>PAIR / SYMBOL</label><input type="text" id="p-pair" placeholder="XAUUSD"></div>
+              <div class="form-group"><label>MT VERSION</label>
+                <select id="p-version"><option>MQL5</option><option>MQL4</option><option>MQL4 &amp; MQL5</option></select>
+              </div>
+            </div>
+            <div class="form-group"><label>EA TYPE / STRATEGY</label><input type="text" id="p-type" placeholder="Scalping, Grid, Trend, Hedge..."></div>
+            <div class="form-group">
+              <label>🎬 EA WORKING VIDEO URL</label>
+              <input type="url" id="p-youtube" placeholder="https://youtube.com/watch?v=...">
+              <p class="form-helper">A video showing the EA working. Shown on the EA detail page.</p>
+            </div>
+            <div class="form-group"><label>COPY TRADING AVAILABLE? (Our Best EAs only)</label>
+              <select id="p-copy"><option value="no">No</option><option value="yes">Yes — show Copy Trading button</option></select>
+            </div>
+            <div class="form-group"><label>EA COVER IMAGE</label>
               <div class="img-upload-area"><input type="file" id="p-img-input" accept="image/*" onchange="previewImg(this,'p-img-preview')"><div class="up-icon">🖼</div><p>Click to upload cover image</p><small>JPG, PNG, WebP — max 300 KB</small></div>
               <img id="p-img-preview" class="img-preview" style="display:none">
             </div>
