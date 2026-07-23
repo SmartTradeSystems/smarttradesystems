@@ -8,7 +8,25 @@
     "youtube": "",
     "facebook": ""
   },
-  "products": [],
+  "products": [
+    {
+      "id": "1784828912680",
+      "name": "Smart Gold Nitro EA",
+      "price": 450,
+      "category": "myea",
+      "desc": "# Smart Gold Nitro EA\n\n**Smart Gold Nitro EA** is a professional automated trading system designed specifically for **XAUUSD (Gold)** on **MetaTrader 4 and MetaTrader 5**. Built for traders who demand precision, stability, and intelligent trade management, the EA executes trades automatically using advanced market analysis and robust risk-control algorithms.\n\nDesigned for both beginners and experienced traders, Smart Gold Nitro EA eliminates emotional decision-making and monitors the market 24/7, ensuring opportunities are never missed. Its intelligent execution engine adapts to changing market conditions while maintaining disciplined risk management.\n\n## Key Features\n\n* Fully Automated Trading\n* Supports MT4 & MT5\n* Optimized for XAUUSD (Gold)\n* Advanced Entry & Exit Algorithms\n* Intelligent Trade Management\n* Built-in Risk Management System\n* Automatic Stop Loss & Take Profit\n* High-Speed Order Execution\n* Optimized for Low-Latency VPS\n* User-Friendly Settings\n* Suitable for Multiple Account Types\n* Continuous Market Monitoring\n\n## Why Choose Smart Gold Nitro EA?\n\nSmart Gold Nitro EA is engineered to provide consistent and reliable automated trading with a focus on disciplined execution rather than emotional decisions. Every trade is managed according to predefined algorithms, helping traders maintain consistency across different market conditions.\n\nWhether you're looking for a hands-free trading solution or an advanced EA to enhance your trading portfolio, Smart Gold Nitro EA offers a professional-grade experience with powerful automation and intelligent risk control.\n\n## Recommended Settings\n\n* **Platform:** MetaTrader 4 / MetaTrader 5\n* **Instrument:** XAUUSD (Gold)\n* **Timeframe:** Optimized by the EA\n* **Broker:** Low-spread ECN broker recommended\n* **VPS:** Recommended for uninterrupted 24/7 operation\n\n## Important Risk Disclosure\n\nForex and CFD trading involve substantial risk and may not be suitable for every investor. Past performance does not guarantee future results. Always trade with capital you can afford to risk and test the EA on a demo account before using it on a live account.",
+      "pair": "XAUUSD M1",
+      "version": "MQL5",
+      "type": "Scalping Hedge EA",
+      "ytLink": "https://youtu.be/wgb7xizl06s",
+      "copy": "no",
+      "img": "https://raw.githubusercontent.com/SmartTradeSystems/smarttradesystems/main/images/1784828908266-mg94nh7.png",
+      "resultImgs": [
+        "https://raw.githubusercontent.com/SmartTradeSystems/smarttradesystems/main/images/1784828910715-hfxj6lk.jpg"
+      ],
+      "reviewImgs": []
+    }
+  ],
   "portfolio": [],
   "authorizedAccounts": []
 }
