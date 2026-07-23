@@ -27,7 +27,43 @@
       "reviewImgs": []
     }
   ],
-  "portfolio": [],
+  "portfolio": [
+    {
+      "id": "17848290558080.38883098296810537",
+      "img": "https://raw.githubusercontent.com/SmartTradeSystems/smarttradesystems/main/images/1784829041867-wfv6z8z.jpg",
+      "label": "Clients Feedback"
+    },
+    {
+      "id": "17848290558080.02627351227481889",
+      "img": "https://raw.githubusercontent.com/SmartTradeSystems/smarttradesystems/main/images/1784829043624-na3897k.jpg",
+      "label": "Clients Feedback"
+    },
+    {
+      "id": "17848290558080.9449632193929535",
+      "img": "https://raw.githubusercontent.com/SmartTradeSystems/smarttradesystems/main/images/1784829045679-43mc9ai.jpg",
+      "label": "Clients Feedback"
+    },
+    {
+      "id": "17848290558080.11380803671270667",
+      "img": "https://raw.githubusercontent.com/SmartTradeSystems/smarttradesystems/main/images/1784829047689-i4iadr9.jpg",
+      "label": "Clients Feedback"
+    },
+    {
+      "id": "17848290558080.17609948246142526",
+      "img": "https://raw.githubusercontent.com/SmartTradeSystems/smarttradesystems/main/images/1784829049730-0qz9gg3.jpg",
+      "label": "Clients Feedback"
+    },
+    {
+      "id": "17848290558080.05383913571822074",
+      "img": "https://raw.githubusercontent.com/SmartTradeSystems/smarttradesystems/main/images/1784829051512-jdlezbe.jpg",
+      "label": "Clients Feedback"
+    },
+    {
+      "id": "17848290558080.3503625713157955",
+      "img": "https://raw.githubusercontent.com/SmartTradeSystems/smarttradesystems/main/images/1784829053515-lz7uamk.jpg",
+      "label": "Clients Feedback"
+    }
+  ],
   "authorizedAccounts": [
     {
       "id": "1784828954778",
