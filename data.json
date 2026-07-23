@@ -28,5 +28,14 @@
     }
   ],
   "portfolio": [],
-  "authorizedAccounts": []
+  "authorizedAccounts": [
+    {
+      "id": "1784828954778",
+      "eaId": "1784828912680",
+      "eaName": "Smart Gold Nitro EA",
+      "account": "1200081739",
+      "note": "Mujeeb my Whatsapp Client",
+      "expiry": ""
+    }
+  ]
 }
